@@ -1,26 +1,29 @@
-/*----------------------------------------------------------------------------*/
-/* Copyright (c) 2017-2018 FIRST. All Rights Reserved.                        */
-/* Open Source Software - may be modified and shared by FRC teams. The code   */
-/* must be accompanied by the FIRST BSD license file in the root directory of */
-/* the project.                                                               */
-/*----------------------------------------------------------------------------*/
-
 package org.usfirst.frc.team5822.robot;
 
-/**
- * The RobotMap is a mapping from the ports sensors and actuators are wired into
- * to a variable name. This provides flexibility changing wiring, makes checking
- * the wiring easier and significantly reduces the number of magic numbers
- * floating around.
- */
-public class RobotMap {
-	// For example to map the left and right motors, you could define the
-	// following variables to use with your drivetrain subsystem.
-	// public static int leftMotor = 1;
-	// public static int rightMotor = 2;
-
-	// If you are using multiple modules, make sure to define both the port
-	// number and the module. For example you with a rangefinder:
-	// public static int rangefinderPort = 1;
-	// public static int rangefinderModule = 1;
+public class RobotMap 
+{
+	//motors
+	public static int k_frontLeft = 0;
+	public static int k_rearLeft = 1;
+	public static int k_frontRight = 2;
+	public static int k_rearRight = 3;
+	
+	public static int k_elevatorLeft = 4;
+	public static int k_elevatorRight = 5;
+	public static int k_climbing = 6;
+	public static int k_intakeLeft = 7;
+	public static int k_intakeRight = 8;
+	
+	//sensors
+	public static int k_leftEncoder = 0;
+	public static int k_rightEncoder = 1;
+	public static int k_gyro = 2;
+	
+	public static int k_usbCam1 = 0;
+	public static int k_usbCam2 = 1;
+	
+	//joysticks
+	public static int k_joystick1 = 0;
+	public static int k_joystick2 = 1;
+	public static int k_xboxCntrl = 2;
 }
