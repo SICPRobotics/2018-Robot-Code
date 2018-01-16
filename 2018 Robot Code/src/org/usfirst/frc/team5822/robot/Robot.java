@@ -25,7 +25,7 @@ public class Robot extends TimedRobot
 				 
 		j = new Joystick(0);
 		
-		oi = new OI();
+		oi = new OI(j);
 		//m_chooser.addDefault("Default Auto", new ExampleCommand());
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", m_chooser);
@@ -45,14 +45,6 @@ public class Robot extends TimedRobot
 	{
 		m_autonomousCommand = m_chooser.getSelected();
 
-		/*
-		 * String autoSelected = SmartDashboard.getString("Auto Selector",
-		 * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
-		 * = new MyAutoCommand(); break; case "Default Auto": default:
-		 * autonomousCommand = new ExampleCommand(); break; }
-		 */
-
-		// schedule the autonomous command (example)
 		if (m_autonomousCommand != null) 
 		{
 			m_autonomousCommand.start();

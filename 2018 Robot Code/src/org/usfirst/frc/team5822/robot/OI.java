@@ -1,7 +1,16 @@
 package org.usfirst.frc.team5822.robot;
 
+import edu.wpi.first.wpilibj.Joystick;
+
 public class OI 
 {
+	Joystick joy;
+	
+	public OI(Joystick j)
+	{
+		joy = j;
+	}
+	
 	//// CREATING BUTTONS
 	// One type of button is a joystick button which is any button on a
 	//// joystick.
