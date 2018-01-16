@@ -15,7 +15,7 @@ public class Robot extends TimedRobot
 
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
-	Drivetrain driveTrain;
+	public Drivetrain driveTrain;
 	Joystick j;
 	
 	@Override
