@@ -9,7 +9,7 @@ public class RobotMap
 	public static int k_rearRight = 3;
 	
 	public static int k_elevatorLeft = 4;
-	public static int k_elevatorRight = 5;
+	//public static int k_elevatorRight = 5;
 	public static int k_climbing = 6;
 	public static int k_intakeLeft = 7;
 	public static int k_intakeRight = 8;
@@ -24,6 +24,5 @@ public class RobotMap
 	
 	//joysticks
 	public static int k_joystick1 = 0;
-	public static int k_joystick2 = 1;
 	public static int k_xboxCntrl = 2;
 }
