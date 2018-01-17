@@ -51,7 +51,6 @@ public class Drivetrain extends Subsystem
 		rotateValue = rotateValue*-0.6; //rotation scale factor used last year (2016), can change 
 		
 		robotBase.arcadeDrive(moveValue, rotateValue, true);
-
     }
 }
 
