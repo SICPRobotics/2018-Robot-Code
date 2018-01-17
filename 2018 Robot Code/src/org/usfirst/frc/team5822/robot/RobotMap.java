@@ -15,8 +15,11 @@ public class RobotMap
 	public static int k_intakeRight = 8;
 	
 	//sensors
-	public static int k_leftEncoder = 0;
-	public static int k_rightEncoder = 1;
+	public static int k_leftEncoder_A = 0;
+	public static int k_leftEncoder_B = 1;
+	public static int k_rightEncoder_A = 2;
+	public static int k_rightEncoder_B = 3;
+
 	public static int k_gyro = 2;
 	
 	public static int k_usbCam1 = 0;
