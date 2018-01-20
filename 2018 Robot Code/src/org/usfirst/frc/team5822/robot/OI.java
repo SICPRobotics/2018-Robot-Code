@@ -1,5 +1,7 @@
 package org.usfirst.frc.team5822.robot;
 
+import org.usfirst.frc.team5822.robot.commands.Testing;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Joystick.ButtonType;
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -10,38 +12,34 @@ public class OI
 {
 	Joystick joy1, joy2; //NEW
 	
-	public OI(Joystick j1, Joystick j2)
+	public OI(Joystick j, Joystick k)
 	{
-		joy1 = j1;
-		joy2 = j2; //NEW
+		joy1 = j;
+		joy2 = k; //NEW
 		
 		
-		Button j7 = new JoystickButton(j1, 7); //NEW
-		Button j8 = new JoystickButton(j1, 8); //NEW
+		Button j7 = new JoystickButton(j, 7); //NEW
+		Button j8 = new JoystickButton(j, 8); //NEW
 		//9 and 10 don't work on our joystick //NEW
-		Button j11 = new JoystickButton(j1, 11); //NEW
-		Button j12 = new JoystickButton(j1, 12); //NEW
+		Button j11 = new JoystickButton(j, 11); //NEW
+		Button j12 = new JoystickButton(j, 12); //NEW
 
-		Button buttonA = new JoystickButton(j2, 1); //NEW
-		Button buttonB = new JoystickButton(j2, 2); //NEW
-		Button buttonX = new JoystickButton(j2, 3); //NEW
-		Button buttonY = new JoystickButton(j2, 4); //NEW
-		Button buttonLB = new JoystickButton(j2, 5); //NEW
-		Button buttonRB = new JoystickButton(j2, 6); //NEW
-		Button buttonBack = new JoystickButton(j2, 7); //NEW
-		Button buttonStart = new JoystickButton(j2, 8); //NEW
+		Button buttonA = new JoystickButton(k, 1); //NEW
+		Button buttonB = new JoystickButton(k, 2); //NEW
+		Button buttonX = new JoystickButton(k, 3); //NEW
+		Button buttonY = new JoystickButton(k, 4); //NEW
+		Button buttonLB = new JoystickButton(k, 5); //NEW
+		Button buttonRB = new JoystickButton(k, 6); //NEW
+		Button buttonBack = new JoystickButton(k, 7); //NEW
+		Button buttonStart = new JoystickButton(k, 8); //NEW
 		
 		
-		//buttonA.whenPressed(System.out.println("button A"));
+		buttonA.whenPressed(new Testing());
 		
 		
 		
 	}
 
-	private void Command() {
-		// TODO Auto-generated method stub
-		
-	}
 	
 	
 	
