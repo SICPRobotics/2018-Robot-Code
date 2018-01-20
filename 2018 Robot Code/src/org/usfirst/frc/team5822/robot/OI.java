@@ -10,28 +10,28 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 public class OI 
 {
-	Joystick joy1, joy2; //NEW
+	Joystick joy1, joy2;
 	
 	public OI(Joystick j, Joystick k)
 	{
 		joy1 = j;
-		joy2 = k; //NEW
+		joy2 = k;
 		
 		
-		Button j7 = new JoystickButton(j, 7); //NEW
-		Button j8 = new JoystickButton(j, 8); //NEW
-		//9 and 10 don't work on our joystick //NEW
-		Button j11 = new JoystickButton(j, 11); //NEW
-		Button j12 = new JoystickButton(j, 12); //NEW
+		Button j7 = new JoystickButton(j, 7);
+		Button j8 = new JoystickButton(j, 8); 
+		//9 and 10 don't work on our joystick 
+		Button j11 = new JoystickButton(j, 11); 
+		Button j12 = new JoystickButton(j, 12);
 
-		Button buttonA = new JoystickButton(k, 1); //NEW
-		Button buttonB = new JoystickButton(k, 2); //NEW
-		Button buttonX = new JoystickButton(k, 3); //NEW
-		Button buttonY = new JoystickButton(k, 4); //NEW
-		Button buttonLB = new JoystickButton(k, 5); //NEW
-		Button buttonRB = new JoystickButton(k, 6); //NEW
-		Button buttonBack = new JoystickButton(k, 7); //NEW
-		Button buttonStart = new JoystickButton(k, 8); //NEW
+		Button buttonA = new JoystickButton(k, 1);
+		Button buttonB = new JoystickButton(k, 2);
+		Button buttonX = new JoystickButton(k, 3);
+		Button buttonY = new JoystickButton(k, 4);
+		Button buttonLB = new JoystickButton(k, 5);
+		Button buttonRB = new JoystickButton(k, 6);
+		Button buttonBack = new JoystickButton(k, 7);
+		Button buttonStart = new JoystickButton(k, 8);
 		
 		
 		buttonA.whenPressed(new Testing());
