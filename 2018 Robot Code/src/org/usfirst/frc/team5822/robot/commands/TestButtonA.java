@@ -2,9 +2,9 @@ package org.usfirst.frc.team5822.robot.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class Testing extends Command
+public class TestButtonA extends Command
 {
-	public Testing() 
+	public TestButtonA() 
     {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);

@@ -1,9 +1,9 @@
 package org.usfirst.frc.team5822.robot;
 
-import org.usfirst.frc.team5822.robot.commands.Testing;
+import org.usfirst.frc.team5822.robot.commands.TestButtonA;
 
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.Joystick.ButtonType;
+
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
@@ -34,7 +34,7 @@ public class OI
 		Button buttonStart = new JoystickButton(k, 8);
 		
 		
-		buttonA.whenPressed(new Testing());
+		buttonA.whenPressed(new TestButtonA());
 		
 		
 		
