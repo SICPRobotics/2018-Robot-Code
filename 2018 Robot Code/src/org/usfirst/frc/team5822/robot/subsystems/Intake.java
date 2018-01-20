@@ -16,7 +16,10 @@ public class Intake extends Subsystem
 		//intake = new SpeedControllerGroup(intakeLeft, intakeRight);
 	}
 
-    public void initDefaultCommand() {}
+    public void initDefaultCommand() 
+    {
+    	
+    }
     
     public void takeIn(int speed)
     {

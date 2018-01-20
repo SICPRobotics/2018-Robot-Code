@@ -31,9 +31,15 @@ public class OI
 		Button buttonBack = new JoystickButton(j2, 7); //NEW
 		Button buttonStart = new JoystickButton(j2, 8); //NEW
 		
-		buttonA.whenPressed(System.out.println("button A"));
+		
+		//buttonA.whenPressed(System.out.println("button A"));
 		
 		
+		
+	}
+
+	private void Command() {
+		// TODO Auto-generated method stub
 		
 	}
 	
