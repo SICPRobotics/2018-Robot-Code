@@ -2,12 +2,12 @@ package org.usfirst.frc.team5822.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 
-public class Elevator extends Subsystem 
+public class Lifter extends Subsystem 
 {
     
 	//VictorSP elevator;
 	
-	public Elevator()
+	public Lifter()
 	{
 		//elevator = new VictorSP(k_elevatorLeft);
 	}

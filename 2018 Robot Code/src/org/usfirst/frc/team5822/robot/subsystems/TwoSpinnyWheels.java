@@ -5,11 +5,11 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 /**
  *
  */
-public class Intake extends Subsystem 
+public class TwoSpinnyWheels extends Subsystem 
 {
 	//VictorSP intakeLeft, intakeRight;
 	//SpeedControllerGroup intake;
-	public Intake()
+	public TwoSpinnyWheels()
 	{
 		//intakeLeft = new VictorSP(k_intakeLeft);
 		//intakeRight = new VictorSP(k_intakeRight);
@@ -21,11 +21,19 @@ public class Intake extends Subsystem
     	
     }
     
-    public void takeIn(int speed)
+    public void takeIn(double speed)
     {
     	//if (speed < 0)
     		//intake.set(pick a negative number);
     	//intake.set(same number but positive);
     }
+    
+    public void pushOut(double speed)
+    {
+    	//if (speed < 0)
+    		//intake.set(pick a negative number);
+    	//intake.set(same number but positive);
+    }
+    
 }
 

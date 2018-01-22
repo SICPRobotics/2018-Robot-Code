@@ -1,29 +1,34 @@
 package org.usfirst.frc.team5822.robot.commands;
 
+import org.usfirst.frc.team5822.robot.Robot;
+
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class RandomCommandThatDoesntDoAnything extends Command {
+public class Intake extends Command 
+{
 
-    public RandomCommandThatDoesntDoAnything() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
+    public Intake() 
+    {
+        requires(Robot.intake);
     }
 
     // Called just before this Command runs the first time
-    protected void initialize() {
+    protected void initialize() 
+    {
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() 
     {
-    	
+    	Robot.intake.takeIn(.7);//speed set to 0
     }
 
     // Make this return true when this Command no longer needs to run execute()
-    protected boolean isFinished() {
+    protected boolean isFinished() 
+    {
         return false;
     }
 

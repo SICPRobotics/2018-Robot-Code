@@ -15,16 +15,25 @@ public class Robot extends TimedRobot
 
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
-	public Drivetrain driveTrain;
+	public static Drivetrain driveTrain;
+	public static Climber climber;
+	public static TwoSpinnyWheels intake;
+	public static Lifter arm;
+	public static Sensors sensors;
+	
 	Joystick j, k;
 	
 	@Override
 	public void robotInit() 
 	{
 		driveTrain = new Drivetrain();
-				 
-		j = new Joystick(0);
-		k = new Joystick(1);
+		climber = new Climber();
+		arm = new Lifter();
+		sensors = new Sensors();
+		intake = new TwoSpinnyWheels();
+		
+		j = new Joystick(RobotMap.k_joystick1);
+		k = new Joystick(RobotMap.k_xboxCntrl);
 		
 		oi = new OI(j, k);
 		//m_chooser.addDefault("Default Auto", new ExampleCommand());
