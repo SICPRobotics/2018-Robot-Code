@@ -28,8 +28,10 @@ public class OI
 	
 	public OI()
 	{
-		buttonA.whileHeld(new Intake(.7)); 
+		buttonA.whileHeld(new Intake(.7));
 		buttonB.whileHeld(new Intake(-.7));
+		
+		buttonY.whileHeld(new ClimbUp());
 	}
 	
 	
