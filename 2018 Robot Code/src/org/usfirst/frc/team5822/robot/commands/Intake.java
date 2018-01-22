@@ -9,10 +9,12 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class Intake extends Command 
 {
-
-    public Intake() 
+	double speed;
+	
+    public Intake(double d) 
     {
         requires(Robot.intake);
+        speed = d;
     }
 
     // Called just before this Command runs the first time
@@ -23,7 +25,7 @@ public class Intake extends Command
     // Called repeatedly when this Command is scheduled to run
     protected void execute() 
     {
-    	Robot.intake.takeIn(.7);//speed set to 0
+    	Robot.intake.takeIn(speed);//speed set to 0
     }
 
     // Make this return true when this Command no longer needs to run execute()

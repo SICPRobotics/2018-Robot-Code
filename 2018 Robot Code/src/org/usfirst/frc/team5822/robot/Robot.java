@@ -21,7 +21,7 @@ public class Robot extends TimedRobot
 	public static Lifter arm;
 	public static Sensors sensors;
 	
-	Joystick j, k;
+	public static Joystick j = new Joystick(RobotMap.k_joystick1);
 	
 	@Override
 	public void robotInit() 
@@ -32,10 +32,8 @@ public class Robot extends TimedRobot
 		sensors = new Sensors();
 		intake = new TwoSpinnyWheels();
 		
-		j = new Joystick(RobotMap.k_joystick1);
-		k = new Joystick(RobotMap.k_xboxCntrl);
+		oi = new OI();
 		
-		oi = new OI(j, k);
 		//m_chooser.addDefault("Default Auto", new ExampleCommand());
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", m_chooser);

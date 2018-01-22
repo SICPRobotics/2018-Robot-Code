@@ -5,11 +5,14 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class Lifter extends Subsystem 
 {
     
-	//VictorSP elevator;
+	//VictorSP liftLeft, liftRight;
+	//SpeedControllerGroup arm;
 	
 	public Lifter()
 	{
-		//elevator = new VictorSP(k_elevatorLeft);
+		//liftLeft = new VictorSP(k_elevatorLeft);
+		//liftRight = new VictorSp(k_elevatorRight);
+		//arm = new SpeedControllerGroup(liftLeft, liftRight);
 	}
 	
     public void initDefaultCommand() 
@@ -19,7 +22,7 @@ public class Lifter extends Subsystem
     
     public void uplift()
     {
-    	//elevator.set(pick a speed);
+    	//arm.set(pick a speed);
     }
 }
 
