@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 public class OI 
 {
-	//Joystick j = new Joystick(RobotMap.k_joystick1);
+	Joystick j = new Joystick(RobotMap.k_joystick1);
 	Joystick x = new Joystick(RobotMap.k_xboxCntrl);
 	
 	Button j7 = new JoystickButton(Robot.j, 7);
