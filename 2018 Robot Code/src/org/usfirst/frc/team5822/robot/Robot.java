@@ -1,5 +1,6 @@
 package org.usfirst.frc.team5822.robot;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -22,6 +23,7 @@ public class Robot extends TimedRobot
 	public static Sensors sensors;
 	
 	public static Joystick j = new Joystick(RobotMap.k_joystick1);
+	public String fieldDataIMP;
 	
 	@Override
 	public void robotInit() 
@@ -40,12 +42,15 @@ public class Robot extends TimedRobot
 	}
 
 	@Override
-	public void disabledInit() {}                                 
+	public void disabledInit() 
+	{
+		
+	}                                 
 
 	@Override
 	public void disabledPeriodic() 
 	{
-		Scheduler.getInstance().run();
+		//Scheduler.getInstance().run();
 	}
 
 	@Override
@@ -57,6 +62,8 @@ public class Robot extends TimedRobot
 		{
 			m_autonomousCommand.start();
 		}
+		
+		fieldDataIMP = DriverStation.getInstance().getGameSpecificMessage(); //GETTING THE FMS DATA
 	}
 
 	@Override
@@ -81,5 +88,8 @@ public class Robot extends TimedRobot
 	}
 
 	@Override
-	public void testPeriodic() {}
+	public void testPeriodic() 
+	{
+		
+	}
 }
