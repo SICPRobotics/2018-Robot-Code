@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  */
 public class Right extends CommandGroup {
 
-    public Right() {
+    public Right(String gameData) {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());

@@ -5,9 +5,28 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class UsingBasedOnFMS extends CommandGroup {
-
-    public UsingBasedOnFMS() {
+public class UsingBasedOnFMS extends CommandGroup 
+{
+	public static Left left;
+	public static Right right;
+	public static Center center;
+    public UsingBasedOnFMS(String gameData, int fieldPosition) 
+    {
+    	final int leftSide = 0;
+    	final int centerSide = 1;
+    	final int rightSide = 2;
+    	
+    	switch (fieldPosition)
+    	{
+    	case leftSide:
+    		left = new Left(gameData);
+    	case centerSide:
+    		center = new Center(gameData);
+    	case rightSide:
+    		right = new Right(gameData);
+    		
+    	}
+    		
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());

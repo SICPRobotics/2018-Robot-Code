@@ -1,15 +1,20 @@
 package org.usfirst.frc.team5822.robot.commands;
 
+import org.usfirst.frc.team5822.robot.subsystems.Drivetrain;
+
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
 public class AutoMode extends Command {
+	public static Drivetrain newDrive;
 
     public AutoMode() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+    	requires(newDrive);
+    	
     }
 
     // Called just before this Command runs the first time

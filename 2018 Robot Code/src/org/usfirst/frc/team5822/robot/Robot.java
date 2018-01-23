@@ -7,6 +7,8 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
+import org.usfirst.frc.team5822.robot.commands.UsingBasedOnFMS;
 //import org.usfirst.frc.team5822.robot.commands.*;
 import org.usfirst.frc.team5822.robot.subsystems.*;
 
@@ -21,6 +23,7 @@ public class Robot extends TimedRobot
 	public static TwoSpinnyWheels intake;
 	public static Lifter arm;
 	public static Sensors sensors;
+	public static UsingBasedOnFMS autoMode;
 	
 	public static Joystick j = new Joystick(RobotMap.k_joystick1);
 	public String fieldDataIMP;
@@ -70,6 +73,8 @@ public class Robot extends TimedRobot
 	public void autonomousPeriodic() 
 	{
 		Scheduler.getInstance().run();
+		int position = 0;
+		autoMode = new UsingBasedOnFMS(fieldDataIMP, position);
 	}
 
 	@Override
