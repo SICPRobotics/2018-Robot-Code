@@ -9,6 +9,20 @@ public class Left extends CommandGroup {
 
     public Left(String gameData) 
     {
+    		if (gameData.charAt(0) == 'L')
+		{
+			// Left Side Switch
+		} else 
+		{
+			if (gameData.charAt(1) == 'L')
+			{
+				// Left Side Scale
+			} else 
+			{
+				//Right Side Switch
+			}
+			
+		}
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());

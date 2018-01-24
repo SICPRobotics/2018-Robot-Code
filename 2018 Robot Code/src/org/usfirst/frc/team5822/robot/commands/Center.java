@@ -7,8 +7,23 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  */
 public class Center extends CommandGroup {
 
-    public Center(String gameData) {
-        // Add Commands here:
+	public static int newint;
+    public Center(String gameData) 
+    {
+    		if (gameData.charAt(0) == 'L')
+    		{
+    			//Left Side Switch
+    			//
+    			//Forward 147
+    			//
+    		} else 
+    		{
+    			// Right Side Switch
+    			// Left 71.16
+    			//Forward 14
+    			// Right 71.16
+    		}
+    		// Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
         // these will run in order.

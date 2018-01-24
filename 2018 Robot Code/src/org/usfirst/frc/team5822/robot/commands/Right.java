@@ -7,7 +7,27 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  */
 public class Right extends CommandGroup {
 
-    public Right(String gameData) {
+    public Right(String gameData) 
+    {
+    		if (gameData.charAt(0) == 'R')
+		{
+			//Right Side Switch
+    			//Forward 135.7
+    			//Left turn 90 degrees
+    			//Forward 7.525
+		} else 
+		{
+			if (gameData.charAt(1) == 'R')
+			{
+				// Right Side Scale
+				// Forward 376.1
+				// Left 90 Degrees
+				// Back 48.3
+			} else 
+			{
+				// Left Side Switch
+			}
+		}
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
