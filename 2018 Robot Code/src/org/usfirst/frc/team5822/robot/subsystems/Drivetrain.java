@@ -15,12 +15,14 @@ public class Drivetrain extends Subsystem
 	DifferentialDrive robotBase;
 	SpeedControllerGroup left, right; 	
 	
+	static boolean isBackwards;
+	
 	public Drivetrain()
 	{
-		frontL = new WPI_TalonSRX(RobotMap.k_frontLeft);
-		rearL = new WPI_TalonSRX(RobotMap.k_rearLeft);
-		frontR = new WPI_TalonSRX(RobotMap.k_frontRight);
-		rearR = new WPI_TalonSRX(RobotMap.k_rearRight);
+		frontL = new WPI_TalonSRX(1);
+		rearL = new WPI_TalonSRX(2);
+		frontR = new WPI_TalonSRX(3);
+		rearR = new WPI_TalonSRX(4);
 		
 		left = new SpeedControllerGroup(frontL, rearL);
 		right = new SpeedControllerGroup(frontR, rearR);
@@ -32,7 +34,7 @@ public class Drivetrain extends Subsystem
     
     public void cheesyDrive(Joystick j)
     {
-    	double scale = j.getRawAxis(3)*-1;
+    		double scale = j.getRawAxis(3)*-1;
 		scale = ((scale+1)/5)+0.6; 
 		
 		double moveValue = j.getRawAxis(1);
@@ -51,6 +53,11 @@ public class Drivetrain extends Subsystem
 		rotateValue = rotateValue*-0.6; //rotation scale factor used last year (2016), can change 
 		
 		robotBase.arcadeDrive(moveValue, rotateValue, true);
+    }
+    
+    public static void pidBackwards(boolean backwards)
+    {
+    		isBackwards = backwards;
     }
 }
 

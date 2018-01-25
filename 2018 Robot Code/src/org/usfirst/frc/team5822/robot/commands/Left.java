@@ -19,7 +19,7 @@ public class Left extends CommandGroup {
 				// Left Side Scale
 			} else 
 			{
-				//Right Side Switch
+				// Right Side Switch
 			}
 			
 		}
