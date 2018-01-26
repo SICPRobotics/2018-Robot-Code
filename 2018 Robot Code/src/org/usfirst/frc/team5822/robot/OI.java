@@ -1,6 +1,9 @@
 package org.usfirst.frc.team5822.robot;
 
 import org.usfirst.frc.team5822.robot.commands.*;
+
+import edu.wpi.first.wpilibj.GenericHID;
+import edu.wpi.first.wpilibj.GenericHID.RumbleType;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -8,6 +11,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 public class OI 
 {
+	
 	Joystick j = new Joystick(RobotMap.k_joystick1);
 	Joystick x = new Joystick(RobotMap.k_xboxCntrl);
 	
@@ -28,7 +32,8 @@ public class OI
 	
 	public OI()
 	{
-		
+		//RumbleType[] kleftRumble = GenericHID.RumbleType.values();
+		//x.setRumble(kleftRumble[1], 1.0);
 		buttonA.whenPressed(new Intake(.7)); // positive in A
 		buttonA.whenReleased(new Intake(0));
 		buttonB.whenPressed(new Intake(-.7)); // negative out B
