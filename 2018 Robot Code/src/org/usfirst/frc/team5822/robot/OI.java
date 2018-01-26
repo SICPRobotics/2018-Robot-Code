@@ -28,10 +28,16 @@ public class OI
 	
 	public OI()
 	{
-		buttonA.whileHeld(new Intake(.7));
-		buttonB.whileHeld(new Intake(-.7));
 		
-		buttonY.whileHeld(new ClimbUp());
+		buttonA.whenPressed(new Intake(.7)); // positive in A
+		buttonA.whenReleased(new Intake(0));
+		buttonB.whenPressed(new Intake(-.7)); // negative out B
+		buttonB.whenReleased(new Intake(0));
+		
+		buttonX.whileHeld(new Intake(.1));
+		
+		
+		//buttonY.whileHeld(new ClimbUp()); //jack commented out for no reason
 	}
 	
 	

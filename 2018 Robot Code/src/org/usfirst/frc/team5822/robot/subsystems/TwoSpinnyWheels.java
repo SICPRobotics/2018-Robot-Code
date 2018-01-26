@@ -15,6 +15,7 @@ public class TwoSpinnyWheels extends Subsystem
 	{
 		intakeLeft = new VictorSP(5); //k_intakeLeft
 		intakeRight = new VictorSP(6); //k_intakeRight
+		intakeLeft.setInverted(true);
 		intake = new SpeedControllerGroup(intakeLeft, intakeRight);
 	}
 
@@ -25,9 +26,9 @@ public class TwoSpinnyWheels extends Subsystem
     
     public void takeIn(double speed)
     {
-    	//if (speed < 0)
-    		//intake.set(pick a negative number);
-    	//intake.set(same number but positive);
+    	if (speed < 0)
+    		intake.set(speed);
+    	intake.set(speed);
     }
     
     public void pushOut(double speed)
