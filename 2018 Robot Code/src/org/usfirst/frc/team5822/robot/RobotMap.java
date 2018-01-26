@@ -3,7 +3,7 @@ package org.usfirst.frc.team5822.robot;
 public class RobotMap 
 {
 	//motors
-	public static int k_frontLeft = 0;
+	public static int k_frontLeft = 4;
 	public static int k_rearLeft = 1;
 	public static int k_frontRight = 2;
 	public static int k_rearRight = 3;

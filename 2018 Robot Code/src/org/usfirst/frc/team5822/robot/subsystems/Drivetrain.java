@@ -3,6 +3,7 @@ package org.usfirst.frc.team5822.robot.subsystems;
 import org.usfirst.frc.team5822.robot.RobotMap;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.sun.glass.ui.Robot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
@@ -19,10 +20,10 @@ public class Drivetrain extends Subsystem
 	
 	public Drivetrain()
 	{
-		frontL = new WPI_TalonSRX(1);
-		rearL = new WPI_TalonSRX(2);
-		frontR = new WPI_TalonSRX(3);
-		rearR = new WPI_TalonSRX(4);
+		frontL = new WPI_TalonSRX(RobotMap.k_frontLeft);
+		rearL = new WPI_TalonSRX(RobotMap.k_rearLeft); // 2
+		frontR = new WPI_TalonSRX(RobotMap.k_frontRight); //3
+		rearR = new WPI_TalonSRX(RobotMap.k_rearRight); //4
 		
 		left = new SpeedControllerGroup(frontL, rearL);
 		right = new SpeedControllerGroup(frontR, rearR);
@@ -34,7 +35,7 @@ public class Drivetrain extends Subsystem
     
     public void cheesyDrive(Joystick j)
     {
-    		double scale = j.getRawAxis(3)*-1;
+    	double scale = j.getRawAxis(3)*-1;
 		scale = ((scale+1)/5)+0.6; 
 		
 		double moveValue = j.getRawAxis(1);
