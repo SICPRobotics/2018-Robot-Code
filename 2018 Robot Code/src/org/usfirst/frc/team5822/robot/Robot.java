@@ -18,7 +18,7 @@ public class Robot extends TimedRobot
 	public static OI oi;
 	//hi
 	Command m_autonomousCommand;
-	SendableChooser<Command> m_chooser = new SendableChooser<>();
+	SendableChooser<Command> chooseAutonomous = new SendableChooser<>();
 	public static Drivetrain driveTrain;
 	public static Climber climber;
 	public static TwoSpinnyWheels intake;
@@ -28,6 +28,8 @@ public class Robot extends TimedRobot
 	
 	public static Joystick j = new Joystick(RobotMap.k_joystick1);
 	public String fieldDataIMP;
+
+	int position = 0;
 	
 	@Override
 	public void robotInit() 
@@ -37,18 +39,12 @@ public class Robot extends TimedRobot
 		arm = new Lifter();
 		sensors = new Sensors();
 		intake = new TwoSpinnyWheels();
-		
 		oi = new OI();
-		
-		//m_chooser.addDefault("Default Auto", new ExampleCommand());
-		// chooser.addObject("My Auto", new MyAutoCommand());
-		SmartDashboard.putData("Auto mode", m_chooser);
 	}
 
 	@Override
 	public void disabledInit() 
-	{
-		
+	{		
 	}                                 
 
 	@Override
@@ -60,22 +56,20 @@ public class Robot extends TimedRobot
 	@Override
 	public void autonomousInit() 
 	{
-		m_autonomousCommand = m_chooser.getSelected();
+		fieldDataIMP = DriverStation.getInstance().getGameSpecificMessage(); //GETTING THE FMS DATA
+		
+		m_autonomousCommand = new UsingBasedOnFMS(fieldDataIMP, position);
 
 		if (m_autonomousCommand != null) 
 		{
 			m_autonomousCommand.start();
 		}
-		
-		fieldDataIMP = DriverStation.getInstance().getGameSpecificMessage(); //GETTING THE FMS DATA
 	}
 
 	@Override
 	public void autonomousPeriodic() 
 	{
 		Scheduler.getInstance().run();
-		int position = 0;
-		autoMode = new UsingBasedOnFMS(fieldDataIMP, position);
 	}
 
 	@Override

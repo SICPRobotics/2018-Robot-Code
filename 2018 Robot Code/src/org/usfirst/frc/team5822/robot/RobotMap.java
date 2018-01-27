@@ -30,4 +30,8 @@ public class RobotMap
 	//joysticks
 	public static int k_joystick1 = 0;
 	public static int k_xboxCntrl = 1;
+	
+	public static double k_switch = 0;
+	public static double k_scale = 1;
+	
 }

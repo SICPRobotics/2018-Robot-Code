@@ -1,5 +1,7 @@
 package org.usfirst.frc.team5822.robot.commands;
 
+import org.usfirst.frc.team5822.robot.Robot;
+
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -14,6 +16,7 @@ public class Forward extends Command
     {
     	distance = distanceTOmove;
     	executedOnce = false;
+    	requires(Robot.driveTrain);
     }
 
     // Called just before this Command runs the first time
