@@ -12,14 +12,30 @@ public class Left extends CommandGroup {
     		if (gameData.charAt(0) == 'L')
 		{
 			// Left Side Switch
-		} else 
+    			
+    		//forward 148.875
+    		addSequential(new Forward(148.875));
+    		//turn right 90 degree  
+    		addSequential(new Turn(90));
+    		// forward 19.435
+    		addSequential(new Forward(19.435));
+ 		} else 
 		{
 			if (gameData.charAt(1) == 'L')
 			{
 				// Left Side Scale
+				
+				//Forward 304.875
+				addSequential(new Forward(304.875));
+				// right 90 Degrees
+				addSequential(new Turn(90));
+				// forward 5.755
+				addSequential(new Forward(5.755));
+
 			} else 
 			{
-				// Right Side Switch
+				//cross baseline
+				addSequential(new Forward(148.875));
 			}
 			
 		}

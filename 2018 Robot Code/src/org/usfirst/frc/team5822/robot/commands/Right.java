@@ -9,23 +9,33 @@ public class Right extends CommandGroup {
 
     public Right(String gameData) 
     {
-    		if (gameData.charAt(0) == 'R')
+    	if (gameData.charAt(0) == 'R')
 		{
 			//Right Side Switch
-    			//Forward 135.7
-    			//Left turn 90 degrees
-    			//Forward 7.525
-		} else 
+    		
+    		//Forward 148.875
+    		addSequential(new Forward(148.875));
+    		//Left turn 90.000 degrees
+    		addSequential(new Turn(-90));
+    		//Forward 19.435
+    		addSequential(new Forward(19.435));
+		} 
+    	else 
 		{
 			if (gameData.charAt(1) == 'R')
 			{
 				// Right Side Scale
-				// Forward 376.1
-				// Left 90 Degrees
-				// Back 48.3
+				
+				// Forward 304.875
+				addSequential(new Forward(304.875));
+				// Left 90.000 Degrees
+				addSequential(new Turn(-90));
+				// forward 5.755
+				addSequential(new Forward(5.755));
 			} else 
 			{
-				// Left Side Switch
+				//cross baseline
+				addSequential(new Forward(148.875));
 			}
 		}
         // Add Commands here:

@@ -16,11 +16,12 @@ public class Center extends CommandGroup {
     			//
     			//Forward 147
     			//
-    		} else 
+    		} 
+    		else 
     		{
     			// Right Side Switch
     			// Left 71.16
-    			//Forward 14
+    			//Forward 147
     			// Right 71.16
     		}
     		// Add Commands here:
