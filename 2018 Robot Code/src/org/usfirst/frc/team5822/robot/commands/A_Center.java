@@ -15,16 +15,15 @@ public class A_Center extends CommandGroup {
     		if (gameData.charAt(0) == 'L')
     		{
     			//Left Side Switch
-    			//
-    			addSequential(new Forward(70.875));
+    			addSequential(new Forward(40.875)); //70.875
     			addSequential(new Turn(-90));
-    			addSequential(new Forward(5.635));
+    			addSequential(new Forward(63)); //5.635
     			addParallel(new RaiseArm(RobotMap.k_switch));
     			addSequential(new Turn(90));
-    			addSequential(new Forward(30.785));
+    			addSequential(new Forward(60.785)); //30.785
     			addSequential(new Intake(-.7));
     		} 
-    		else 
+    		else if (gameData.charAt(0) == 'R')
     		{
     			// Right Side Switch
     			//
@@ -35,6 +34,15 @@ public class A_Center extends CommandGroup {
     			addSequential(new Turn(-90));
     			addSequential(new Forward(30.785));
     			addSequential(new Intake(-.7));
+    		}
+    		else
+    		{
+    			addSequential(new Forward(70.875));
+    			addSequential(new Turn(90));
+    			addSequential(new Forward(5.635));
+    			addSequential(new Turn(-90));
+    			addSequential(new Forward(30.785));
+  
     		}
     }
 }
