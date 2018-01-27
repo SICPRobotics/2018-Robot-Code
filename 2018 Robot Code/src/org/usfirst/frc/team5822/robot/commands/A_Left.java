@@ -30,9 +30,9 @@ public class A_Left extends CommandGroup {
 				addSequential(new Forward(304.875));
 				addParallel(new RaiseArm(RobotMap.k_scale));
 				// right 90 Degrees
-				addSequential(new Turn(90));
+				addSequential(new Turn(90)); //21 in from edge of scale
 				// forward 5.755
-				addSequential(new Forward(5.755));
+				//addSequential(new Forward(5.755)); 
 				addSequential(new Intake(-.7));
 
 			} 

@@ -32,7 +32,7 @@ public class A_Right extends CommandGroup {
 				// Left 90.000 Degrees
 				addSequential(new Turn(-90));
 				// forward 5.755
-				addSequential(new Forward(5.755));
+			//	addSequential(new Forward(5.755));
 				addSequential(new Intake(-.7));
 			} 
 			else 
