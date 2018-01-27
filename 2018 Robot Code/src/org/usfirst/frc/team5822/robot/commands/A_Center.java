@@ -24,7 +24,7 @@ public class A_Center extends CommandGroup {
     			addSequential(new Forward(30.785));
     			addSequential(new Intake(-.7));
     		} 
-    		else if (gameData.charAt(0) == 'R')
+    		else 
     		{
     			// Right Side Switch
     			//
@@ -35,17 +35,6 @@ public class A_Center extends CommandGroup {
     			addSequential(new Turn(-90));
     			addSequential(new Forward(30.785));
     			addSequential(new Intake(-.7));
-    		}
-    		else
-    		{
-    			//cross baseline
-    			//
-    			addSequential(new Forward(70.875));
-    			addSequential(new Turn(-90));
-    			addSequential(new Forward(5.635));
-    			addParallel(new RaiseArm(RobotMap.k_switch));
-    			addSequential(new Turn(90));
-    			addSequential(new Forward(30.785));
     		}
     }
 }
