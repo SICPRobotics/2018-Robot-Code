@@ -8,11 +8,13 @@ public class RobotMap
 	public static int k_frontRight = 2;
 	public static int k_rearRight = 3;
 	
-	public static int k_elevatorLeft = 4;
-	public static int k_elevatorRight = 5;
-	public static int k_climbing = 6;
-	public static int k_intakeLeft = 7;//7
-	public static int k_intakeRight = 8;//8
+	public static int k_intakeLeft = 5;
+	public static int k_intakeRight = 6;
+	
+	//not used yet
+	public static int k_climbing;
+	public static int k_elevatorLeft;
+	public static int k_elevatorRight;
 	
 	//sensors
 	public static int k_leftEncoder_A = 0;

@@ -35,30 +35,25 @@ public class Drivetrain extends Subsystem
     
     public void cheesyDrive(Joystick j)
     {
-    	double scale = j.getRawAxis(3)*-1;
-		scale = ((scale+1)/5)+0.6; 
+    		double scale = j.getRawAxis(3) * -1;
+		scale = ((scale + 1) / 5) + 0.6; 
 		
 		double moveValue = j.getRawAxis(1);
 		double rotateValue = j.getRawAxis(0); 
 
 		//dead zone on y axis value
-		if (Math.abs(moveValue)<0.005)
+		if (Math.abs(moveValue) < 0.005)
 			moveValue = 0; 
 
 		//creates a dead zone on x axis value only if the y axis value is small 
-		if (Math.abs(rotateValue)<0.005 && Math.abs(moveValue)<0.1)
+		if (Math.abs(rotateValue) < 0.005 && Math.abs(moveValue) < 0.1)
 			rotateValue = 0;
 
 		//scale down the values 
-		moveValue = moveValue*scale*-1; 
-		rotateValue = rotateValue*-0.6; //rotation scale factor used last year (2016), can change 
+		moveValue = moveValue * scale * -1; 
+		rotateValue = rotateValue * - 0.6; //rotation scale factor used last year (2016), can change 
 		
 		robotBase.arcadeDrive(moveValue, rotateValue, true);
-    }
-    
-    public static void pidBackwards(boolean backwards)
-    {
-    		isBackwards = backwards;
     }
 }
 

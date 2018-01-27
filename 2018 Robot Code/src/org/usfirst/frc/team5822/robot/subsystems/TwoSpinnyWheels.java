@@ -1,5 +1,7 @@
 package org.usfirst.frc.team5822.robot.subsystems;
 
+import org.usfirst.frc.team5822.robot.RobotMap;
+
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -11,10 +13,11 @@ public class TwoSpinnyWheels extends Subsystem
 {
 	VictorSP intakeLeft, intakeRight;
 	SpeedControllerGroup intake;
+	
 	public TwoSpinnyWheels()
 	{
-		intakeLeft = new VictorSP(5); //k_intakeLeft
-		intakeRight = new VictorSP(6); //k_intakeRight
+		intakeLeft = new VictorSP(RobotMap.k_intakeLeft);
+		intakeRight = new VictorSP(RobotMap.k_intakeRight);
 		intakeLeft.setInverted(true);
 		intake = new SpeedControllerGroup(intakeLeft, intakeRight);
 	}
