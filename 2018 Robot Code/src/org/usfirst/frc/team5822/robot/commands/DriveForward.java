@@ -30,7 +30,7 @@ public class DriveForward extends Command
     protected void initialize() 
     {
     		Sensors.resetGyro();
-    		Drivetrain.pidBackwards(true);
+    		//Drivetrain.pidBackwards(true);
     		//Robot.driveTrain.enable();
     }
 
