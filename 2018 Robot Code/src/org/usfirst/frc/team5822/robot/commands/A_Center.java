@@ -21,7 +21,7 @@ public class A_Center extends CommandGroup {
     			addParallel(new RaiseArm(RobotMap.k_switch));
     			addSequential(new Turn(90));
     			addSequential(new Forward(60.785)); //30.785
-    			addSequential(new Intake(-.7));
+    			addSequential(new Intake(-.7, false));
     		} 
     		else if (gameData.charAt(0) == 'R')
     		{
@@ -33,7 +33,7 @@ public class A_Center extends CommandGroup {
     			addParallel(new RaiseArm(RobotMap.k_switch));
     			addSequential(new Turn(-90));
     			addSequential(new Forward(60.785));
-    			addSequential(new Intake(-.7));
+    			addSequential(new Intake(-.7, false));
     		}
     		else
     		{

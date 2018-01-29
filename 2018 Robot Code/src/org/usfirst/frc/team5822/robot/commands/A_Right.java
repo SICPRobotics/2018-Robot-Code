@@ -18,7 +18,7 @@ public class A_Right extends CommandGroup {
     		addSequential(new Turn(-90));
     		//Forward 19.435
     		addSequential(new Forward(19.435));
-    		addSequential(new Intake(-.7));
+    		addSequential(new Intake(-.7, false));
 		} 
     	else 
 		{
@@ -33,7 +33,7 @@ public class A_Right extends CommandGroup {
 				addSequential(new Turn(-90));
 				// forward 5.755
 			//	addSequential(new Forward(5.755));
-				addSequential(new Intake(-.7));
+				addSequential(new Intake(-.7, false));
 			} 
 			else 
 			{

@@ -27,11 +27,15 @@ public class TwoSpinnyWheels extends Subsystem
     	
     }
     
-    public void takeIn(double speed)
+    public void takeIn(double speed, boolean oneSide)
     {
-    	if (speed < 0)
-    		intake.set(speed);
-    	intake.set(speed);
+    		if (oneSide)
+    		{
+    			intakeLeft.set(speed);
+    		} else 
+    		{
+    			intake.set(speed);
+    		}
     }
     
     public void pushOut(double speed)

@@ -34,12 +34,15 @@ public class OI
 	{
 		//RumbleType[] kleftRumble = GenericHID.RumbleType.values();
 		//x.setRumble(kleftRumble[1], 1.0);
-		buttonA.whenPressed(new Intake(.7)); // positive in A
-		buttonA.whenReleased(new Intake(0));
-		buttonB.whenPressed(new Intake(-.7)); // negative out B
-		buttonB.whenReleased(new Intake(0));
+		buttonB.whenPressed(new Intake(1.0, false)); // positive in A
+		buttonB.whenReleased(new Intake(0, false));
+		buttonA.whenPressed(new Intake(-1.0, false)); // negative out B
+		buttonA.whenReleased(new Intake(0, false));
+		buttonY.whenPressed(new Intake(-1.0, true));
+		buttonY.whenReleased(new Intake(0, true));
 		
-		buttonX.whileHeld(new Intake(.1));
+		
+		//buttonX.whileHeld(new Intake(.1, false));
 		
 		
 		//buttonY.whileHeld(new ClimbUp()); //jack commented out for no reason

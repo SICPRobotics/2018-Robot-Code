@@ -18,7 +18,7 @@ public class A_Left extends CommandGroup {
     		addSequential(new Turn(90));
     		// forward 19.435
     		addSequential(new Forward(19.435));
-    		addSequential(new Intake(-.7));
+    		addSequential(new Intake(-.7, false));
  		} 
     	else 
 		{
@@ -33,7 +33,7 @@ public class A_Left extends CommandGroup {
 				addSequential(new Turn(90)); //21 in from edge of scale
 				// forward 5.755
 				//addSequential(new Forward(5.755)); 
-				addSequential(new Intake(-.7));
+				addSequential(new Intake(-.7, false));
 
 			} 
 			else 

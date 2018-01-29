@@ -34,7 +34,7 @@ public class Sensors extends Subsystem
 		//rightEncoder.setSamplesToAverage(7);
 		
 	}
-	public static double getPotential()
+	public double getPotential()
 	{
 		double returnPotential;
 		returnPotential = pot.get();
