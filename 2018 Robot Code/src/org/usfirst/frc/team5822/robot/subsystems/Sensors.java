@@ -1,20 +1,23 @@
 package org.usfirst.frc.team5822.robot.subsystems;
 
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
+import edu.wpi.first.wpilibj.AnalogPotentiometer;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.interfaces.Potentiometer;
 
 /**
  *
  */
 public class Sensors extends Subsystem 
 {
-
+	static Potentiometer pot;
 	//static ADXRS450_Gyro gyro;
 	//static Encoder leftEncoder, rightEncoder;
 	
 	public Sensors()
 	{
+		pot = new AnalogPotentiometer(0, 360);
 		//gyro = new ADXRS450_Gyro();
 		//leftEncoder = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
 		//leftEncoder.setMaxPeriod(.1);
@@ -30,6 +33,12 @@ public class Sensors extends Subsystem
 		//rightEncoder.setReverseDirection(false);
 		//rightEncoder.setSamplesToAverage(7);
 		
+	}
+	public static double getPotential()
+	{
+		double returnPotential;
+		returnPotential = pot.get();
+		return returnPotential;
 	}
 	public static void resetGyro()
 	{
