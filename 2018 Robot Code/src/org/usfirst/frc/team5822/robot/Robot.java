@@ -7,23 +7,29 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
+import org.usfirst.frc.team5822.robot.commands.Intake;
+import org.usfirst.frc.team5822.robot.commands.UsingBasedOnFMS;
 //import org.usfirst.frc.team5822.robot.commands.*;
 import org.usfirst.frc.team5822.robot.subsystems.*;
 
 public class Robot extends TimedRobot 
 {
 	public static OI oi;
-
+	//hi
 	Command m_autonomousCommand;
-	SendableChooser<Command> m_chooser = new SendableChooser<>();
+	SendableChooser<Command> chooseAutonomous = new SendableChooser<>();
 	public static Drivetrain driveTrain;
 	public static Climber climber;
 	public static TwoSpinnyWheels intake;
 	public static Lifter arm;
 	public static Sensors sensors;
+	public static UsingBasedOnFMS autoMode;
 	
 	public static Joystick j = new Joystick(RobotMap.k_joystick1);
 	public String fieldDataIMP;
+
+	int position = 0;
 	
 	@Override
 	public void robotInit() 
@@ -33,18 +39,12 @@ public class Robot extends TimedRobot
 		arm = new Lifter();
 		sensors = new Sensors();
 		intake = new TwoSpinnyWheels();
-		
 		oi = new OI();
-		
-		//m_chooser.addDefault("Default Auto", new ExampleCommand());
-		// chooser.addObject("My Auto", new MyAutoCommand());
-		SmartDashboard.putData("Auto mode", m_chooser);
 	}
 
 	@Override
 	public void disabledInit() 
-	{
-		
+	{		
 	}                                 
 
 	@Override
@@ -56,14 +56,14 @@ public class Robot extends TimedRobot
 	@Override
 	public void autonomousInit() 
 	{
-		m_autonomousCommand = m_chooser.getSelected();
+		fieldDataIMP = DriverStation.getInstance().getGameSpecificMessage(); //GETTING THE FMS DATA
+		
+		m_autonomousCommand = new UsingBasedOnFMS(fieldDataIMP, position);
 
 		if (m_autonomousCommand != null) 
 		{
 			m_autonomousCommand.start();
 		}
-		
-		fieldDataIMP = DriverStation.getInstance().getGameSpecificMessage(); //GETTING THE FMS DATA
 	}
 
 	@Override
@@ -77,6 +77,7 @@ public class Robot extends TimedRobot
 	{
 		if (m_autonomousCommand != null) {
 			m_autonomousCommand.cancel();
+			
 		}
 	}
 

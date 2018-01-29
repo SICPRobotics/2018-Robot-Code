@@ -1,20 +1,20 @@
 package org.usfirst.frc.team5822.robot.commands;
 
-import org.usfirst.frc.team5822.robot.Robot;
-
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class Intake extends Command 
+public class Turn extends Command 
 {
-	double speed;
+
+	boolean executedOnce;
+	double angle;
 	
-    public Intake(double d) 
+    public Turn(double angleTOmove) 
     {
-        requires(Robot.intake);
-        speed = d;
+        angle = angleTOmove;
+        executedOnce = false;
     }
 
     // Called just before this Command runs the first time
@@ -25,24 +25,24 @@ public class Intake extends Command
     // Called repeatedly when this Command is scheduled to run
     protected void execute() 
     {
-    	Robot.intake.takeIn(speed);//speed set to 0
+    	System.out.println("turn: " + angle);
+    	executedOnce = true;
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() 
     {
-        //Robot.intake.takeIn(0);
-    	return false;
+        return !executedOnce;
     }
 
     // Called once after isFinished returns true
     protected void end() 
     {
-    	Robot.intake.takeIn(0);
     }
-    
+
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
-    protected void interrupted() {
+    protected void interrupted() 
+    {
     }
 }
