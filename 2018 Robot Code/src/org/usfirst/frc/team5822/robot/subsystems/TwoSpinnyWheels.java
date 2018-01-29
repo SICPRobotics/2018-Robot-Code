@@ -26,7 +26,7 @@ public class TwoSpinnyWheels extends Subsystem
     {
     	
     }
-    
+    //oneSide true turns both opposite
     public void takeIn(double speed, boolean oneSide)
     {
     		if (oneSide)
