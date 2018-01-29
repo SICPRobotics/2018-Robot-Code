@@ -32,6 +32,7 @@ public class TwoSpinnyWheels extends Subsystem
     		if (oneSide)
     		{
     			intakeLeft.set(speed);
+    			intakeRight.set(-speed);
     		} else 
     		{
     			intake.set(speed);
