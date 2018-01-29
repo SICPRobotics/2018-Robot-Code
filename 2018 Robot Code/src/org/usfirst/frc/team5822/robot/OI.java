@@ -14,9 +14,13 @@ public class OI
 	
 	Joystick j = new Joystick(RobotMap.k_joystick1);
 	Joystick x = new Joystick(RobotMap.k_xboxCntrl);
-	
+	Button j3 = new JoystickButton(Robot.j, 3);
+	Button j4 = new JoystickButton(Robot.j, 4);		
+	Button j5 = new JoystickButton(Robot.j, 5);
+	Button j6 = new JoystickButton(Robot.j, 6);
 	Button j7 = new JoystickButton(Robot.j, 7);
-	Button j8 = new JoystickButton(Robot.j, 8); 
+	Button j8 = new JoystickButton(Robot.j, 8);
+	
 	//9 and 10 don't work on our joystick 
 	Button j11 = new JoystickButton(Robot.j, 11); 
 	Button j12 = new JoystickButton(Robot.j, 12);
