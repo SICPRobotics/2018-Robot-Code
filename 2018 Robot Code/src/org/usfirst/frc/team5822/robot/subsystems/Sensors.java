@@ -12,26 +12,26 @@ import edu.wpi.first.wpilibj.interfaces.Potentiometer;
 public class Sensors extends Subsystem 
 {
 	static Potentiometer pot;
-	//static ADXRS450_Gyro gyro;
-	//static Encoder leftEncoder, rightEncoder;
+	static ADXRS450_Gyro gyro;
+	static Encoder leftEncoder, rightEncoder;
 	
 	public Sensors()
 	{
 		pot = new AnalogPotentiometer(0, 360);
-		//gyro = new ADXRS450_Gyro();
-		//leftEncoder = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
-		//leftEncoder.setMaxPeriod(.1);
-		//leftEncoder.setMinRate(10);
-		//leftEncoder.setDistancePerPulse(5);
-		//leftEncoder.setReverseDirection(true);
-		//leftEncoder.setSamplesToAverage(7);
+		gyro = new ADXRS450_Gyro();
+		leftEncoder = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
+		leftEncoder.setMaxPeriod(.1);
+		leftEncoder.setMinRate(10);
+		leftEncoder.setDistancePerPulse(5);
+		leftEncoder.setReverseDirection(true);
+		leftEncoder.setSamplesToAverage(7);
 		
-		//rightEncoder = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
-		//rightEncoder.setMaxPeriod(.1);
-		//rightEncoder.setMinRate(10);
-		//rightEncoder.setDistancePerPulse(.0532);
-		//rightEncoder.setReverseDirection(false);
-		//rightEncoder.setSamplesToAverage(7);
+		rightEncoder = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
+		rightEncoder.setMaxPeriod(.1);
+		rightEncoder.setMinRate(10);
+		rightEncoder.setDistancePerPulse(.0532);
+		rightEncoder.setReverseDirection(false);
+		rightEncoder.setSamplesToAverage(7);
 		
 	}
 	public double getPotential()
@@ -42,10 +42,15 @@ public class Sensors extends Subsystem
 	}
 	public static void resetGyro()
 	{
-		//leftEncoder.reset();
-		//rightEncoder.reset();
+		leftEncoder.reset();
+		rightEncoder.reset();
 	}
 
+	public static double rightEncoderDistance()
+	{
+		return rightEncoder.getDistance();
+		
+	}
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());

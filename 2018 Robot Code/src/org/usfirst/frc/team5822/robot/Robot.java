@@ -24,6 +24,7 @@ public class Robot extends TimedRobot
 	public static TwoSpinnyWheels intake;
 	public static Lifter arm;
 	public static Sensors sensors;
+	
 	public static UsingBasedOnFMS autoMode;
 	
 	public static Joystick j = new Joystick(RobotMap.k_joystick1);
