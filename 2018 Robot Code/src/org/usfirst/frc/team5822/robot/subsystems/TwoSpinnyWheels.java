@@ -29,11 +29,12 @@ public class TwoSpinnyWheels extends Subsystem
     //oneSide true turns both opposite
     public void takeIn(double speed, boolean oneSide)
     {
-    		if (oneSide)
+    		if (oneSide && speed != 0)
     		{
     			intakeLeft.set(speed);
-    			intakeRight.set(-speed);
-    		} else 
+    			intakeRight.set(-speed - 0.8);
+    		} 
+    		else 
     		{
     			intake.set(speed);
     		}
