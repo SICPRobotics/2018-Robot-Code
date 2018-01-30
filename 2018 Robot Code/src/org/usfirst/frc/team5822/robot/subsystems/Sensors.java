@@ -17,21 +17,21 @@ public class Sensors extends Subsystem
 	
 	public Sensors()
 	{
-		pot = new AnalogPotentiometer(0, 360);
-		gyro = new ADXRS450_Gyro();
-		leftEncoder = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
-		leftEncoder.setMaxPeriod(.1);
-		leftEncoder.setMinRate(10);
-		leftEncoder.setDistancePerPulse(5);
-		leftEncoder.setReverseDirection(true);
-		leftEncoder.setSamplesToAverage(7);
-		
-		rightEncoder = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
-		rightEncoder.setMaxPeriod(.1);
-		rightEncoder.setMinRate(10);
-		rightEncoder.setDistancePerPulse(.0532);
-		rightEncoder.setReverseDirection(false);
-		rightEncoder.setSamplesToAverage(7);
+//		pot = new AnalogPotentiometer(0, 360);
+//		gyro = new ADXRS450_Gyro();
+//		leftEncoder = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
+//		leftEncoder.setMaxPeriod(.1);
+//		leftEncoder.setMinRate(10);
+//		leftEncoder.setDistancePerPulse(5);
+//		leftEncoder.setReverseDirection(true);
+//		leftEncoder.setSamplesToAverage(7);
+//		
+//		rightEncoder = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
+//		rightEncoder.setMaxPeriod(.1);
+//		rightEncoder.setMinRate(10);
+//		rightEncoder.setDistancePerPulse(.0532);
+//		rightEncoder.setReverseDirection(false);
+//		rightEncoder.setSamplesToAverage(7);
 		
 	}
 	public double getPotential()
