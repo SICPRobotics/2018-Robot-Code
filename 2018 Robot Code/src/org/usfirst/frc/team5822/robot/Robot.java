@@ -40,7 +40,7 @@ public class Robot extends TimedRobot
 		arm = new Lifter();
 		sensors = new Sensors();
 		intake = new TwoSpinnyWheels();
-		oi = new OI();
+		oi = new OI(); //
 	}
 
 	@Override
