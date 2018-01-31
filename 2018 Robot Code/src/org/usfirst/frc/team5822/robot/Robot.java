@@ -8,6 +8,8 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import javax.swing.JOptionPane;
+
 import org.usfirst.frc.team5822.robot.commands.Intake;
 import org.usfirst.frc.team5822.robot.commands.UsingBasedOnFMS;
 //import org.usfirst.frc.team5822.robot.commands.*;
@@ -68,6 +70,7 @@ public class Robot extends TimedRobot
 	public void autonomousPeriodic() 
 	{
 		Scheduler.getInstance().run();
+		
 		//m_autonomousCommand = new UsingBasedOnFMS(fieldDataIMP, position);
 		//m_autonomousCommand.start();
 	}
