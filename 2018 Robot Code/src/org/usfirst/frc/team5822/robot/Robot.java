@@ -54,6 +54,9 @@ public class Robot extends TimedRobot
 	public void disabledPeriodic() 
 	{
 		//Scheduler.getInstance().run();
+		//System.out.println(j.getRawAxis(1));
+		System.out.println(j.getRawAxis(3));
+		//-1 to 1
 	}
 
 	@Override
