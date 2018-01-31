@@ -26,12 +26,12 @@ public class Sensors extends Subsystem
 //		leftEncoder.setReverseDirection(true);
 //		leftEncoder.setSamplesToAverage(7);
 //		
-//		rightEncoder = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
-//		rightEncoder.setMaxPeriod(.1);
-//		rightEncoder.setMinRate(10);
-//		rightEncoder.setDistancePerPulse(.0532);
-//		rightEncoder.setReverseDirection(false);
-//		rightEncoder.setSamplesToAverage(7);
+		//rightEncoder = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
+		//rightEncoder.setMaxPeriod(.1);
+		//rightEncoder.setMinRate(10);
+		//rightEncoder.setDistancePerPulse(.0532);
+		//rightEncoder.setReverseDirection(false);
+		//rightEncoder.setSamplesToAverage(7);
 		
 	}
 	public double getPotential()
@@ -48,7 +48,9 @@ public class Sensors extends Subsystem
 
 	public static double rightEncoderDistance()
 	{
-		return rightEncoder.getDistance();
+		System.out.println("Right Encoder");
+		return 90;
+		
 		
 	}
     public void initDefaultCommand() {

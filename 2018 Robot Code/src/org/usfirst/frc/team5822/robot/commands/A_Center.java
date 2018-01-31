@@ -15,6 +15,7 @@ public class A_Center extends CommandGroup {
     		if (gameData.charAt(0) == 'L')
     		{
     			//Left Side Switch
+    			System.out.println("In command");
     			addSequential(new Forward(40.875)); //70.875
     			addSequential(new Turn(-90));
     			addSequential(new Forward(61)); //5.635

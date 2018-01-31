@@ -14,7 +14,7 @@ public class Drivetrain extends Subsystem
 {
 	WPI_TalonSRX frontL,frontR,rearL,rearR;
 	DifferentialDrive robotBase;
-	SpeedControllerGroup left, right; 	
+	SpeedControllerGroup left, right, autoDrive; 	
 	
 	static boolean isBackwards;
 	
@@ -27,11 +27,19 @@ public class Drivetrain extends Subsystem
 		
 		left = new SpeedControllerGroup(frontL, rearL);
 		right = new SpeedControllerGroup(frontR, rearR);
+		autoDrive = new SpeedControllerGroup(left, right);
 
 		robotBase = new DifferentialDrive(left, right);
 	}
 	
     public void initDefaultCommand() {}
+    
+    public void autoDrive(double speed)
+    {
+    		left.set(speed);
+    		right.set(-speed);
+    		//robotBase.(speed, speed);
+    }
     
     public void cheesyDrive(Joystick j)
     {

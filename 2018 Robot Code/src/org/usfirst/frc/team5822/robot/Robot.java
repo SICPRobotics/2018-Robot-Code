@@ -58,19 +58,18 @@ public class Robot extends TimedRobot
 	public void autonomousInit() 
 	{
 		fieldDataIMP = DriverStation.getInstance().getGameSpecificMessage(); //GETTING THE FMS DATA
-		
+		fieldDataIMP = "LLL";
+		position = 1;
 		m_autonomousCommand = new UsingBasedOnFMS(fieldDataIMP, position);
-
-		if (m_autonomousCommand != null) 
-		{
-			m_autonomousCommand.start();
-		}
+		m_autonomousCommand.start();
 	}
 
 	@Override
 	public void autonomousPeriodic() 
 	{
 		Scheduler.getInstance().run();
+		//m_autonomousCommand = new UsingBasedOnFMS(fieldDataIMP, position);
+		//m_autonomousCommand.start();
 	}
 
 	@Override
