@@ -15,34 +15,35 @@ public class A_Center extends CommandGroup {
     		if (gameData.charAt(0) == 'L')
     		{
     			//Left Side Switch
-    			System.out.println("In command");
-    			addSequential(new Forward(40.875)); //70.875
+    			System.out.println("Center Position/Left Switch");
+    			addSequential(new DriveForward(40.875)); //70.875
     			addSequential(new Turn(-90));
-    			addSequential(new Forward(61)); //5.635
+    			addSequential(new DriveForward(61)); //5.635
     			addParallel(new RaiseArm(RobotMap.k_switch));
     			addSequential(new Turn(90));
-    			addSequential(new Forward(60.785)); //30.785
+    			addSequential(new DriveForward(60.785)); //30.785
     			addSequential(new Intake(-.7, false));
     		} 
     		else if (gameData.charAt(0) == 'R')
     		{
     			// Right Side Switch
-    			//
-    			addSequential(new Forward(70.875));
+    			System.out.println("Center Position/Right Switch");
+    			addSequential(new DriveForward(70.875));
     			addSequential(new Turn(90));
-    			addSequential(new Forward(46.2));
+    			addSequential(new DriveForward(46.2));
     			addParallel(new RaiseArm(RobotMap.k_switch));
     			addSequential(new Turn(-90));
-    			addSequential(new Forward(60.785));
+    			addSequential(new DriveForward(60.785));
     			addSequential(new Intake(-.7, false));
     		}
+    		// I didn't want to delete this but it is unreachable so have to figure out what it's for
     		else
     		{
-    			addSequential(new Forward(70.875));
+    			addSequential(new DriveForward(70.875));
     			addSequential(new Turn(90));
-    			addSequential(new Forward(5.635));
+    			addSequential(new DriveForward(5.635));
     			addSequential(new Turn(-90));
-    			addSequential(new Forward(30.785));
+    			addSequential(new DriveForward(30.785));
   
     		}
     }

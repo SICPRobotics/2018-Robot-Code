@@ -4,7 +4,6 @@ import org.usfirst.frc.team5822.robot.Robot;
 import org.usfirst.frc.team5822.robot.subsystems.Drivetrain;
 import org.usfirst.frc.team5822.robot.subsystems.Sensors;
 
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -12,52 +11,55 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class DriveForward extends Command 
 {
+	Drivetrain newDriver = new Drivetrain();
+	Sensors newSensors = new Sensors();
 	double distance;
-	Timer tele;
-
-    public DriveForward(double encoderDistance) 
+	
+    public DriveForward(double distanceTOmove) 
     {
-        // Use requires() here to declare subsystem dependencies
-    		requires(Robot.driveTrain); 
-    		requires(Robot.sensors);  
-    		distance = encoderDistance;           
-    		tele = new Timer();
-        // eg. requires(chassis);
+    
+    	distance = distanceTOmove + Sensors.rightEncoderDistance();
+    	requires(Robot.driveTrain);
+    	newDriver.autoDrive(.5);
+    
     }
 
     // Called just before this Command runs the first time
-    @Override
     protected void initialize() 
     {
-    		tele.start();
-    		//Robot.driveTrain.enable(); 
+    
+    	System.out.println("DriveForward Init");
+    
     }
 
-  
-		
-	
-
-	// Called repeatedly when this Command is scheduled to run
-    protected void execute() {
+    // Called repeatedly when this Command is scheduled to run
+    protected void execute() 
+    {
     	
+    	newDriver.autoDrive(.5);
+    
     }
 
     // Make this return true when this Command no longer needs to run execute()
-    protected boolean isFinished() {
-        
-        if  (Robot.sensors.rightEncoderDistance() < distance)
-        	return false;
-        	
-        return true;
+    protected boolean isFinished() 
+    {
+    	if (distance < Sensors.rightEncoderDistance())
+    	{
+    		return true;
+    	}
+    	
+    	return false;
     }
 
     // Called once after isFinished returns true
-    protected void end() {
-    
+    protected void end() 
+    {
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
-    protected void interrupted() {
+    protected void interrupted() 
+    {
+    	
     }
 }

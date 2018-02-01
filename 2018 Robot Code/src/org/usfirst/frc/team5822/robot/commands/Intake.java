@@ -1,6 +1,7 @@
 package org.usfirst.frc.team5822.robot.commands;
 
 import org.usfirst.frc.team5822.robot.Robot;
+import org.usfirst.frc.team5822.robot.subsystems.Drivetrain;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -12,9 +13,9 @@ public class Intake extends Command
 	double speed;
 	boolean side;
 	
-    public Intake(double d, boolean oneSide) 
+	public Intake(double d, boolean oneSide) 
     {
-        requires(Robot.intake);
+        requires(Robot.driveTrain);
         speed = d;
         side = oneSide;
         
@@ -28,7 +29,7 @@ public class Intake extends Command
     // Called repeatedly when this Command is scheduled to run
     protected void execute() 
     {
-    	Robot.intake.takeIn(speed, side);//speed set to 0
+    		Robot.driveTrain.intakeMotors(speed, side);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -41,7 +42,7 @@ public class Intake extends Command
     // Called once after isFinished returns true
     protected void end() 
     {
-    	Robot.intake.takeIn(0, side);
+    		Robot.driveTrain.intakeMotors(0, true);
     }
     
     // Called when another command which requires one or more of the same

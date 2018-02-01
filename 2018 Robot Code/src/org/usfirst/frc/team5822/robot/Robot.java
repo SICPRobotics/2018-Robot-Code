@@ -11,23 +11,23 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import javax.swing.JOptionPane;
 
 import org.usfirst.frc.team5822.robot.commands.Intake;
-import org.usfirst.frc.team5822.robot.commands.UsingBasedOnFMS;
+import org.usfirst.frc.team5822.robot.commands.AutoMode;
 //import org.usfirst.frc.team5822.robot.commands.*;
 import org.usfirst.frc.team5822.robot.subsystems.*;
 
 public class Robot extends TimedRobot 
 {
 	public static OI oi;
-	//hi 
+	
 	Command m_autonomousCommand;
 	SendableChooser<Command> chooseAutonomous = new SendableChooser<>();
+	
 	public static Drivetrain driveTrain;
 	public static Climber climber;
-	public static TwoSpinnyWheels intake;
 	public static Lifter arm;
 	public static Sensors sensors;
 	
-	public static UsingBasedOnFMS autoMode;
+	public static AutoMode autoMode;
 	
 	public static Joystick j = new Joystick(RobotMap.k_joystick1);
 	public String fieldDataIMP;
@@ -41,7 +41,6 @@ public class Robot extends TimedRobot
 		climber = new Climber();
 		arm = new Lifter();
 		sensors = new Sensors();
-		intake = new TwoSpinnyWheels();
 		oi = new OI(); //
 	}
 
@@ -54,9 +53,6 @@ public class Robot extends TimedRobot
 	public void disabledPeriodic() 
 	{
 		//Scheduler.getInstance().run();
-		//System.out.println(j.getRawAxis(1));
-		System.out.println(j.getRawAxis(3));
-		//-1 to 1
 	}
 
 	@Override
@@ -65,7 +61,7 @@ public class Robot extends TimedRobot
 		fieldDataIMP = DriverStation.getInstance().getGameSpecificMessage(); //GETTING THE FMS DATA
 		fieldDataIMP = "LLL";
 		position = 1;
-		m_autonomousCommand = new UsingBasedOnFMS(fieldDataIMP, position);
+		m_autonomousCommand = new AutoMode(fieldDataIMP, position);
 		m_autonomousCommand.start();
 	}
 
@@ -73,9 +69,6 @@ public class Robot extends TimedRobot
 	public void autonomousPeriodic() 
 	{
 		Scheduler.getInstance().run();
-		
-		//m_autonomousCommand = new UsingBasedOnFMS(fieldDataIMP, position);
-		//m_autonomousCommand.start();
 	}
 
 	@Override

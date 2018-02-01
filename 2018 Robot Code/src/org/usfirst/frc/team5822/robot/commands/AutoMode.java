@@ -1,41 +1,31 @@
 package org.usfirst.frc.team5822.robot.commands;
 
-import org.usfirst.frc.team5822.robot.subsystems.Drivetrain;
-
-import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
  *
  */
-public class AutoMode extends Command {
-	public static Drivetrain newDrive;
-
-    public AutoMode() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
-    	requires(newDrive);
+public class AutoMode extends CommandGroup 
+{
+    public AutoMode(String gameData, int fieldPosition) 
+    {
+    	System.out.println("Auto Mode Start");
     	
-    }
-
-    // Called just before this Command runs the first time
-    protected void initialize() {
-    }
-
-    // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
-    }
-
-    // Make this return true when this Command no longer needs to run execute()
-    protected boolean isFinished() {
-        return false;
-    }
-
-    // Called once after isFinished returns true
-    protected void end() {
-    }
-
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
-    protected void interrupted() {
+    	final int leftSide = 0;
+    	final int centerSide = 1;
+    	final int rightSide = 2;
+    	
+    	switch (fieldPosition)
+    	{
+    		case leftSide:
+    			System.out.println("AutoMode Left");
+    			addSequential(new A_Left(gameData));
+    		case centerSide:
+    			System.out.println("AutoMode Center");
+    			addSequential(new A_Center(gameData));
+    		case rightSide:
+    			System.out.println("AutoMode Right");
+    			addSequential(new A_Right(gameData));
+    	}
     }
 }
