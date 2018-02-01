@@ -16,11 +16,11 @@ public class A_Center extends CommandGroup {
     		{
     			//Left Side Switch
     			System.out.println("Center Position/Left Switch");
-    			addSequential(new DriveForward(40.875)); //70.875
-    			addSequential(new Turn(-90));
-    			addSequential(new DriveForward(61)); //5.635
-    			addParallel(new RaiseArm(RobotMap.k_switch));
-    			addSequential(new Turn(90));
+    			addSequential(new DriveForward(-40.875)); //70.875
+    			addSequential(new TurnGroup(-90));
+    			addSequential(new DriveForward(-61)); //5.635
+    			//addParallel(new RaiseArm(RobotMap.k_switch));
+    			addSequential(new TurnGroup(90));
     			addSequential(new DriveForward(60.785)); //30.785
     			addSequential(new Intake(-.7, false));
     		} 
@@ -29,10 +29,10 @@ public class A_Center extends CommandGroup {
     			// Right Side Switch
     			System.out.println("Center Position/Right Switch");
     			addSequential(new DriveForward(70.875));
-    			addSequential(new Turn(90));
+    			addSequential(new TurnGroup(90));
     			addSequential(new DriveForward(46.2));
     			addParallel(new RaiseArm(RobotMap.k_switch));
-    			addSequential(new Turn(-90));
+    			addSequential(new TurnGroup(-90));
     			addSequential(new DriveForward(60.785));
     			addSequential(new Intake(-.7, false));
     		}
@@ -40,9 +40,9 @@ public class A_Center extends CommandGroup {
     		else
     		{
     			addSequential(new DriveForward(70.875));
-    			addSequential(new Turn(90));
+    			addSequential(new TurnGroup(90));
     			addSequential(new DriveForward(5.635));
-    			addSequential(new Turn(-90));
+    			addSequential(new TurnGroup(-90));
     			addSequential(new DriveForward(30.785));
   
     		}

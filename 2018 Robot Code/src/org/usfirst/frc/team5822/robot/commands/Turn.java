@@ -1,5 +1,7 @@
 package org.usfirst.frc.team5822.robot.commands;
 
+import org.usfirst.frc.team5822.robot.Robot;
+
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -7,13 +9,17 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class Turn extends Command 
 {
-
-	boolean executedOnce;
-	double angle;
 	
-    public Turn(double angleTOmove) 
+	boolean executedOnce, firstTry;
+	double angle, speedTurn;
+	
+    public Turn(double angleTOmove, double speed, boolean inputTry) 
     {
+    		requires(Robot.driveTrain);
+    		requires(Robot.sensors);
+    		firstTry = inputTry;
         angle = angleTOmove;
+        speedTurn = speed;
         executedOnce = false;
     }
 
@@ -25,14 +31,30 @@ public class Turn extends Command
     // Called repeatedly when this Command is scheduled to run
     protected void execute() 
     {
-    	System.out.println("turn: " + angle);
-    	executedOnce = true;
+    		Robot.driveTrain.autoDrive(-speedTurn, speedTurn);
+    		System.out.println("turn: " + Robot.sensors.getGyro());
+    		executedOnce = true;
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() 
     {
-        return !executedOnce;
+        if (firstTry)
+        {
+        		if (angle > Robot.sensors.getGyro())
+        		{
+            		return true;
+            }
+        }
+        if (!firstTry)
+        {
+        		if (angle < Robot.sensors.getGyro())
+        		{
+        			System.out.println("Finished");
+            		return true;
+            }
+        }
+        return false;
     }
 
     // Called once after isFinished returns true

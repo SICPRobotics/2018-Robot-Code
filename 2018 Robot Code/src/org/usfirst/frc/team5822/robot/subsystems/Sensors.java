@@ -18,27 +18,27 @@ public class Sensors extends Subsystem
 	static Potentiometer pot;
 	static ADXRS450_Gyro gyro;
 	static Encoder leftEncoder, rightEncoder;
+	static double gyroAngle;
 	
 	public Sensors()
 	{
 		//pot = new AnalogPotentiometer(0, 360);
-		//gyro = new ADXRS450_Gyro();
-		//Encoder channels now based on RobotMap
-		/*leftEncoder = new Encoder(RobotMap.k_leftEncoder_A, RobotMap.k_leftEncoder_B, false, Encoder.EncodingType.k4X);
+		gyro = new ADXRS450_Gyro();
+		
+		leftEncoder = new Encoder(RobotMap.k_leftEncoder_A, RobotMap.k_leftEncoder_B, false, Encoder.EncodingType.k4X);
 		leftEncoder.setMaxPeriod(.1);
 		leftEncoder.setMinRate(10);
 		leftEncoder.setDistancePerPulse(5);
 		leftEncoder.setReverseDirection(true);
 		leftEncoder.setSamplesToAverage(7);
-		/*
-		//Might be the channels
+		
 		rightEncoder = new Encoder(RobotMap.k_rightEncoder_A, RobotMap.k_rightEncoder_B, false, Encoder.EncodingType.k4X);
 		rightEncoder.setMaxPeriod(.1);
 		rightEncoder.setMinRate(10);
 		rightEncoder.setDistancePerPulse(.0532);
 		rightEncoder.setReverseDirection(false);
 		rightEncoder.setSamplesToAverage(7);
-		*/
+		
 	}
 	public double getPotential()
 	{
@@ -53,15 +53,20 @@ public class Sensors extends Subsystem
 	}
 	public static void resetGyro()
 	{
-		leftEncoder.reset();
+		gyro.reset();
 	}
-
+	
+	public static double getGyro()
+	{
+		gyroAngle = gyro.getAngle();
+		return gyroAngle;
+	}
 	public static double rightEncoderDistance()
 	{
-		System.out.println("Left Encoder Distance: " + leftEncoder.getDistancePerPulse());
+		System.out.println("Right Encoder Distance: " + rightEncoder.getDistance());
 		
 		//Temporary measure to test the autoDrive
-		return 90;
+		return rightEncoder.getDistance();
 	}
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.

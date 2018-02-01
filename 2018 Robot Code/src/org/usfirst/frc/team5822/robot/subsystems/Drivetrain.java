@@ -61,11 +61,11 @@ public class Drivetrain extends Subsystem
     }
     
     
-    public void autoDrive(double speed)
+    public void autoDrive(double speedLeft, double speedRight)
     {
-    		left.set(speed);
+    		left.set(speedLeft);
     		// Right side was set negative if it starts spinning
-    		right.set(speed);
+    		right.set(-speedRight);
     		// robotBase.(speed, speed);
     }
     

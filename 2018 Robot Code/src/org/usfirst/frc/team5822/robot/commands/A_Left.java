@@ -17,7 +17,7 @@ public class A_Left extends CommandGroup
     		addParallel(new RaiseArm(RobotMap.k_switch));
     		
     		// Turn right 90 degree  
-    		addSequential(new Turn(90));
+    		addSequential(new TurnGroup(90));
     		
     		// Forward 19.435
     		addSequential(new DriveForward(19.435));
@@ -35,7 +35,7 @@ public class A_Left extends CommandGroup
     			addParallel(new RaiseArm(RobotMap.k_scale));
     			
     			// Right 90 Degrees
-    			addSequential(new Turn(90)); //21 in from edge of scale
+    			addSequential(new TurnGroup(90)); //21 in from edge of scale
     			// Forward 5.755
     			addSequential(new DriveForward(5.755)); 
     			addSequential(new Intake(-.7, false));

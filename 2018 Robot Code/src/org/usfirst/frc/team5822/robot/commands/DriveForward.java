@@ -11,23 +11,23 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class DriveForward extends Command 
 {
-	Drivetrain newDriver = new Drivetrain();
-	Sensors newSensors = new Sensors();
+	
 	double distance;
 	
     public DriveForward(double distanceTOmove) 
     {
     
-    	distance = distanceTOmove + Sensors.rightEncoderDistance();
+    	distance = distanceTOmove;
     	requires(Robot.driveTrain);
-    	newDriver.autoDrive(.5);
+    	requires(Robot.sensors);
+    Robot.driveTrain.autoDrive(.2, .2);
     
     }
 
     // Called just before this Command runs the first time
     protected void initialize() 
     {
-    
+    Sensors.resetGyro();
     	System.out.println("DriveForward Init");
     
     }
@@ -36,14 +36,14 @@ public class DriveForward extends Command
     protected void execute() 
     {
     	
-    	newDriver.autoDrive(.5);
+    	Robot.driveTrain.autoDrive(.2, .2);
     
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() 
     {
-    	if (distance < Sensors.rightEncoderDistance())
+    	if (distance > Sensors.rightEncoderDistance())
     	{
     		return true;
     	}
