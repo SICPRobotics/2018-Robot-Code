@@ -23,8 +23,6 @@ public class Robot extends TimedRobot
 	SendableChooser<Command> chooseAutonomous = new SendableChooser<>();
 	
 	public static Drivetrain driveTrain;
-	public static Climber climber;
-	public static Lifter arm;
 	public static Sensors sensors;
 	
 	public static AutoMode autoMode;
@@ -38,8 +36,6 @@ public class Robot extends TimedRobot
 	public void robotInit() 
 	{
 		driveTrain = new Drivetrain();
-		climber = new Climber();
-		arm = new Lifter();
 		sensors = new Sensors();
 		oi = new OI(); //
 	}
@@ -74,9 +70,9 @@ public class Robot extends TimedRobot
 	@Override
 	public void teleopInit() 
 	{
-		if (m_autonomousCommand != null) {
+		if (m_autonomousCommand != null) 
+		{
 			m_autonomousCommand.cancel();
-			
 		}
 	}
 

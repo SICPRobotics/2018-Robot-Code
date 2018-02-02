@@ -8,16 +8,15 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class RaiseArm extends Command 
+public class MoveArm extends Command 
 {
-	public WPI_TalonSRX armMotor;
 	double armHeight;
 	static Sensors sensors;
 
-    public RaiseArm(double height) 
+    public MoveArm(double height) 
     {
-        requires(Robot.arm);
-    	armHeight = height;
+    		requires(Robot.driveTrain);
+        armHeight = height;
     }
 
     // Called just before this Command runs the first time
@@ -28,18 +27,18 @@ public class RaiseArm extends Command
     // Important: Check that the motors are moving the right way.
     protected void execute() 
     {
-    		armMotor = new WPI_TalonSRX(RobotMap.k_arm);
+    		
     		if(sensors.getPotential() < armHeight)
     		{
     			while (sensors.getPotential() != armHeight)
     			{
-    				armMotor.set(.7);
+    				Robot.driveTrain.armMotors(true);
     			}
     		} else if (sensors.getPotential() > armHeight)
     		{
     			while (sensors.getPotential() != armHeight)
     			{
-    				armMotor.set(-.7);
+    				Robot.driveTrain.armMotors(false);
     			}
     		}
     }

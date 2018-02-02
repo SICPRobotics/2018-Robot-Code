@@ -17,6 +17,8 @@ public class Drivetrain extends Subsystem
 	
 	VictorSP intakeRight, intakeLeft;
 	
+	VictorSP armRight, armLeft;
+	
 	DifferentialDrive robotBase;
 	
 	SpeedControllerGroup left, right, autoDrive; 	
@@ -34,6 +36,9 @@ public class Drivetrain extends Subsystem
 		//intakeLeft = new VictorSP(RobotMap.k_intakeLeft);
 		//intakeLeft.setInverted(true);
 		
+		//armLeft = new VictorSP(RobotMap.k_armLeft);
+		//armRight = new VictorSP(RobotMap.k_armRight);
+		
 		left = new SpeedControllerGroup(frontL, rearL);
 		right = new SpeedControllerGroup(frontR, rearR);
 		autoDrive = new SpeedControllerGroup(left, right);
@@ -46,6 +51,19 @@ public class Drivetrain extends Subsystem
     
     // One command for every intake situation
     // May not need oneSide but this can be taken out easily
+    public void armMotors(boolean reverse)
+    {
+    		if (!reverse)
+    		{
+    			armLeft.set(0.7);
+        		armRight.set(0.7);
+    		}
+    		else
+    		{
+    			armLeft.set(-0.7);
+        		armRight.set(-0.7);
+    		}
+    }
     public void intakeMotors(double speed, boolean oneSide)
     {
     		if (!oneSide)

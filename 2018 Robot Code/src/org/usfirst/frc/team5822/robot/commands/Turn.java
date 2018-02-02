@@ -10,17 +10,17 @@ import edu.wpi.first.wpilibj.command.Command;
 public class Turn extends Command 
 {
 	
-	boolean executedOnce, firstTry;
+	boolean executedOnce, direction;
 	double angle, speedTurn;
 	
-    public Turn(double angleTOmove, double speed, boolean inputTry) 
+    public Turn(double angleTOmove, double speed, boolean turnDirection) 
     {
     		requires(Robot.driveTrain);
     		requires(Robot.sensors);
-    		firstTry = inputTry;
+    		
+    		direction = turnDirection;
         angle = angleTOmove;
         speedTurn = speed;
-        executedOnce = false;
     }
 
     // Called just before this Command runs the first time
@@ -39,18 +39,17 @@ public class Turn extends Command
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() 
     {
-        if (firstTry)
+        if (direction)
         {
         		if (angle > Robot.sensors.getGyro())
         		{
             		return true;
             }
         }
-        if (!firstTry)
+        if (!direction)
         {
         		if (angle < Robot.sensors.getGyro())
         		{
-        			System.out.println("Finished");
             		return true;
             }
         }

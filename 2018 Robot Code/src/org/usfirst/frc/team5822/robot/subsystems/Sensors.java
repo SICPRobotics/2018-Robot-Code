@@ -38,6 +38,7 @@ public class Sensors extends Subsystem
 		rightEncoder.setDistancePerPulse(.0532);
 		rightEncoder.setReverseDirection(false);
 		rightEncoder.setSamplesToAverage(7);
+		rightEncoder.setReverseDirection(true);
 		
 	}
 	public double getPotential()
