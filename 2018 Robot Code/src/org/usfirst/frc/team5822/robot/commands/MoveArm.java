@@ -1,10 +1,7 @@
 package org.usfirst.frc.team5822.robot.commands;
 
 import org.usfirst.frc.team5822.robot.Robot;
-import org.usfirst.frc.team5822.robot.RobotMap;
 import org.usfirst.frc.team5822.robot.subsystems.Sensors;
-
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -15,7 +12,7 @@ public class MoveArm extends Command
 
     public MoveArm(double height) 
     {
-   		requires(Robot.driveTrain);
+   		requires(Robot.intakeArm);
         armHeight = height;
     }
 
@@ -34,14 +31,14 @@ public class MoveArm extends Command
     	{
     		while (sensors.getPotential() != armHeight)
     		{
-    			Robot.driveTrain.armMotors(true);
+    			Robot.intakeArm.armMotors(true);
     		}
     	} 
     	else if (sensors.getPotential() > armHeight)
     	{
     		while (sensors.getPotential() != armHeight)
     		{
-    			Robot.driveTrain.armMotors(false);
+    			Robot.intakeArm.armMotors(false);
     		}
     	}
     }

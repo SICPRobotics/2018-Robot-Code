@@ -6,13 +6,8 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
-import javax.swing.JOptionPane;
-
-import org.usfirst.frc.team5822.robot.commands.Intake;
 import org.usfirst.frc.team5822.robot.commands.AutoMode;
-//import org.usfirst.frc.team5822.robot.commands.*;
+import org.usfirst.frc.team5822.robot.commands.*;
 import org.usfirst.frc.team5822.robot.subsystems.*;
 
 public class Robot extends TimedRobot 
@@ -24,6 +19,7 @@ public class Robot extends TimedRobot
 	
 	public static Drivetrain driveTrain;
 	public static Sensors sensors;
+	public static IntakeArm intakeArm;
 	
 	public static AutoMode autoMode;
 	
@@ -37,14 +33,13 @@ public class Robot extends TimedRobot
 	{
 		driveTrain = new Drivetrain();
 		sensors = new Sensors();
+		intakeArm = new IntakeArm();
+		
 		oi = new OI(); 
 	}
 
 	@Override
-	public void disabledInit() 
-	{		
-		
-	}                                 
+	public void disabledInit() {}                                 
 
 	@Override
 	public void disabledPeriodic() 
@@ -85,8 +80,5 @@ public class Robot extends TimedRobot
 	}
 
 	@Override
-	public void testPeriodic() 
-	{
-		
-	}
+	public void testPeriodic() {}
 }

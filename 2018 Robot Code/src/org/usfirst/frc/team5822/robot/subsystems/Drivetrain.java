@@ -3,27 +3,16 @@ package org.usfirst.frc.team5822.robot.subsystems;
 import org.usfirst.frc.team5822.robot.RobotMap;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
-import com.sun.glass.ui.Robot;
-
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
-import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
 public class Drivetrain extends Subsystem 
 {
 	WPI_TalonSRX frontL, frontR, rearL, rearR;
-	
-	VictorSP intakeRight, intakeLeft;
-	
-	VictorSP armRight, armLeft;
-	
 	DifferentialDrive robotBase;
-	
 	SpeedControllerGroup left, right, autoDrive; 	
-	
-	static boolean isBackwards;
 	
 	public Drivetrain()
 	{
@@ -31,14 +20,7 @@ public class Drivetrain extends Subsystem
 		rearL = new WPI_TalonSRX(RobotMap.k_rearLeft); // 2
 		frontR = new WPI_TalonSRX(RobotMap.k_frontRight); //3
 		rearR = new WPI_TalonSRX(RobotMap.k_rearRight); //4
-		
-		//intakeRight = new VictorSP(RobotMap.k_intakeRight);
-		//intakeLeft = new VictorSP(RobotMap.k_intakeLeft);
-		//intakeLeft.setInverted(true);
-		
-		//armLeft = new VictorSP(RobotMap.k_armLeft);
-		//armRight = new VictorSP(RobotMap.k_armRight);
-		
+	
 		left = new SpeedControllerGroup(frontL, rearL);
 		right = new SpeedControllerGroup(frontR, rearR);
 		autoDrive = new SpeedControllerGroup(left, right);
@@ -46,48 +28,14 @@ public class Drivetrain extends Subsystem
 		robotBase = new DifferentialDrive(left, right);
 	}
 	
-    public void initDefaultCommand() 
-    {
-    	
-    }
-    
-    
-    // One command for every intake situation
-    // May not need oneSide but this can be taken out easily
-    public void armMotors(boolean reverse)
-    {
-    	if (!reverse)
-    	{
-    		armLeft.set(0.7);
-       		armRight.set(0.7);
-    	}
-    	else
-    	{
-    		armLeft.set(-0.7);
-       		armRight.set(-0.7);
-    	}
-    }
-    public void intakeMotors(double speed, boolean oneSide)
-    {
-    	if (!oneSide)
-    	{
-    		intakeRight.set(speed);
-    		intakeLeft.set(speed);
-    	} 
-    	else if (oneSide)
-    	{
-    		intakeLeft.set(speed);
-    		intakeRight.set(-speed - 0.8);
-    	}
-    }
-    
-    
+    public void initDefaultCommand() {}
+ 
     public void autoDrive(double speedLeft, double speedRight)
     {
-    	left.set(speedLeft);
+    	//left.set(speedLeft);
     	// Right side was set negative if it starts spinning
-    	right.set(-speedRight);
-    	// robotBase.(speed, speed);
+    	//right.set(-speedRight);
+    	robotBase.tankDrive(speedLeft, speedRight);
     }
     
     public void cheesyDrive(Joystick j)

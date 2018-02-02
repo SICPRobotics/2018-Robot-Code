@@ -2,8 +2,6 @@ package org.usfirst.frc.team5822.robot;
 
 import org.usfirst.frc.team5822.robot.commands.*;
 
-import edu.wpi.first.wpilibj.GenericHID;
-import edu.wpi.first.wpilibj.GenericHID.RumbleType;
 import edu.wpi.first.wpilibj.Joystick; 
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -14,6 +12,7 @@ public class OI
 	
 	Joystick j = new Joystick(RobotMap.k_joystick1);
 	Joystick x = new Joystick(RobotMap.k_xboxCntrl);
+	
 	Button j3 = new JoystickButton(Robot.j, 3);
 	Button j4 = new JoystickButton(Robot.j, 4);		
 	Button j5 = new JoystickButton(Robot.j, 5);
