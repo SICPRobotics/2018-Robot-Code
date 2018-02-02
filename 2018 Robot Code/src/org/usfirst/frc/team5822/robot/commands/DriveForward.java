@@ -6,9 +6,6 @@ import org.usfirst.frc.team5822.robot.subsystems.Sensors;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-/**
- *
- */
 public class DriveForward extends Command 
 {
 	
@@ -18,7 +15,6 @@ public class DriveForward extends Command
     {
     	requires(Robot.driveTrain);
 		requires(Robot.sensors);
-		
 		distance = distanceTOmove;    
     }
 

@@ -26,7 +26,7 @@ public class Robot extends TimedRobot
 	public static Joystick j = new Joystick(RobotMap.k_joystick1);
 	public String fieldDataIMP;
 
-	int position = 0;
+	int position = 1;
 	
 	@Override
 	public void robotInit() 
@@ -52,7 +52,7 @@ public class Robot extends TimedRobot
 	{
 		fieldDataIMP = DriverStation.getInstance().getGameSpecificMessage(); //GETTING THE FMS DATA
 		fieldDataIMP = "LLL";
-		position = 0;
+		position = 1;
 		m_autonomousCommand = new AutoMode(fieldDataIMP, position);
 		m_autonomousCommand.start();
 	}

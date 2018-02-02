@@ -32,10 +32,10 @@ public class Drivetrain extends Subsystem
  
     public void autoDrive(double speedLeft, double speedRight)
     {
-    	//left.set(speedLeft);
+    	left.set(speedLeft);
     	// Right side was set negative if it starts spinning
-    	//right.set(-speedRight);
-    	robotBase.tankDrive(speedLeft, speedRight);
+    	right.set(-speedRight);
+    	//robotBase.tankDrive(speedLeft, speedRight);
     }
     
     public void cheesyDrive(Joystick j)
