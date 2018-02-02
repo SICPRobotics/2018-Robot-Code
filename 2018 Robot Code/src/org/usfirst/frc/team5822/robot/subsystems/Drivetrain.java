@@ -46,68 +46,75 @@ public class Drivetrain extends Subsystem
 		robotBase = new DifferentialDrive(left, right);
 	}
 	
-    public void initDefaultCommand() {}
+    public void initDefaultCommand() 
+    {
+    	
+    }
     
     
     // One command for every intake situation
     // May not need oneSide but this can be taken out easily
     public void armMotors(boolean reverse)
     {
-    		if (!reverse)
-    		{
-    			armLeft.set(0.7);
-        		armRight.set(0.7);
-    		}
-    		else
-    		{
-    			armLeft.set(-0.7);
-        		armRight.set(-0.7);
-    		}
+    	if (!reverse)
+    	{
+    		armLeft.set(0.7);
+       		armRight.set(0.7);
+    	}
+    	else
+    	{
+    		armLeft.set(-0.7);
+       		armRight.set(-0.7);
+    	}
     }
     public void intakeMotors(double speed, boolean oneSide)
     {
-    		if (!oneSide)
-    		{
-    			intakeRight.set(speed);
-    			intakeLeft.set(speed);
-    		} 
-    		else if (oneSide)
-    		{
-    			intakeLeft.set(speed);
-    			intakeRight.set(-speed - 0.8);
-    		}
+    	if (!oneSide)
+    	{
+    		intakeRight.set(speed);
+    		intakeLeft.set(speed);
+    	} 
+    	else if (oneSide)
+    	{
+    		intakeLeft.set(speed);
+    		intakeRight.set(-speed - 0.8);
+    	}
     }
     
     
     public void autoDrive(double speedLeft, double speedRight)
     {
-    		left.set(speedLeft);
-    		// Right side was set negative if it starts spinning
-    		right.set(-speedRight);
-    		// robotBase.(speed, speed);
+    	left.set(speedLeft);
+    	// Right side was set negative if it starts spinning
+    	right.set(-speedRight);
+    	// robotBase.(speed, speed);
     }
     
     public void cheesyDrive(Joystick j)
     {
-    		double scale = j.getRawAxis(3) * -1;
-    		scale = ((scale + 1) / 5) + 0.6; 
+    	double scale = j.getRawAxis(3) * -1;
+    	scale = ((scale + 1) / 5) + 0.6; 
 		
-    		double moveValue = j.getRawAxis(1);
-    		double rotateValue = j.getRawAxis(0); 
+    	double moveValue = j.getRawAxis(1);
+    	double rotateValue = j.getRawAxis(0); 
 
-    		//Dead zone on y axis value
-    		if (Math.abs(moveValue) < 0.005)
-    			moveValue = 0; 
+    	//Dead zone on y axis value
+    	if (Math.abs(moveValue) < 0.005)
+    	{
+    		moveValue = 0; 
+    	}
 
-    		//creates a dead zone on x axis value only if the y axis value is small 
-    		if (Math.abs(rotateValue) < 0.005 && Math.abs(moveValue) < 0.1)
-    			rotateValue = 0;
+    	//creates a dead zone on x axis value only if the y axis value is small 
+    	if (Math.abs(rotateValue) < 0.005 && Math.abs(moveValue) < 0.1)
+    	{
+    		rotateValue = 0;
+    	}
 
-    		//scale down the values 
-    		moveValue = moveValue * scale * -1; 
-    		rotateValue = rotateValue * 0.6; //rotation scale factor used last year (2016), can change 
+    	//scale down the values 
+    	moveValue = moveValue * scale * -1; 
+    	rotateValue = rotateValue * 0.6; //rotation scale factor used last year (2016), can change 
 		
-    		robotBase.arcadeDrive(moveValue, rotateValue, true);
+    	robotBase.arcadeDrive(moveValue, rotateValue, true);
     }
 }
 

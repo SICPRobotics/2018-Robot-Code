@@ -15,12 +15,14 @@ public class MoveArm extends Command
 
     public MoveArm(double height) 
     {
-    		requires(Robot.driveTrain);
+   		requires(Robot.driveTrain);
         armHeight = height;
     }
 
     // Called just before this Command runs the first time
-    protected void initialize() {
+    protected void initialize() 
+    {
+    	
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -28,19 +30,20 @@ public class MoveArm extends Command
     protected void execute() 
     {
     		
-    		if(sensors.getPotential() < armHeight)
+    	if(sensors.getPotential() < armHeight)
+    	{
+    		while (sensors.getPotential() != armHeight)
     		{
-    			while (sensors.getPotential() != armHeight)
-    			{
-    				Robot.driveTrain.armMotors(true);
-    			}
-    		} else if (sensors.getPotential() > armHeight)
-    		{
-    			while (sensors.getPotential() != armHeight)
-    			{
-    				Robot.driveTrain.armMotors(false);
-    			}
+    			Robot.driveTrain.armMotors(true);
     		}
+    	} 
+    	else if (sensors.getPotential() > armHeight)
+    	{
+    		while (sensors.getPotential() != armHeight)
+    		{
+    			Robot.driveTrain.armMotors(false);
+    		}
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -50,11 +53,15 @@ public class MoveArm extends Command
     }
 
     // Called once after isFinished returns true
-    protected void end() {
+    protected void end() 
+    {
+    	
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
-    protected void interrupted() {
+    protected void interrupted() 
+    {
+    	
     }
 }

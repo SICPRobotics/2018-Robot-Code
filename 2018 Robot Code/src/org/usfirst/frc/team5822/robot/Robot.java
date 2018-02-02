@@ -37,12 +37,13 @@ public class Robot extends TimedRobot
 	{
 		driveTrain = new Drivetrain();
 		sensors = new Sensors();
-		oi = new OI(); //
+		oi = new OI(); 
 	}
 
 	@Override
 	public void disabledInit() 
 	{		
+		
 	}                                 
 
 	@Override
@@ -56,7 +57,7 @@ public class Robot extends TimedRobot
 	{
 		fieldDataIMP = DriverStation.getInstance().getGameSpecificMessage(); //GETTING THE FMS DATA
 		fieldDataIMP = "LLL";
-		position = 1;
+		position = 0;
 		m_autonomousCommand = new AutoMode(fieldDataIMP, position);
 		m_autonomousCommand.start();
 	}

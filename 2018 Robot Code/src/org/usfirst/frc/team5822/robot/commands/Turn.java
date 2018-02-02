@@ -15,10 +15,10 @@ public class Turn extends Command
 	
     public Turn(double angleTOmove, double speed, boolean turnDirection) 
     {
-    		requires(Robot.driveTrain);
-    		requires(Robot.sensors);
+    	requires(Robot.driveTrain);
+    	requires(Robot.sensors);
     		
-    		direction = turnDirection;
+    	direction = turnDirection;
         angle = angleTOmove;
         speedTurn = speed;
     }
@@ -26,14 +26,15 @@ public class Turn extends Command
     // Called just before this Command runs the first time
     protected void initialize() 
     {
+    	
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() 
     {
-    		Robot.driveTrain.autoDrive(-speedTurn, speedTurn);
-    		System.out.println("turn: " + Robot.sensors.getGyro());
-    		executedOnce = true;
+    	Robot.driveTrain.autoDrive(-speedTurn, speedTurn);
+    	System.out.println("turn: " + Robot.sensors.getGyro());
+    	executedOnce = true;
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -41,16 +42,16 @@ public class Turn extends Command
     {
         if (direction)
         {
-        		if (angle > Robot.sensors.getGyro())
-        		{
-            		return true;
+       		if (angle > Robot.sensors.getGyro())
+       		{
+           		return true;
             }
         }
         if (!direction)
         {
-        		if (angle < Robot.sensors.getGyro())
-        		{
-            		return true;
+       		if (angle < Robot.sensors.getGyro())
+       		{
+           		return true;
             }
         }
         return false;
@@ -59,11 +60,13 @@ public class Turn extends Command
     // Called once after isFinished returns true
     protected void end() 
     {
+    	
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() 
     {
+    	
     }
 }

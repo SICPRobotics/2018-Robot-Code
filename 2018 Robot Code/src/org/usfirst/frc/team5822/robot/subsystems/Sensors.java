@@ -69,7 +69,8 @@ public class Sensors extends Subsystem
 		//Temporary measure to test the autoDrive
 		return rightEncoder.getDistance();
 	}
-    public void initDefaultCommand() {
+    public void initDefaultCommand() 
+    {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
