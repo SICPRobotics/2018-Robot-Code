@@ -12,7 +12,7 @@ public class A_Left extends CommandGroup
     		// Left Side Switch	
     		System.out.println("Left Position/Left Switch");
     		addSequential(new DriveForward(148.875));
-    		addParallel(new MoveArm(RobotMap.k_switch));
+    		//addParallel(new MoveArm(RobotMap.k_switch));
     		addSequential(new TurnGroup(90));
     		addSequential(new DriveForward(19.435));
     		addSequential(new Intake(-.7, false));
@@ -24,7 +24,7 @@ public class A_Left extends CommandGroup
     			// Left Side Scale
     			System.out.println("Left Position/Left Scale");
     			addSequential(new DriveForward(304.875));
-    			addParallel(new MoveArm(RobotMap.k_scale));
+    			//addParallel(new MoveArm(RobotMap.k_scale));
     			addSequential(new TurnGroup(90));
     			addSequential(new DriveForward(5.755)); 
     			addSequential(new Intake(-.7, false));

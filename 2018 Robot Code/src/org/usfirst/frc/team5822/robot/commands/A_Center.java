@@ -36,15 +36,16 @@ public class A_Center extends CommandGroup
     		addSequential(new DriveForward(60.785));
     		addSequential(new Intake(-.7, false));
     	}
+    	/*
     	// I didn't want to delete this but it is unreachable so have to figure out what it's for
     	else
     	{
-    		addSequential(new DriveForward(70.875));
+    		addSequential(new DriveForward(40.875));
     		addSequential(new TurnGroup(90));
     		addSequential(new DriveForward(5.635));
     		addSequential(new TurnGroup(-90));
     		addSequential(new DriveForward(30.785));
    		}
-    	
+    	*/
     }
 }
