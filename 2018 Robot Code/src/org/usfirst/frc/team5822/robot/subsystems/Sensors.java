@@ -1,28 +1,25 @@
 package org.usfirst.frc.team5822.robot.subsystems;
 
-import javax.swing.JOptionPane;
-
 import org.usfirst.frc.team5822.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
-import edu.wpi.first.wpilibj.AnalogPotentiometer;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.interfaces.Potentiometer;
+import edu.wpi.first.wpilibj.AnalogInput;
+import edu.wpi.first.wpilibj.AnalogPotentiometer;
 
-/**
- *
- */
 public class Sensors extends Subsystem 
 {
-	static Potentiometer pot;
+	
 	static ADXRS450_Gyro gyro;
 	static Encoder leftEncoder, rightEncoder;
 	static double gyroAngle;
+	Potentiometer pot;
+	AnalogInput ai = new AnalogInput(1); //put channel number for analog input potentiometer
 	
 	public Sensors()
 	{
-		//pot = new AnalogPotentiometer(0, 360);
 		gyro = new ADXRS450_Gyro();
 		
 		leftEncoder = new Encoder(RobotMap.k_leftEncoder_A, RobotMap.k_leftEncoder_B, false, Encoder.EncodingType.k4X);
@@ -40,13 +37,16 @@ public class Sensors extends Subsystem
 		rightEncoder.setSamplesToAverage(7);
 		rightEncoder.setReverseDirection(true);
 		
+		pot = new AnalogPotentiometer(ai, 360); 
 	}
-	public double getPotential()
+	
+	public double getPot()
 	{
-		double returnPotential;
-		returnPotential = pot.get();
-		return returnPotential;
+		double potDegrees;
+		potDegrees = pot.get();
+		return potDegrees;
 	}
+	
 	public static void resetEncoders()
 	{
 		rightEncoder.reset();
@@ -62,6 +62,7 @@ public class Sensors extends Subsystem
 		gyroAngle = gyro.getAngle();
 		return gyroAngle;
 	}
+	
 	public static double rightEncoderDistance()
 	{
 		System.out.println("Right Encoder Distance: " + rightEncoder.getDistance());
@@ -69,6 +70,7 @@ public class Sensors extends Subsystem
 		//Temporary measure to test the autoDrive
 		return rightEncoder.getDistance();
 	}
+	
     public void initDefaultCommand() 
     {
         // Set the default command for a subsystem here.

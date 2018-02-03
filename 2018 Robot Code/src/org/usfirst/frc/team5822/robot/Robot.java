@@ -28,9 +28,13 @@ public class Robot extends TimedRobot
 
 	int position = 1;
 	
+	
+	
+	
 	@Override
 	public void robotInit() 
 	{
+		
 		driveTrain = new Drivetrain();
 		sensors = new Sensors();
 		intakeArm = new IntakeArm();

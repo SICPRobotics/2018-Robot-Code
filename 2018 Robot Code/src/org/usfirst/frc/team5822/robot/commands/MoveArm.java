@@ -23,20 +23,20 @@ public class MoveArm extends Command
     }
 
     // Called repeatedly when this Command is scheduled to run
-    // Important: Check that the motors are moving the right way.
+    // IMPORTANT: Check that the motors are moving the right way.
     protected void execute() 
     {
     		
-    	if(sensors.getPotential() < armHeight)
+    	if(sensors.getPot() < armHeight)
     	{
-    		while (sensors.getPotential() != armHeight)
+    		while (sensors.getPot() != armHeight)
     		{
     			Robot.intakeArm.armMotors(true);
     		}
     	} 
-    	else if (sensors.getPotential() > armHeight)
+    	else if (sensors.getPot() > armHeight)
     	{
-    		while (sensors.getPotential() != armHeight)
+    		while (sensors.getPot() != armHeight)
     		{
     			Robot.intakeArm.armMotors(false);
     		}
