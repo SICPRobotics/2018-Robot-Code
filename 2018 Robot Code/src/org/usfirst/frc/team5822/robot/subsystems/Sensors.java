@@ -15,8 +15,7 @@ public class Sensors extends Subsystem
 	static ADXRS450_Gyro gyro;
 	static Encoder leftEncoder, rightEncoder;
 	static double gyroAngle;
-	Potentiometer pot;
-	AnalogInput ai = new AnalogInput(1); //put channel number for analog input potentiometer
+	AnalogPotentiometer pot;
 	
 	public Sensors()
 	{
@@ -37,7 +36,7 @@ public class Sensors extends Subsystem
 		rightEncoder.setSamplesToAverage(7);
 		rightEncoder.setReverseDirection(true);
 		
-		pot = new AnalogPotentiometer(ai, 360); 
+		pot = new AnalogPotentiometer(RobotMap.k_pot, 3600, -1800); 
 	}
 	
 	public double getPot()
@@ -59,22 +58,15 @@ public class Sensors extends Subsystem
 	
 	public static double getGyro()
 	{
-		gyroAngle = gyro.getAngle();
-		return gyroAngle;
+		return gyro.getAngle();
 	}
 	
 	public static double rightEncoderDistance()
 	{
 		System.out.println("Right Encoder Distance: " + rightEncoder.getDistance());
-		
-		//Temporary measure to test the autoDrive
 		return rightEncoder.getDistance();
 	}
 	
-    public void initDefaultCommand() 
-    {
-        // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
-    }
+    public void initDefaultCommand() {}
 }
 
