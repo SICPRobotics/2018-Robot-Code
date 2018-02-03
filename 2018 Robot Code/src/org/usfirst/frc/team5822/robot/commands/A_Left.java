@@ -32,7 +32,7 @@ public class A_Left extends CommandGroup
     		else 
     		{
     			// Cross Baseline
-    			System.out.println("Left Position/ Cross Baseline");
+    			System.out.println("Left Position/Cross Baseline");
     			addSequential(new DriveForward(148.875));
     		}
     	}
