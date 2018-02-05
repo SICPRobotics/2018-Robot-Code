@@ -20,12 +20,12 @@ public class TurnGroup extends CommandGroup
     	if (degrees < 0)
     	{
     		addSequential(new Turn(degrees, .3, true));
-    		addSequential(new Turn(degrees, -.15, false));
+    		addSequential(new Turn(degrees, -.1, false));
     	}
     	else if (degrees > 0)
     	{
     		addSequential(new Turn(degrees, -.3, false));
-    		addSequential(new Turn(degrees, .15, true));
+    		addSequential(new Turn(degrees, .1, true));
     	}
     	System.out.println("Gryo: " + Robot.sensors.getGyro());
     	System.out.println("Finished Turn Group");

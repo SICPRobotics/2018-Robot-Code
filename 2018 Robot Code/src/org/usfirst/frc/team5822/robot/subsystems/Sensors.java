@@ -53,7 +53,9 @@ public class Sensors extends Subsystem
 	}
 	public static void resetGyro()
 	{
+		
 		gyro.reset();
+		System.out.println(" Reset Gyro " + gyro.getAngle());
 	}
 	
 	public static double getGyro()

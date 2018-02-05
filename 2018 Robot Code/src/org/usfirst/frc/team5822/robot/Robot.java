@@ -45,7 +45,7 @@ public class Robot extends TimedRobot
 	@Override
 	public void disabledPeriodic() 
 	{
-		//Scheduler.getInstance().run();
+		Scheduler.getInstance().removeAll();;
 	}
 
 	@Override
@@ -54,8 +54,10 @@ public class Robot extends TimedRobot
 		fieldDataIMP = DriverStation.getInstance().getGameSpecificMessage(); //GETTING THE FMS DATA
 		fieldDataIMP = "LLL";
 		position = 1;
+		Sensors.resetGyro();
 		m_autonomousCommand = new AutoMode(fieldDataIMP, position);
 		m_autonomousCommand.start();
+		
 	}
 
 	@Override
