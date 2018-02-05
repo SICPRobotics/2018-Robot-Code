@@ -7,15 +7,28 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.command.PIDSubsystem;
 
-public class Drivetrain extends Subsystem 
+public class Drivetrain extends PIDSubsystem 
 {
 	WPI_TalonSRX frontL, frontR, rearL, rearR;
 	DifferentialDrive robotBase;
 	SpeedControllerGroup left, right, autoDrive; 	
 	
+	static double setpoint; 
+	public static boolean isTurning; 
+	static boolean isBackwards; 
+	
 	public Drivetrain()
 	{
+		super("driveTrain", .02, 0.00, 0); 
+		setAbsoluteTolerance(0.001);
+		getPIDController().setContinuous(false);
+		setpoint = 0; 
+		isTurning = false; 
+		isBackwards = false; 
+		
+		
 		frontL = new WPI_TalonSRX(RobotMap.k_frontLeft);
 		rearL = new WPI_TalonSRX(RobotMap.k_rearLeft); // 2
 		frontR = new WPI_TalonSRX(RobotMap.k_frontRight); //3
@@ -27,6 +40,57 @@ public class Drivetrain extends Subsystem
 
 		robotBase = new DifferentialDrive(left, right);
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	/*public static void setOuts(double left, double right)
+	{
+		drive.setLeftRightMotorOutputs(left, right); 
+	}*/
+		
+	public static double pidAt(double set)
+	{
+		setpoint = set;  
+		return setpoint; 
+	}
+	
+	// returns the sensor value that is providing the feedback for the system
+	protected double returnPIDInput() 
+	{    	
+		return Sensors.getGyro() - setpoint; 
+    }
+
+	public static void pidBackwards(boolean backwards)
+	{
+		isBackwards = backwards; 
+	}
+	
+    protected void usePIDOutput(double output) 
+    {
+    	if(isBackwards)
+    		robotBase.tankDrive(-.4 + output, -.4 - output);
+    	else 
+    		robotBase.tankDrive(.4 - output, .4 + output);
+    }
+	
+	public void changeIsTurning(boolean val)
+	{
+		isTurning = val; 
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
     public void initDefaultCommand() {}
  

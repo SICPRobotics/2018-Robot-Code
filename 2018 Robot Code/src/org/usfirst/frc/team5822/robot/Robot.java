@@ -71,6 +71,8 @@ public class Robot extends TimedRobot
 		{
 			m_autonomousCommand.cancel();
 		}
+		Robot.driveTrain.disable(); //disable any PIDs that were running
+		Sensors.resetEncoders();
 	}
 
 	@Override
