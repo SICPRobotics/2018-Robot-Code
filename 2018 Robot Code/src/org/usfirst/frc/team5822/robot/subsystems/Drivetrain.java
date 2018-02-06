@@ -53,7 +53,7 @@ public class Drivetrain extends PIDSubsystem
 		drive.setLeftRightMotorOutputs(left, right); 
 	}*/
 		
-	public static double pidAt(double set)
+	public static double setPoint(double set)
 	{
 		setpoint = set;  
 		return setpoint; 
@@ -62,7 +62,7 @@ public class Drivetrain extends PIDSubsystem
 	// returns the sensor value that is providing the feedback for the system
 	protected double returnPIDInput() 
 	{    	
-		return Sensors.getGyro() - setpoint; 
+		return Sensors.getGyro(); 
     }
 
 	public static void pidBackwards(boolean backwards)
@@ -72,10 +72,16 @@ public class Drivetrain extends PIDSubsystem
 	
     protected void usePIDOutput(double output) 
     {
-    	if(isBackwards)
-    		robotBase.tankDrive(-.4 + output, -.4 - output);
-    	else 
-    		robotBase.tankDrive(.4 - output, .4 + output);
+    		System.out.print("Output: " + output);
+    		if(isBackwards)
+    		{
+    			robotBase.tankDrive(-.4 + output, -.4 - output);
+    		}
+    		else 
+    		{
+    			//.tankDrive(.4 - output, .4 + output);
+    		}
+    			
     }
 	
 	public void changeIsTurning(boolean val)
