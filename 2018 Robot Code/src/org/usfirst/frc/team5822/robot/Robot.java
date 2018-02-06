@@ -54,7 +54,7 @@ public class Robot extends TimedRobot
 	public void autonomousInit() 
 	{
 		
-		Sensors.resetGyro();  
+		Sensors.resetGyro();
 		driveTrain.setPoint(0);
 		System.out.print("Set point" + driveTrain.getSetpoint());
 		Sensors.getGyro();
