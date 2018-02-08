@@ -21,10 +21,10 @@ public class A_Center extends CommandGroup
     		addSequential(new DriveForward(40.875));
     		addSequential(new TurnGroup(-90));
     		
-    		//addSequential(new DriveForward(61));
+    		addSequential(new DriveForward(61));
     		//addParallel(new RaiseArm(RobotMap.k_switch));
-    		//addSequential(new TurnGroup(90));
-    		//addSequential(new DriveForward(60.785));
+    		addSequential(new TurnGroup(90));
+    		addSequential(new DriveForward(60.785));
     		//addSequential(new Intake(-.7, false));
     		
     		

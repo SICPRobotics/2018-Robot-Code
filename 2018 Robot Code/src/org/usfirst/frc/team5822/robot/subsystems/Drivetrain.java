@@ -75,7 +75,7 @@ public class Drivetrain extends PIDSubsystem
     		System.out.print("Output: " + output);
     		if(isBackwards)
     		{
-    			robotBase.tankDrive(-.4 + output, -.4 - output);
+    			robotBase.tankDrive(-.5 + output, -.5 - output);
     		}
     		else 
     		{

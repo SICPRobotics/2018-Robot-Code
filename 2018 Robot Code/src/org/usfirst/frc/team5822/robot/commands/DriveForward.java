@@ -22,6 +22,7 @@ public class DriveForward extends Command
     protected void initialize() 
     {
     		Sensors.resetEncoders();
+    		Sensors.resetGyro();
     		System.out.println("DriveForward Init");
     		Drivetrain.pidBackwards(true);
     		Robot.driveTrain.enable();
@@ -50,7 +51,6 @@ public class DriveForward extends Command
     protected void end() 
     {
     		Robot.driveTrain.disable();
-    		
     		System.out.println("End: Drive Forward");
     }
 
