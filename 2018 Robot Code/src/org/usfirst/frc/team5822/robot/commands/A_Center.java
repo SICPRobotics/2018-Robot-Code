@@ -18,9 +18,7 @@ public class A_Center extends CommandGroup
     	{
     		//Left Side Switch
     		System.out.println("Center Position/Left Switch");
-    		
     		addSequential(new DriveForward(40.875));
-   
     		addSequential(new TurnGroup(-90));
     		
     		//addSequential(new DriveForward(61));
