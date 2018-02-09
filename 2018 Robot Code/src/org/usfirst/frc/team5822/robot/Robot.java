@@ -7,6 +7,9 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import org.usfirst.frc.team5822.robot.commands.AutoMode;
+
+import javax.swing.JOptionPane;
+
 import org.usfirst.frc.team5822.robot.commands.*;
 import org.usfirst.frc.team5822.robot.subsystems.*;
 
@@ -31,7 +34,6 @@ public class Robot extends TimedRobot
 	@Override
 	public void robotInit() 
 	{
-		
 		driveTrain = new Drivetrain();
 		sensors = new Sensors();
 		intakeArm = new IntakeArm();
@@ -45,17 +47,24 @@ public class Robot extends TimedRobot
 	@Override
 	public void disabledPeriodic() 
 	{
-		//Scheduler.getInstance().run();
+		Scheduler.getInstance().removeAll();
 	}
 
 	@Override
 	public void autonomousInit() 
 	{
+		
+		Sensors.resetGyro();
+		driveTrain.setPoint(0);
+		System.out.print("Set point" + driveTrain.getSetpoint());
+		Sensors.getGyro();
 		fieldDataIMP = DriverStation.getInstance().getGameSpecificMessage(); //GETTING THE FMS DATA
-		fieldDataIMP = "LLL";
+		fieldDataIMP = "RRR";
 		position = 1;
+		
 		m_autonomousCommand = new AutoMode(fieldDataIMP, position);
 		m_autonomousCommand.start();
+		
 	}
 
 	@Override
@@ -71,6 +80,8 @@ public class Robot extends TimedRobot
 		{
 			m_autonomousCommand.cancel();
 		}
+		Robot.driveTrain.disable(); //disable any PIDs that were running
+		Sensors.resetEncoders();
 	}
 
 	@Override

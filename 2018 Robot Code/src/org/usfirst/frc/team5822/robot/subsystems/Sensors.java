@@ -53,7 +53,9 @@ public class Sensors extends Subsystem
 	}
 	public static void resetGyro()
 	{
+		
 		gyro.reset();
+		System.out.println(" Reset Gyro " + gyro.getAngle());
 	}
 	
 	public static double getGyro()
@@ -63,7 +65,7 @@ public class Sensors extends Subsystem
 	
 	public static double rightEncoderDistance()
 	{
-		System.out.println("Right Encoder Distance: " + rightEncoder.getDistance());
+		System.out.print("Right Encoder Distance: " + rightEncoder.getDistance() + " ");
 		return rightEncoder.getDistance();
 	}
 	

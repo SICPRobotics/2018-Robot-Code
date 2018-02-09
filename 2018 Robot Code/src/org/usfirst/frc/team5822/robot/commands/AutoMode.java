@@ -1,5 +1,7 @@
 package org.usfirst.frc.team5822.robot.commands;
 
+import org.usfirst.frc.team5822.robot.subsystems.Sensors;
+
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
@@ -14,7 +16,7 @@ public class AutoMode extends CommandGroup
     	final int leftSide = 0;
     	final int centerSide = 1;
     	final int rightSide = 2;
-    	
+    	Sensors.resetGyro();
     	switch (fieldPosition)
     	{
     		case leftSide:
