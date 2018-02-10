@@ -15,7 +15,7 @@ public class A_Left extends CommandGroup
     		//addParallel(new MoveArm(RobotMap.k_switch));
     		addSequential(new TurnGroup(90));
     		addSequential(new DriveForward(19.435));
-    		addSequential(new Intake(-.7, false));
+    		//addSequential(new Intake(-.7, false));
     	} 
     	else 
     	{
@@ -27,7 +27,7 @@ public class A_Left extends CommandGroup
     			//addParallel(new MoveArm(RobotMap.k_scale));
     			addSequential(new TurnGroup(90));
     			addSequential(new DriveForward(5.755)); 
-    			addSequential(new Intake(-.7, false));
+    			//addSequential(new Intake(-.7, false));
     		} 
     		else 
     		{
