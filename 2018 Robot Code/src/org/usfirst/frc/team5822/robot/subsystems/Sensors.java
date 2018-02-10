@@ -15,7 +15,7 @@ public class Sensors extends Subsystem
 	static ADXRS450_Gyro gyro;
 	static Encoder leftEncoder, rightEncoder;
 	static double gyroAngle;
-	AnalogPotentiometer pot;
+	static AnalogPotentiometer pot;
 	
 	public Sensors()
 	{
@@ -36,14 +36,12 @@ public class Sensors extends Subsystem
 		rightEncoder.setSamplesToAverage(7);
 		rightEncoder.setReverseDirection(true);
 		
-		//pot = new AnalogPotentiometer(RobotMap.k_pot, 3600, -1800); 
+		pot = new AnalogPotentiometer(RobotMap.k_pot, 3600, 0); 
 	}
 	
-	public double getPot()
+	public static double getPot()
 	{
-		double potDegrees;
-		potDegrees = pot.get();
-		return potDegrees;
+		return pot.get();
 	}
 	
 	public static void resetEncoders()

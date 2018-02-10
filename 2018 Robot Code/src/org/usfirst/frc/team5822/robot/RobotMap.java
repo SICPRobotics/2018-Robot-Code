@@ -13,7 +13,7 @@ public class RobotMap
 	
 	public static int k_armLeft = 7;
 	public static int k_armRight = 8;
-	public static int k_pot = 9;
+	public static int k_pot = 0;
 	//not used yet
 	public static int k_climbing;
 	public static int k_elevatorLeft;

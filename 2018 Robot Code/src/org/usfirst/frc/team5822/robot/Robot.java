@@ -59,7 +59,7 @@ public class Robot extends TimedRobot
 		System.out.print("Set point" + driveTrain.getSetpoint());
 		Sensors.getGyro();
 		fieldDataIMP = DriverStation.getInstance().getGameSpecificMessage(); //GETTING THE FMS DATA
-		fieldDataIMP = "RRR";
+		//fieldDataIMP = "RRR";
 		position = 1;
 		
 		m_autonomousCommand = new AutoMode(fieldDataIMP, position);
@@ -89,6 +89,7 @@ public class Robot extends TimedRobot
 	{
 		Scheduler.getInstance().run();
 		driveTrain.cheesyDrive(j);
+		System.out.println("pot: " + Sensors.getPot());
 	}
 
 	@Override
