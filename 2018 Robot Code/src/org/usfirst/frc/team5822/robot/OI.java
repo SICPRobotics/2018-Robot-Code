@@ -38,14 +38,14 @@ public class OI
 		//RumbleType[] kleftRumble = GenericHID.RumbleType.values();
 		//x.setRumble(kleftRumble[1], 1.0);
 		
-		buttonA.whenPressed(new Intake(-1.0, false)); // negative out B
+		buttonA.whenPressed(new Intake(-.60, false)); // negative out B
 		buttonA.whenReleased(new Intake(0, false));
 		
-		buttonB.whenPressed(new Intake(1.0, false)); // positive in A
+		buttonB.whenPressed(new Intake(.60, false)); // positive in A
 		buttonB.whenReleased(new Intake(0, false));
 		
-		buttonY.whenPressed(new Intake(-1.0, true));
-		buttonY.whenReleased(new Intake(0, true));
+		buttonY.whenPressed(new Intake(-.60, true));
+		buttonY.whenReleased(new Intake(0, false));
 	}
 	
 	

@@ -1,5 +1,7 @@
 package org.usfirst.frc.team5822.robot.subsystems;
 
+import org.usfirst.frc.team5822.robot.RobotMap;
+
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -9,9 +11,9 @@ public class IntakeArm extends Subsystem
 	
 	public IntakeArm()
 	{
-		//intakeRight = new VictorSP(RobotMap.k_intakeRight);
-		//intakeLeft = new VictorSP(RobotMap.k_intakeLeft);
-		//intakeLeft.setInverted(true);
+		intakeRight = new VictorSP(RobotMap.k_intakeRight);
+		intakeLeft = new VictorSP(RobotMap.k_intakeLeft);
+		intakeLeft.setInverted(true);
 		
 		//armLeft = new VictorSP(RobotMap.k_armLeft);
 		//armRight = new VictorSP(RobotMap.k_armRight);
