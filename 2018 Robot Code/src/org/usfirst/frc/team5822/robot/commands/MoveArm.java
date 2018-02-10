@@ -7,13 +7,14 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class MoveArm extends Command 
 {
-	double armHeight;
+	double desiredDegrees;
 	static Sensors sensors;
-
-    public MoveArm(double height) 
+	boolean finish;
+	
+    public MoveArm(double degrees) 
     {
    		requires(Robot.intakeArm);
-        armHeight = height;
+        desiredDegrees = degrees;
     }
 
     // Called just before this Command runs the first time
@@ -27,26 +28,33 @@ public class MoveArm extends Command
     protected void execute() 
     {
     		
-    	if(sensors.getPot() < armHeight)
+    	if(sensors.getPot() < desiredDegrees)
     	{
-    		while (sensors.getPot() != armHeight)
-    		{
     			Robot.intakeArm.armMotors(true);
-    		}
+    			finish = true;
     	} 
-    	else if (sensors.getPot() > armHeight)
+    	else if (sensors.getPot() > desiredDegrees)
     	{
-    		while (sensors.getPot() != armHeight)
-    		{
     			Robot.intakeArm.armMotors(false);
-    		}
+    			finish = false;
     	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() 
     {
-        return false;
+       if (finish)
+       {
+    	   if (Sensors.getPot() > desiredDegrees)
+    		   return true;
+       }
+       else if (!finish)
+       {
+    	   if (Sensors.getPot() < desiredDegrees)
+    		   return true;
+       }
+       return false;
+        
     }
 
     // Called once after isFinished returns true
