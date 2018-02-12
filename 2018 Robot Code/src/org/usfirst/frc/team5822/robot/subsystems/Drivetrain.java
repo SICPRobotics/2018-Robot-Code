@@ -1,5 +1,6 @@
 package org.usfirst.frc.team5822.robot.subsystems;
 
+import org.usfirst.frc.team5822.robot.Robot;
 import org.usfirst.frc.team5822.robot.RobotMap;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
@@ -41,13 +42,6 @@ public class Drivetrain extends PIDSubsystem
 		robotBase = new DifferentialDrive(left, right);
 	}
 	
-	
-	
-	
-	
-	
-	
-	
 	/*public static void setOuts(double left, double right)
 	{
 		drive.setLeftRightMotorOutputs(left, right); 
@@ -62,7 +56,7 @@ public class Drivetrain extends PIDSubsystem
 	// returns the sensor value that is providing the feedback for the system
 	protected double returnPIDInput() 
 	{    	
-		return Sensors.getGyro(); 
+		return Robot.sensors.getGyro(); 
     }
 
 	public static void pidBackwards(boolean backwards)

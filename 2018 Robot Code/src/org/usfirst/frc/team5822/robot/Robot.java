@@ -1,5 +1,7 @@
 package org.usfirst.frc.team5822.robot;
 
+import edu.wpi.first.wpilibj.Compressor;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
@@ -31,6 +33,8 @@ public class Robot extends TimedRobot
 
 	int position = 1;
 	
+	
+	
 	@Override
 	public void robotInit() 
 	{
@@ -39,6 +43,7 @@ public class Robot extends TimedRobot
 		intakeArm = new IntakeArm();
 		
 		oi = new OI(); 
+	
 	}
 
 	@Override
@@ -54,10 +59,10 @@ public class Robot extends TimedRobot
 	public void autonomousInit() 
 	{
 		
-		Sensors.resetGyro();
+		Robot.sensors.resetGyro();
 		driveTrain.setPoint(0);
 		System.out.print("Set point" + driveTrain.getSetpoint());
-		Sensors.getGyro();
+		Robot.sensors.getGyro();
 		fieldDataIMP = DriverStation.getInstance().getGameSpecificMessage(); //GETTING THE FMS DATA
 		//fieldDataIMP = "RRR";
 		position = 1;
@@ -81,7 +86,7 @@ public class Robot extends TimedRobot
 			m_autonomousCommand.cancel();
 		}
 		Robot.driveTrain.disable(); //disable any PIDs that were running
-		Sensors.resetEncoders();
+		Robot.sensors.resetEncoders();
 	}
 
 	@Override
@@ -89,7 +94,7 @@ public class Robot extends TimedRobot
 	{
 		Scheduler.getInstance().run();
 		driveTrain.cheesyDrive(j);
-		System.out.println("pot: " + Sensors.getPot());
+		System.out.println("pot: " + Robot.sensors.getPot());
 	}
 
 	@Override

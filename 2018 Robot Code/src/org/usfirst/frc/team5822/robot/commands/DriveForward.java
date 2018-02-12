@@ -21,8 +21,8 @@ public class DriveForward extends Command
     // Called just before this Command runs the first time
     protected void initialize() 
     {
-    		Sensors.resetEncoders();
-    		Sensors.resetGyro();
+    		Robot.sensors.resetEncoders();
+    		Robot.sensors.resetGyro();
     		System.out.println("DriveForward Init");
     		Drivetrain.pidBackwards(true);
     		Robot.driveTrain.enable();
@@ -39,7 +39,7 @@ public class DriveForward extends Command
     protected boolean isFinished() 
     {
     	
-    	if (distance > Sensors.rightEncoderDistance())
+    	if (distance > Robot.sensors.rightEncoderDistance())
     	{
     		return true;
     	}

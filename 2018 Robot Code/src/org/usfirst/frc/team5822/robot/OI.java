@@ -46,6 +46,10 @@ public class OI
 		
 		buttonY.whenPressed(new Intake(-.60, true));
 		buttonY.whenReleased(new Intake(0, false));
+		
+		
+		buttonStart.whenActive(new SolenoidForward());
+		buttonBack.whenActive(new SoloReverse());
 	}
 	
 	

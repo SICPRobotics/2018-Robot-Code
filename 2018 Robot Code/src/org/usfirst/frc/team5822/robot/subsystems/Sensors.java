@@ -39,29 +39,29 @@ public class Sensors extends Subsystem
 		pot = new AnalogPotentiometer(RobotMap.k_pot, 3600, 0); 
 	}
 	
-	public static double getPot()
+	public double getPot()
 	{
 		return pot.get();
 	}
 	
-	public static void resetEncoders()
+	public void resetEncoders()
 	{
 		rightEncoder.reset();
 		leftEncoder.reset();
 	}
-	public static void resetGyro()
+	public void resetGyro()
 	{
 		
 		gyro.reset();
 		System.out.println(" Reset Gyro " + gyro.getAngle());
 	}
 	
-	public static double getGyro()
+	public double getGyro()
 	{
 		return gyro.getAngle();
 	}
 	
-	public static double rightEncoderDistance()
+	public double rightEncoderDistance()
 	{
 		System.out.print("Right Encoder Distance: " + rightEncoder.getDistance() + " ");
 		return rightEncoder.getDistance();

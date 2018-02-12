@@ -1,5 +1,6 @@
 package org.usfirst.frc.team5822.robot.commands;
 
+import org.usfirst.frc.team5822.robot.Robot;
 import org.usfirst.frc.team5822.robot.RobotMap;
 import org.usfirst.frc.team5822.robot.subsystems.Sensors;
 
@@ -13,7 +14,7 @@ public class A_Center extends CommandGroup
 	public static int newint;
     public A_Center(String gameData) 
     {
-    	Sensors.resetGyro();
+    	Robot.sensors.resetGyro();
     	if (gameData.charAt(0) == 'L')
     	{
     		//Left Side Switch

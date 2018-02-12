@@ -45,12 +45,12 @@ public class MoveArm extends Command
     {
        if (finish)
        {
-    	   if (Sensors.getPot() > desiredDegrees)
+    	   if (Robot.sensors.getPot() > desiredDegrees)
     		   return true;
        }
        else if (!finish)
        {
-    	   if (Sensors.getPot() < desiredDegrees)
+    	   if (Robot.sensors.getPot() < desiredDegrees)
     		   return true;
        }
        return false;
