@@ -76,6 +76,7 @@ public class Robot extends TimedRobot
 	public void autonomousPeriodic() 
 	{
 		Scheduler.getInstance().run();
+		System.out.println("Drivetrain encoders in subsystem: " + driveTrain.encDistance());
 	}
 
 	@Override
