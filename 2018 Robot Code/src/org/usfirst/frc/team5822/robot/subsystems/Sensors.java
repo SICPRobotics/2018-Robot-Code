@@ -36,7 +36,7 @@ public class Sensors extends Subsystem
 		rightEncoder.setSamplesToAverage(7);
 		rightEncoder.setReverseDirection(true);
 		
-		pot = new AnalogPotentiometer(RobotMap.k_pot, 3600, 0); 
+		pot = new AnalogPotentiometer(RobotMap.k_pot, 3600, -180); 
 	}
 	
 	public double getPot()

@@ -65,7 +65,7 @@ public class Robot extends TimedRobot
 		System.out.print("Set point" + driveTrain.getSetpoint());
 		Robot.sensors.getGyro();
 		fieldDataIMP = DriverStation.getInstance().getGameSpecificMessage(); //GETTING THE FMS DATA
-		//fieldDataIMP = "RRR";
+		
 		position = 1;
 		
 		m_autonomousCommand = new AutoMode(fieldDataIMP, position);

@@ -1,7 +1,6 @@
 package org.usfirst.frc.team5822.robot.subsystems;
 
 import org.usfirst.frc.team5822.robot.RobotMap;
-
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.VictorSP;
@@ -35,43 +34,43 @@ public class IntakeArm extends Subsystem
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
-    public void armMotors(boolean reverse)
+    public void armMotors(boolean reverse, double speed)
     {
-    	if (!reverse)
-    	{
-    		armLeft.set(0.7);
+    		if (!reverse)
+    		{
+    			armLeft.set(0.7);
        		armRight.set(0.7);
-    	}
-    	else
-    	{
-    		armLeft.set(-0.7);
+    		}
+    		else
+    		{
+    			armLeft.set(-0.7);
        		armRight.set(-0.7);
-    	}
+    		}
     }
     public void intakeMotors(double speed, boolean oneSide)
     {
-    	System.out.println("running intake motors in IntakeArm system");
-    	if (!oneSide)
-    	{
-    		intakeRight.set(speed);
-    		intakeLeft.set(speed);
-    	} 
-    	else if (oneSide)
-    	{
-    		intakeLeft.set(speed);
-    		intakeRight.set(-speed - 0.8);
-    	}
+    		System.out.println("running intake motors in IntakeArm system");
+    		if (!oneSide)
+    		{
+    			intakeRight.set(speed);
+    			intakeLeft.set(speed);
+    		} 
+    		else if (oneSide)
+    		{
+    			intakeLeft.set(speed);
+    			intakeRight.set(-speed - 0.8);
+    		}
     }
     
     
     public void forward()
     {
-    	hanSolo.set(DoubleSolenoid.Value.kForward);
+    		hanSolo.set(DoubleSolenoid.Value.kForward);
     }
     
     public void reverse()
     {
-    	hanSolo.set(DoubleSolenoid.Value.kReverse);
+    		hanSolo.set(DoubleSolenoid.Value.kReverse);
     }
 
     public void off()

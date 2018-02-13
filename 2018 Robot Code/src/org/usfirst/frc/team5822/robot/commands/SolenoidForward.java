@@ -5,7 +5,8 @@ import org.usfirst.frc.team5822.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
 
-public class SolenoidForward extends Command {
+public class SolenoidForward extends Command 
+{
 
     public SolenoidForward() 
     {
@@ -15,26 +16,30 @@ public class SolenoidForward extends Command {
     // Called just before this Command runs the first time
     protected void initialize() 
     {
-    	Robot.intakeArm.reverse();
+    		Robot.intakeArm.reverse();
     }
 
     // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
+    protected void execute() 
+    {
     }
 
     // Make this return true when this Command no longer needs to run execute()
-    protected boolean isFinished() {
+    protected boolean isFinished() 
+    {
         return false;
     }
 
     // Called once after isFinished returns true
-    protected void end() {
-    	Robot.intakeArm.off();
+    protected void end() 
+    {
+    		Robot.intakeArm.off();
     	}
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
-    protected void interrupted() {
+    protected void interrupted() 
+    {
     }
 }
 
