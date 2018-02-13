@@ -3,6 +3,7 @@ package org.usfirst.frc.team5822.robot.subsystems;
 import org.usfirst.frc.team5822.robot.Robot;
 import org.usfirst.frc.team5822.robot.RobotMap;
 
+import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
@@ -28,18 +29,29 @@ public class Drivetrain extends PIDSubsystem
 		setpoint = 0; 
 		isTurning = false; 
 		isBackwards = false; 
+				
+		frontL = new WPI_TalonSRX(RobotMap.k_frontLeft); //4
+		rearL = new WPI_TalonSRX(RobotMap.k_rearLeft); //1
 		
-		
-		frontL = new WPI_TalonSRX(RobotMap.k_frontLeft);
-		rearL = new WPI_TalonSRX(RobotMap.k_rearLeft); // 2
-		frontR = new WPI_TalonSRX(RobotMap.k_frontRight); //3
-		rearR = new WPI_TalonSRX(RobotMap.k_rearRight); //4
+		frontR = new WPI_TalonSRX(RobotMap.k_frontRight); //2
+		rearR = new WPI_TalonSRX(RobotMap.k_rearRight); //3
 	
+		//rearL.setInverted(false);
+		//rearL.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 0); 
+		//frontR.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 0); 
+		
 		left = new SpeedControllerGroup(frontL, rearL);
 		right = new SpeedControllerGroup(frontR, rearR);
 		autoDrive = new SpeedControllerGroup(left, right);
 
 		robotBase = new DifferentialDrive(left, right);
+	}
+	
+	public double encDistance()
+	{
+		int pulseWidthPos = rearL.getSensorCollection().getPulseWidthPosition();
+		int pulseWidthPos1 = frontR.getSensorCollection().getPulseWidthPosition();
+		return (pulseWidthPos + pulseWidthPos1)/2;
 	}
 	
 	/*public static void setOuts(double left, double right)
