@@ -51,6 +51,4 @@ public class OI
 		buttonStart.whenActive(new SolenoidForward());
 		buttonBack.whenActive(new SoloReverse());
 	}
-	
-	
 }

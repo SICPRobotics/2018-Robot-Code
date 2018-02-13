@@ -25,6 +25,7 @@ public class Robot extends TimedRobot
 	public static Drivetrain driveTrain;
 	public static Sensors sensors;
 	public static IntakeArm intakeArm;
+	public static AntiFallMech antiFall;
 	
 	public static AutoMode autoMode;
 	
@@ -41,9 +42,9 @@ public class Robot extends TimedRobot
 		driveTrain = new Drivetrain();
 		sensors = new Sensors();
 		intakeArm = new IntakeArm();
+		antiFall = new AntiFallMech();
 		
 		oi = new OI(); 
-	
 	}
 
 	@Override
