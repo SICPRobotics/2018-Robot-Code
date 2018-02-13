@@ -38,8 +38,8 @@ public class IntakeArm extends Subsystem
     {
     		if (!reverse)
     		{
-    			armLeft.set(0.7);
-       		armRight.set(0.7);
+    			armLeft.set(speed);
+       		armRight.set(speed);
     		}
     		else
     		{
