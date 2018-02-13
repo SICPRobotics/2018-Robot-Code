@@ -18,7 +18,7 @@ public class IntakeArm extends Subsystem
 		intakeRight = new VictorSP(RobotMap.k_intakeRight);
 		intakeLeft = new VictorSP(RobotMap.k_intakeLeft);
 		intakeLeft.setInverted(true);
-		
+		armRight.setInverted(true);
 		/*c = new Compressor(0);
 		c.setClosedLoopControl(true);
 		
@@ -30,7 +30,8 @@ public class IntakeArm extends Subsystem
 		armRight = new VictorSP(RobotMap.k_armRight);
 	}
 
-    public void initDefaultCommand() {
+    public void initDefaultCommand() 
+    {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
@@ -43,8 +44,8 @@ public class IntakeArm extends Subsystem
     		}
     		else
     		{
-    			armLeft.set(-0.7);
-       		armRight.set(-0.7);
+    			armLeft.set(-speed);
+       		armRight.set(-speed);
     		}
     }
     public void intakeMotors(double speed, boolean oneSide)

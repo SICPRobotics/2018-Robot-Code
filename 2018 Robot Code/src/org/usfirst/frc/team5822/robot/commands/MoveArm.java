@@ -45,25 +45,35 @@ public class MoveArm extends Command
     		} 
     		else if (sensors.getPot() > desiredDegrees)
     		{
-    			//Robot.intakeArm.armMotors(false);
-    			finish = false;
+    			if (sensors.getPot() < desiredDegrees + 500)
+    			{
+    				Robot.intakeArm.armMotors(true, .7);
+    			} 
+    			else if (sensors.getPot() < desiredDegrees + 300)
+    			{
+    				Robot.intakeArm.armMotors(true, .4);
+    			}
+    			else if (sensors.getPot() < desiredDegrees + 200)
+    			{
+    				Robot.intakeArm.armMotors(true, .15);
+    			}
     		}
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() 
     {
-       if (finish)
-       {
-    	   if (Robot.sensors.getPot() > desiredDegrees)
-    		   return true;
-       }
-       else if (!finish)
-       {
-    	   if (Robot.sensors.getPot() < desiredDegrees)
-    		   return true;
-       }
-       return false;
+    		if (finish)
+    		{
+    			if (Robot.sensors.getPot() > desiredDegrees)
+    				return true;
+    		}
+    		else if (!finish)
+    		{
+    			if (Robot.sensors.getPot() < desiredDegrees)
+    				return true;
+    		}
+    		return false;
     }
 
     // Called once after isFinished returns true
