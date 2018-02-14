@@ -10,10 +10,10 @@ public class RobotMap
 	public static int k_rearRight = 3;
 	
 	
-	public static int k_intakeLeft = 7;
+	public static int k_intakeLeft = 5;
 	public static int k_intakeRight = 6;
 	
-	public static int k_armLeft = 5;
+	public static int k_armLeft = 7;
 	public static int k_armRight = 8;
 	public static int k_pot = 0;
 	//not used yet
