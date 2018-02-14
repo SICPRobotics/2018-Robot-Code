@@ -15,7 +15,7 @@ public class IntakeArm extends Subsystem
 	
 	public IntakeArm()
 	{
-		intakeRight = new VictorSP(RobotMap.k_intakeRight);
+		//intakeRight = new VictorSP(RobotMap.k_intakeRight);
 		intakeLeft = new VictorSP(RobotMap.k_intakeLeft);
 		intakeLeft.setInverted(true);
 		armRight.setInverted(true);
@@ -27,7 +27,7 @@ public class IntakeArm extends Subsystem
 		
 		
 		armLeft = new VictorSP(RobotMap.k_armLeft);
-		armRight = new VictorSP(RobotMap.k_armRight);
+		//armRight = new VictorSP(RobotMap.k_armRight);
 	}
 
     public void initDefaultCommand() 
@@ -40,12 +40,12 @@ public class IntakeArm extends Subsystem
     		if (!reverse)
     		{
     			armLeft.set(speed);
-       		armRight.set(speed);
+       		//armRight.set(speed);
     		}
     		else
     		{
     			armLeft.set(-speed);
-       		armRight.set(-speed);
+       		//armRight.set(-speed);
     		}
     }
     public void intakeMotors(double speed, boolean oneSide)

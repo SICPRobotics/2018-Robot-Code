@@ -8,19 +8,23 @@ import edu.wpi.first.wpilibj.command.Command;
 public class MoveArm extends Command 
 {
 	double desiredDegrees;
-	static Sensors sensors;
+	
 	boolean finish;
 	
     public MoveArm(double degrees) 
     {
    		requires(Robot.intakeArm);
+   		requires(Robot.sensors);
         desiredDegrees = degrees;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() 
     {
-    	
+    		if(Robot.sensors.getPot() < desiredDegrees)
+    			finish = true;
+    		else if(Robot.sensors.getPot() > desiredDegrees)
+    			finish = false;
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -28,35 +32,36 @@ public class MoveArm extends Command
     protected void execute() 
     {
     		
-    		if(sensors.getPot() < desiredDegrees)
+    		if(Robot.sensors.getPot() < desiredDegrees)
     		{
-    			if (sensors.getPot() < desiredDegrees - 500)
+    			if (Robot.sensors.getPot() < desiredDegrees - 500)
     			{
-    				Robot.intakeArm.armMotors(true, .7);
+    				Robot.intakeArm.armMotors(true, 1.0);
     			} 
-    			else if (sensors.getPot() < desiredDegrees - 300)
+    			else if (Robot.sensors.getPot() < desiredDegrees - 300)
     			{
-    				Robot.intakeArm.armMotors(true, .4);
+    				Robot.intakeArm.armMotors(true, .5);
     			}
-    			else if (sensors.getPot() < desiredDegrees - 200)
+    			else if (Robot.sensors.getPot() < desiredDegrees - 200)
     			{
-    				Robot.intakeArm.armMotors(true, .15);
+    				Robot.intakeArm.armMotors(true, .1);
     			}
     		} 
-    		else if (sensors.getPot() > desiredDegrees)
+    		else if (Robot.sensors.getPot() > desiredDegrees)
     		{
-    			if (sensors.getPot() < desiredDegrees + 500)
+    			if (Robot.sensors.getPot() > desiredDegrees + 500)
     			{
-    				Robot.intakeArm.armMotors(true, .7);
+    				Robot.intakeArm.armMotors(false, 1.0);
     			} 
-    			else if (sensors.getPot() < desiredDegrees + 300)
+    			else if (Robot.sensors.getPot() > desiredDegrees + 300)
     			{
-    				Robot.intakeArm.armMotors(true, .4);
+    				Robot.intakeArm.armMotors(false, .5);
     			}
-    			else if (sensors.getPot() < desiredDegrees + 200)
+    			else if (Robot.sensors.getPot() > desiredDegrees + 200)
     			{
-    				Robot.intakeArm.armMotors(true, .15);
+    				Robot.intakeArm.armMotors(false, .1);
     			}
+    			finish = false;
     		}
     }
 
@@ -79,7 +84,7 @@ public class MoveArm extends Command
     // Called once after isFinished returns true
     protected void end() 
     {
-    	
+    		Robot.intakeArm.armMotors(true, 0);
     }
 
     // Called when another command which requires one or more of the same

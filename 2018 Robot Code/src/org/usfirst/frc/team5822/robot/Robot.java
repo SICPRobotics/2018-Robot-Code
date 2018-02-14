@@ -29,6 +29,7 @@ public class Robot extends TimedRobot
 	
 	public static AutoMode autoMode;
 	
+	
 	public static Joystick j = new Joystick(RobotMap.k_joystick1);
 	public String fieldDataIMP;
 
@@ -53,7 +54,7 @@ public class Robot extends TimedRobot
 	@Override
 	public void disabledPeriodic() 
 	{
-		Scheduler.getInstance().removeAll();
+		//Scheduler.getInstance().removeAll();
 	}
 
 	@Override
@@ -89,6 +90,7 @@ public class Robot extends TimedRobot
 		}
 		Robot.driveTrain.disable(); //disable any PIDs that were running
 		Robot.sensors.resetEncoders();
+		
 	}
 
 	@Override
