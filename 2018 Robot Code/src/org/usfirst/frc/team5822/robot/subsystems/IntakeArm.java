@@ -15,7 +15,7 @@ public class IntakeArm extends Subsystem
 	
 	public IntakeArm()
 	{
-		//intakeRight = new VictorSP(RobotMap.k_intakeRight);
+		intakeRight = new VictorSP(RobotMap.k_intakeRight);
 		intakeLeft = new VictorSP(RobotMap.k_intakeLeft);
 		intakeLeft.setInverted(true);
 		armRight.setInverted(true);

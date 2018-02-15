@@ -37,7 +37,7 @@ public class OI
 	{
 		//RumbleType[] kleftRumble = GenericHID.RumbleType.values();
 		//x.setRumble(kleftRumble[1], 1.0);
-		buttonX.whenPressed(new MoveArm(1500));
+		//buttonX.whenPressed(new MoveArm(1500));
 		
 		buttonA.whenPressed(new Intake(-.60, false)); // negative out B
 		buttonA.whenReleased(new Intake(0, false));
