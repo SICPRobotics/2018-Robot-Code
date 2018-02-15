@@ -1,11 +1,16 @@
 package org.usfirst.frc.team5822.robot;
 
+//import edu.wpi.cscore.UsbCamera;
+//import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 import org.usfirst.frc.team5822.robot.commands.AutoMode;
 import org.usfirst.frc.team5822.robot.subsystems.*;
 
@@ -27,11 +32,19 @@ public class Robot extends TimedRobot
 
 	public static Compressor c;
 
+//	UsbCamera cami = CameraServer.getInstance().startAutomaticCapture(0);
+	
+	SendableChooser<Integer> locationChooser = new SendableChooser<>();
+	
 	int position = 1; //change to pull this from the dashboard in autoInit()
 	
 	@Override
 	public void robotInit() 
 	{
+		locationChooser.addDefault("Left", 0);
+		locationChooser.addObject("Center", 1);
+		locationChooser.addObject("Right", 2);
+		
 		driveTrain = new Drivetrain();
 		sensors = new Sensors();
 		intakeArm = new IntakeArm();
@@ -40,6 +53,9 @@ public class Robot extends TimedRobot
 	
 		c = new Compressor(0);
 		c.setClosedLoopControl(true);
+		
+		SmartDashboard.putNumber("Gyro", 1); //1 is a placeholder
+		SmartDashboard.putData("Location Selection", locationChooser);
 	}
 
 	@Override
@@ -62,7 +78,7 @@ public class Robot extends TimedRobot
 
 		fieldDataIMP = DriverStation.getInstance().getGameSpecificMessage(); 		
 		position = 1; //change this to get the value from the Smart Dash
-		
+		position = locationChooser.getSelected();
 		m_autonomousCommand = new AutoMode(fieldDataIMP, position);
 		m_autonomousCommand.start();
 	}
@@ -70,8 +86,11 @@ public class Robot extends TimedRobot
     @Override
     public void autonomousPeriodic() 
     {
-	Scheduler.getInstance().run();
-	System.out.println("Drivetrain encoders in subsystem: " + driveTrain.encDistance());
+    	Scheduler.getInstance().run();
+		System.out.println("Drivetrain encoders in subsystem: " + driveTrain.encDistance());
+		
+		SmartDashboard.putNumber("Gyro", 1); //1 is a placeholder
+		SmartDashboard.putData("Location Selection", locationChooser);
     }
     
     @Override
