@@ -20,7 +20,7 @@ public class Robot extends TimedRobot
 	public static Climber climber;
 	
 	public static AutoMode autoMode;	
-	Command m_autonomousCommand;
+	Command m_autonomousCommand;//hi
 			
 	public static Joystick j = new Joystick(RobotMap.k_joystick1);
 	public String fieldDataIMP;
