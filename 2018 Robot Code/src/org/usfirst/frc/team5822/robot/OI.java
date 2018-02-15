@@ -2,15 +2,15 @@ package org.usfirst.frc.team5822.robot;
 
 import org.usfirst.frc.team5822.robot.commands.*;
 
-import edu.wpi.first.wpilibj.Joystick; 
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 public class OI 
-{
-	
+{	
 	Joystick j = new Joystick(RobotMap.k_joystick1);
-	Joystick x = new Joystick(RobotMap.k_xboxCntrl);
+	XboxController x = new XboxController(RobotMap.k_xboxCntrl);
 	
 	Button j1 = new JoystickButton(Robot.j, 1);
 	Button j2 = new JoystickButton(Robot.j, 2);
@@ -32,13 +32,15 @@ public class OI
 	Button buttonRB = new JoystickButton(x, 6); 
 	Button buttonBack = new JoystickButton(x, 7); //Old 9
 	Button buttonStart = new JoystickButton(x, 8);	//Old 10 
+	Button leftThumb = new JoystickButton(x, 9);
+	Button rightThumb = new JoystickButton(x, 10);
 	
 	public OI()
 	{
-		buttonA.whenPressed(new ArmButton("Floor", 123));
-		buttonB.whenPressed(new ArmButton("Switch", 123)); 
-		buttonX.whenPressed(new ArmButton("Exchange", 123)); 
-		buttonY.whenPressed(new ArmButton("Scale", 123)); 
+		buttonA.whenPressed(new ArmButton("Floor", RobotMap.k_potFloor));
+		buttonB.whenPressed(new ArmButton("Switch", RobotMap.k_potSwitch)); 
+		buttonX.whenPressed(new ArmButton("Exchange", RobotMap.k_potExchange)); 
+		buttonY.whenPressed(new ArmButton("Scale", RobotMap.k_potScale)); 
 		
 		buttonLB.whenPressed(new Intake(.60, false));
 		buttonLB.whenReleased(new Intake(0, false));		
@@ -48,7 +50,15 @@ public class OI
 		buttonStart.whenActive(new SolenoidForward());
 		buttonBack.whenActive(new SolenoidReverse());
 		
-		j1.whenActive(new Climb());
+		leftThumb.whenActive(new ReleaseHook("left"));
+		rightThumb.whenActive(new ReleaseHook("right"));
+				
+		if (x.getRawAxis(2) > 0)
+			new Climb("left");
+		if(x.getRawAxis(3) > 0)
+			new Climb("right");
+		
+	//	j1.whenActive(new Climb());
 		
 		j10.whenPressed(new FallDown(-1));
 		j12.whenPressed(new FallDown(1));

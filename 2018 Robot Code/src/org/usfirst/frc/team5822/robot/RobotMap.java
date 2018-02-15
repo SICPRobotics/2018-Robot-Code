@@ -38,10 +38,11 @@ public class RobotMap
 	public static double k_scale = 1;
 	
 	//Arm height
-	public static double k_potentClimb;
-	public static double k_potentScale;
-	public static double k_potentSwitch;
-	public static double k_potentBottom;
+	public static double k_potClimb;
+	public static double k_potScale;
+	public static double k_potSwitch;
+	public static double k_potFloor;
+	public static double k_potExchange;
 	
 	
 	

@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  */
 public class ArmButton extends CommandGroup {
 
-    public ArmButton(String area, int degrees) 
+    public ArmButton(String area, double degrees) 
     {
        if (area == "Floor")
        {
