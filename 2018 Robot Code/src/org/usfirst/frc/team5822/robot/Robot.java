@@ -1,41 +1,33 @@
 package org.usfirst.frc.team5822.robot;
 
 import edu.wpi.first.wpilibj.Compressor;
-import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import org.usfirst.frc.team5822.robot.commands.AutoMode;
-
-import javax.swing.JOptionPane;
-
-import org.usfirst.frc.team5822.robot.commands.*;
 import org.usfirst.frc.team5822.robot.subsystems.*;
 
 public class Robot extends TimedRobot 
 {
 	public static OI oi;
-	
-	Command m_autonomousCommand;
-	SendableChooser<Command> chooseAutonomous = new SendableChooser<>();
-	
+
 	public static Drivetrain driveTrain;
 	public static Sensors sensors;
 	public static IntakeArm intakeArm;
 	public static AntiFallMech antiFall;
+	public static Climber climber;
 	
-	public static AutoMode autoMode;
-	
-	
+	public static AutoMode autoMode;	
+	Command m_autonomousCommand;
+			
 	public static Joystick j = new Joystick(RobotMap.k_joystick1);
 	public String fieldDataIMP;
 
-	int position = 1;
+	public static Compressor c;
 	
-	
+	int position = 1; //change to pull this from the dashboard in autoInit()
 	
 	@Override
 	public void robotInit() 
@@ -44,41 +36,38 @@ public class Robot extends TimedRobot
 		sensors = new Sensors();
 		intakeArm = new IntakeArm();
 		antiFall = new AntiFallMech();
-		
 		oi = new OI(); 
+	
+		c = new Compressor(0);
+		c.setClosedLoopControl(true);
 	}
 
 	@Override
-	public void disabledInit() {}                                 
-
-	@Override
-	public void disabledPeriodic() 
+	public void disabledInit() 
 	{
-		//Scheduler.getInstance().removeAll();
-	}
+		Scheduler.getInstance().removeAll();
+	}                                 
+
+	@Override
+	public void disabledPeriodic() {}
 
 	@Override
 	public void autonomousInit() 
 	{
-		
 		Robot.sensors.resetGyro();
 		driveTrain.setPoint(0);
-		System.out.print("Set point" + driveTrain.getSetpoint());
-		Robot.sensors.getGyro();
-		fieldDataIMP = DriverStation.getInstance().getGameSpecificMessage(); //GETTING THE FMS DATA
-		
-		position = 1;
+
+		fieldDataIMP = DriverStation.getInstance().getGameSpecificMessage(); 		
+		position = 1; //change this to get the value from the Smart Dash
 		
 		m_autonomousCommand = new AutoMode(fieldDataIMP, position);
 		m_autonomousCommand.start();
-		
 	}
 
 	@Override
 	public void autonomousPeriodic() 
 	{
 		Scheduler.getInstance().run();
-		System.out.println("Drivetrain encoders in subsystem: " + driveTrain.encDistance());
 	}
 
 	@Override
@@ -88,9 +77,8 @@ public class Robot extends TimedRobot
 		{
 			m_autonomousCommand.cancel();
 		}
-		Robot.driveTrain.disable(); //disable any PIDs that were running
+		Robot.driveTrain.disable(); 
 		Robot.sensors.resetEncoders();
-		
 	}
 
 	@Override
@@ -98,7 +86,7 @@ public class Robot extends TimedRobot
 	{
 		Scheduler.getInstance().run();
 		driveTrain.cheesyDrive(j);
-		System.out.println("pot: " + Robot.sensors.getPot());
+		//System.out.println("pot: " + Robot.sensors.getPot());
 	}
 
 	@Override

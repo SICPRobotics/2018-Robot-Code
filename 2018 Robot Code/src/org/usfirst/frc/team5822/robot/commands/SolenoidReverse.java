@@ -6,10 +6,10 @@ import org.usfirst.frc.team5822.robot.Robot;
 import edu.wpi.first.wpilibj.command.Command;
 
 
-public class SoloReverse extends Command 
+public class SolenoidReverse extends Command 
 {
 
-    public SoloReverse() 
+    public SolenoidReverse() 
     {
         requires(Robot.intakeArm);
     }
