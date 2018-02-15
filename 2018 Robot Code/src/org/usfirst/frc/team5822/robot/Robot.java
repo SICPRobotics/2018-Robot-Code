@@ -1,5 +1,7 @@
 package org.usfirst.frc.team5822.robot;
 
+import edu.wpi.cscore.UsbCamera;
+import edu.wpi.first.wpilibj.CameraServer;
 //import edu.wpi.cscore.UsbCamera;
 //import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.Compressor;
@@ -32,7 +34,7 @@ public class Robot extends TimedRobot
 
 	public static Compressor c;
 
-//	UsbCamera cami = CameraServer.getInstance().startAutomaticCapture(0);
+	UsbCamera cami = CameraServer.getInstance().startAutomaticCapture(0);
 	
 	SendableChooser<Integer> locationChooser = new SendableChooser<>();
 	
@@ -54,7 +56,7 @@ public class Robot extends TimedRobot
 		c = new Compressor(0);
 		c.setClosedLoopControl(true);
 		
-		SmartDashboard.putNumber("Gyro", 1); //1 is a placeholder
+		SmartDashboard.putNumber("Gyro", sensors.getGyro()); //1 is a placeholder
 		SmartDashboard.putData("Location Selection", locationChooser);
 	}
 
@@ -89,7 +91,7 @@ public class Robot extends TimedRobot
     	Scheduler.getInstance().run();
 		System.out.println("Drivetrain encoders in subsystem: " + driveTrain.encDistance());
 		
-		SmartDashboard.putNumber("Gyro", 1); //1 is a placeholder
+		SmartDashboard.putNumber("Gyro", sensors.getGyro()); 
 		SmartDashboard.putData("Location Selection", locationChooser);
     }
     
@@ -111,6 +113,7 @@ public class Robot extends TimedRobot
 		Scheduler.getInstance().run();
 		driveTrain.cheesyDrive(j);
 		//System.out.println("pot: " + Robot.sensors.getPot());
+		SmartDashboard.putNumber("Gyro", sensors.getGyro());
 	}
 
 	@Override

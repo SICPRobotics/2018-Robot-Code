@@ -58,8 +58,16 @@ public class OI
 		if(x.getRawAxis(3) > 0)
 			new Climb("right");
 		
-	//	j1.whenActive(new Climb());
-		
+		j1.whenPressed(new Intake(.60, false));
+		j1.whenReleased(new Intake(0, false));
+		j2.whenPressed(new Intake(-.60, false));
+		j2.whenReleased(new Intake(0, false));
+		j3.whenActive(new Climb("left"));
+		j4.whenActive(new Climb("right"));
+		j5.whenPressed(new SolenoidForward());
+		j6.whenPressed(new SolenoidReverse());
+		j7.whenActive(new ReleaseHook("left"));
+		j8.whenActive(new ReleaseHook("right"));
 		j10.whenPressed(new FallDown(-1));
 		j12.whenPressed(new FallDown(1));
 	}
