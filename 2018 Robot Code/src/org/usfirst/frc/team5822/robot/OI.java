@@ -11,7 +11,7 @@ public class OI
 {	
 	Joystick j = new Joystick(RobotMap.k_joystick1);
 	XboxController x = new XboxController(RobotMap.k_xboxCntrl);
-	
+
 	Button j1 = new JoystickButton(Robot.j, 1);
 	Button j2 = new JoystickButton(Robot.j, 2);
 	Button j3 = new JoystickButton(Robot.j, 3);
@@ -34,14 +34,14 @@ public class OI
 	Button buttonStart = new JoystickButton(x, 8);	//Old 10 
 	Button leftThumb = new JoystickButton(x, 9);
 	Button rightThumb = new JoystickButton(x, 10);
-	
+
 	public OI()
 	{
 		buttonA.whenPressed(new ArmButton("Floor", RobotMap.k_potFloor));
 		buttonB.whenPressed(new ArmButton("Switch", RobotMap.k_potSwitch)); 
 		buttonX.whenPressed(new ArmButton("Exchange", RobotMap.k_potExchange)); 
 		buttonY.whenPressed(new ArmButton("Scale", RobotMap.k_potScale)); 
-		
+
 		buttonLB.whenPressed(new Intake(.60, false));
 		buttonLB.whenReleased(new Intake(0, false));		
 		buttonRB.whenPressed(new Intake(-.60, false)); 

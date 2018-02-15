@@ -3,6 +3,7 @@ package org.usfirst.frc.team5822.robot.subsystems;
 import org.usfirst.frc.team5822.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
+import com.ctre.phoenix.*;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.interfaces.Potentiometer;

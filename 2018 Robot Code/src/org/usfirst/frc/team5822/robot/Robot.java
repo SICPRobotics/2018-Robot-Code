@@ -26,7 +26,7 @@ public class Robot extends TimedRobot
 	public String fieldDataIMP;
 
 	public static Compressor c;
-	
+
 	int position = 1; //change to pull this from the dashboard in autoInit()
 	
 	@Override
@@ -47,10 +47,13 @@ public class Robot extends TimedRobot
 	{
 		Scheduler.getInstance().removeAll();
 	}                                 
-
+	
 	@Override
-	public void disabledPeriodic() {}
-
+	public void disabledPeriodic() 
+	{
+	   	//Scheduler.getInstance().removeAll();
+	}	
+	
 	@Override
 	public void autonomousInit() 
 	{
@@ -63,14 +66,15 @@ public class Robot extends TimedRobot
 		m_autonomousCommand = new AutoMode(fieldDataIMP, position);
 		m_autonomousCommand.start();
 	}
-
-	@Override
-	public void autonomousPeriodic() 
-	{
-		Scheduler.getInstance().run();
-	}
-
-	@Override
+ 
+    @Override
+    public void autonomousPeriodic() 
+    {
+	Scheduler.getInstance().run();
+	System.out.println("Drivetrain encoders in subsystem: " + driveTrain.encDistance());
+    }
+    
+    @Override
 	public void teleopInit() 
 	{
 		if (m_autonomousCommand != null) 
@@ -81,6 +85,7 @@ public class Robot extends TimedRobot
 		Robot.sensors.resetEncoders();
 	}
 
+ 
 	@Override
 	public void teleopPeriodic() 
 	{
@@ -91,4 +96,5 @@ public class Robot extends TimedRobot
 
 	@Override
 	public void testPeriodic() {}
+
 }
