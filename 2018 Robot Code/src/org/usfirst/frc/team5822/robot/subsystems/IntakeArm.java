@@ -1,7 +1,6 @@
 package org.usfirst.frc.team5822.robot.subsystems;
 
 import org.usfirst.frc.team5822.robot.RobotMap;
-import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -9,25 +8,23 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class IntakeArm extends Subsystem 
 {
 	VictorSP intakeRight, intakeLeft, armRight, armLeft;
-	
 	DoubleSolenoid hanSolo;
-
+	
 	public IntakeArm()
 	{
 		intakeRight = new VictorSP(RobotMap.k_intakeRight);
 		intakeLeft = new VictorSP(RobotMap.k_intakeLeft);
-		intakeLeft.setInverted(true);
-		armRight.setInverted(true);
-		/*hanSolo = new DoubleSolenoid(0,1);
-		hanSolo.set(DoubleSolenoid.Value.kReverse);*/
-		
+		intakeLeft.setInverted(true);	
 		armLeft = new VictorSP(RobotMap.k_armLeft);
-		//armRight = new VictorSP(RobotMap.k_armRight);
+		armRight = new VictorSP(RobotMap.k_armRight);
+		armRight.setInverted(true);
+		
+		hanSolo = new DoubleSolenoid(0,1);
+		hanSolo.set(DoubleSolenoid.Value.kReverse);
 	}
 
-    public void initDefaultCommand() 
-    {
-    }
+    public void initDefaultCommand() {}
+    
     public void armMotors(boolean reverse, double speed)
     {
     	if (!reverse)
