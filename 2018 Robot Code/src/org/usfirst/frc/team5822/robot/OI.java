@@ -47,10 +47,10 @@ public class OI
 		buttonRB.whenPressed(new Intake(-.10, false)); 
 		buttonRB.whenReleased(new Intake(0, false));
 		
-		buttonStart.whenActive(new ReleaseHook("left"));
-		buttonBack.whenActive(new ReleaseHook("right"));
+		buttonStart.whenActive(new SolenoidReverse());
+		buttonBack.whenActive(new SolenoidForward());
 		
-		leftThumb.whenActive(new SolenoidReverse());
+		leftThumb.whenActive(new ReleaseHook());
 		rightThumb.whenActive(new OpenClose());
 				
 		if (x.getRawAxis(2) > 0)
@@ -66,8 +66,8 @@ public class OI
 		j4.whenActive(new Climb("right"));
 		j5.whenPressed(new SolenoidForward());
 		j6.whenPressed(new SolenoidReverse());
-		j7.whenActive(new ReleaseHook("left"));
-		j8.whenActive(new ReleaseHook("right"));
+		j7.whenActive(new ReleaseHook());
+		j8.whenActive(new OpenClose());
 		j10.whenPressed(new FallDown(-1));
 		j12.whenPressed(new FallDown(1));
 	}

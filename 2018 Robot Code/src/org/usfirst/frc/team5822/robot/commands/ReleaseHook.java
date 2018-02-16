@@ -9,12 +9,9 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class ReleaseHook extends Command 
 {
-	String hookSide;
-	
-    public ReleaseHook(String side) 
+    public ReleaseHook() 
     {
     	requires(Robot.climber);
-    	hookSide = side;
     }
 
     // Called just before this Command runs the first time
@@ -30,7 +27,7 @@ public class ReleaseHook extends Command
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() 
     {
-        return false;
+        return true;
     }
 
     // Called once after isFinished returns true
