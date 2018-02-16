@@ -6,9 +6,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class A_Right extends CommandGroup 
 {
 
-    public A_Right(String gameData) 
+    public A_Right(String gameData, int side) 
     {
-    	if (gameData.charAt(0) == 'R')
+    	if (gameData.charAt(0) == 'R' && side == 0)
     	{
     		// Right Side Switch
     		System.out.println("Right Position/Right Switch");
@@ -20,7 +20,7 @@ public class A_Right extends CommandGroup
     	} 
     	else 
     	{
-    		if (gameData.charAt(1) == 'R')
+    		if (gameData.charAt(1) == 'R' && side == 1)
     		{
     			// Right Side Scale
     			System.out.println("Right Position/Right Scale");

@@ -2,17 +2,14 @@ package org.usfirst.frc.team5822.robot;
 
 import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.wpilibj.CameraServer;
-//import edu.wpi.cscore.UsbCamera;
-//import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.*;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
 import org.usfirst.frc.team5822.robot.commands.AutoMode;
 import org.usfirst.frc.team5822.robot.subsystems.*;
 
@@ -37,8 +34,10 @@ public class Robot extends TimedRobot
 	UsbCamera cami = CameraServer.getInstance().startAutomaticCapture(0);
 	
 	SendableChooser<Integer> locationChooser = new SendableChooser<>();
+	SendableChooser<Integer> goalChooser = new SendableChooser<>();
 	
-	int position = 1;
+	int position = 1; //default center 
+	int goal = 0; //default switch
 	
 	@Override
 	public void robotInit() 
@@ -46,6 +45,9 @@ public class Robot extends TimedRobot
 		locationChooser.addDefault("Left", 0);
 		locationChooser.addObject("Center", 1);
 		locationChooser.addObject("Right", 2);
+	
+		goalChooser.addDefault("Switch", 0);
+		goalChooser.addObject("Scale", 1);
 		
 		driveTrain = new Drivetrain();
 		sensors = new Sensors();
@@ -58,6 +60,7 @@ public class Robot extends TimedRobot
 		
 		SmartDashboard.putNumber("Gyro", sensors.getGyro()); 
 		SmartDashboard.putData("Location Selection", locationChooser);
+		SmartDashboard.putData("Goal Selection", goalChooser);
 	}
 
 	@Override
@@ -80,7 +83,8 @@ public class Robot extends TimedRobot
 
 		fieldDataIMP = DriverStation.getInstance().getGameSpecificMessage(); 		
 		position = locationChooser.getSelected();
-		m_autonomousCommand = new AutoMode(fieldDataIMP, position);
+		goal = goalChooser.getSelected();
+		m_autonomousCommand = new AutoMode(fieldDataIMP, position, goal);
 		m_autonomousCommand.start();
 	}
  
@@ -92,6 +96,7 @@ public class Robot extends TimedRobot
 		
 		SmartDashboard.putNumber("Gyro", sensors.getGyro()); 
 		SmartDashboard.putData("Location Selection", locationChooser);
+		SmartDashboard.putData("Goal Chooser", goalChooser);
     }
     
     @Override

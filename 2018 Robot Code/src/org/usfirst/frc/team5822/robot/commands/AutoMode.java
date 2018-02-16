@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  */
 public class AutoMode extends CommandGroup 
 {
-    public AutoMode(String gameData, int fieldPosition) 
+    public AutoMode(String gameData, int fieldPosition, int side) 
     {
     	System.out.println("Auto Mode Start");
     	
@@ -22,15 +22,15 @@ public class AutoMode extends CommandGroup
     	{
     		case leftSide:
     			System.out.println("AutoMode Left");
-    			addSequential(new A_Left(gameData));
+    			addSequential(new A_Left(gameData, side));
     			break;
     		case centerSide:
     			System.out.println("AutoMode Center");
-    			addSequential(new A_Center(gameData));
+    			addSequential(new A_Center(gameData, side));
     			break;
     		case rightSide:
     			System.out.println("AutoMode Right");
-    			addSequential(new A_Right(gameData));
+    			addSequential(new A_Right(gameData, side));
     			break;
     	}
     }
