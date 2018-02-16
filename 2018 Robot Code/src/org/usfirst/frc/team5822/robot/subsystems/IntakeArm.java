@@ -1,28 +1,37 @@
 package org.usfirst.frc.team5822.robot.subsystems;
 
 import org.usfirst.frc.team5822.robot.RobotMap;
+
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+
 import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class IntakeArm extends Subsystem 
 {
-	VictorSP intakeRight, intakeLeft, armRight, armLeft;
+	VictorSP intakeRight, intakeLeft, armRight;
+	WPI_TalonSRX armLeft;
 	DoubleSolenoid hanSolo, openShut;
+	SpeedControllerGroup arm;
 	
 	public IntakeArm()
 	{
 		intakeRight = new VictorSP(RobotMap.k_intakeRight);
 		intakeLeft = new VictorSP(RobotMap.k_intakeLeft);
 		intakeLeft.setInverted(true);	
-		armLeft = new VictorSP(RobotMap.k_armLeft);
+		
+		armLeft = new WPI_TalonSRX(RobotMap.k_armLeft);
 		armRight = new VictorSP(RobotMap.k_armRight);
 		armRight.setInverted(true);
 		
-		hanSolo = new DoubleSolenoid(0,1);
+		arm = new SpeedControllerGroup(armLeft, arm);
+		
+		hanSolo = new DoubleSolenoid(RobotMap.k_intakeSolo1,RobotMap.k_intakeSolo2);
 		hanSolo.set(DoubleSolenoid.Value.kReverse);
 		
-		openShut = new DoubleSolenoid(2,3);
+		openShut = new DoubleSolenoid(RobotMap.k_intakeOpenSolo1,RobotMap.k_intakeOpenSolo2);
 		openShut.set(DoubleSolenoid.Value.kReverse);
 	}
 
@@ -32,14 +41,12 @@ public class IntakeArm extends Subsystem
     {
     	if (!reverse)
     	{
-    		armLeft.set(speed);
-    		//armRight.set(speed);
+    		arm.set(speed);
     	}
     	else
     	{
-    		armLeft.set(-speed);
-       		//armRight.set(-speed);
-    	}
+    		arm.set(-speed);
+       	}
     }
     public void intakeMotors(double speed, boolean oneSide)
     {

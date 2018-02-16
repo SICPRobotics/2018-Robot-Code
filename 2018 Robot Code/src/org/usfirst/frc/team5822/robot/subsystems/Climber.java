@@ -9,26 +9,26 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Climber extends Subsystem 
 {
-	VictorSP climb1, climb2;
+	VictorSP climberL, climberR;
 //	Servo servo1, servo2;
 	DoubleSolenoid release;
 	public Climber()
 	{
-		climb1 = new VictorSP(RobotMap.k_climb1);
-		climb2 = new VictorSP(RobotMap.k_climb2);
+		climberL = new VictorSP(RobotMap.k_climbLeft);
+		climberR = new VictorSP(RobotMap.k_climbRight);
 		//servo1 = new Servo(RobotMap.k_servo1);
 		//servo2 = new Servo(RobotMap.k_servo2);
-		release = new DoubleSolenoid(4,5);
+		release = new DoubleSolenoid(RobotMap.k_climberSolo1, RobotMap.k_climberSolo2);
 		release.set(DoubleSolenoid.Value.kReverse);
 	}
 	
 	public void climbLeft()
 	{
-		climb1.set(.5);
+		climberL.set(.5);
 	}
 	public void climbRight()
 	{
-		climb2.set(.5);
+		climberR.set(.5);
 	}
 	public void release()
 	{
