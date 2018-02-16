@@ -27,7 +27,7 @@ public class Robot extends TimedRobot
 	public static Climber climber;
 	
 	public static AutoMode autoMode;	
-	Command m_autonomousCommand;//hi
+	Command m_autonomousCommand;
 			
 	public static Joystick j = new Joystick(RobotMap.k_joystick1);
 	public String fieldDataIMP;
@@ -38,7 +38,7 @@ public class Robot extends TimedRobot
 	
 	SendableChooser<Integer> locationChooser = new SendableChooser<>();
 	
-	int position = 1; //change to pull this from the dashboard in autoInit()
+	int position = 1;
 	
 	@Override
 	public void robotInit() 
@@ -56,7 +56,7 @@ public class Robot extends TimedRobot
 		c = new Compressor(0);
 		c.setClosedLoopControl(true);
 		
-		SmartDashboard.putNumber("Gyro", sensors.getGyro()); //1 is a placeholder
+		SmartDashboard.putNumber("Gyro", sensors.getGyro()); 
 		SmartDashboard.putData("Location Selection", locationChooser);
 	}
 
@@ -79,7 +79,6 @@ public class Robot extends TimedRobot
 		driveTrain.setPoint(0);
 
 		fieldDataIMP = DriverStation.getInstance().getGameSpecificMessage(); 		
-		position = 1; //change this to get the value from the Smart Dash
 		position = locationChooser.getSelected();
 		m_autonomousCommand = new AutoMode(fieldDataIMP, position);
 		m_autonomousCommand.start();

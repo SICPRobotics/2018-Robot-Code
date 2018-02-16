@@ -20,6 +20,10 @@ public class Intake extends Command
     protected void initialize() 
     {	
     	System.out.println("intake command starting");
+    	if (speed < 0)
+    	{
+    		Robot.intakeArm.open();
+    	}
     }
 
     protected void execute() 
@@ -35,6 +39,10 @@ public class Intake extends Command
     protected void end() 
     {
     	Robot.intakeArm.intakeMotors(0, true);
+    	if(speed < 0)
+    	{
+    		Robot.intakeArm.shut();
+    	}
     }
     
     protected void interrupted() 
