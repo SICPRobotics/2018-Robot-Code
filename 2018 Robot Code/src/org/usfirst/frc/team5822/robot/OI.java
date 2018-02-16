@@ -44,14 +44,14 @@ public class OI
 
 		buttonLB.whenPressed(new Intake(.60, false));
 		buttonLB.whenReleased(new Intake(0, false));		
-		buttonRB.whenPressed(new Intake(-.60, false)); 
+		buttonRB.whenPressed(new Intake(-.10, false)); 
 		buttonRB.whenReleased(new Intake(0, false));
 		
-		buttonStart.whenActive(new SolenoidForward());
-		buttonBack.whenActive(new SolenoidReverse());
+		buttonStart.whenActive(new ReleaseHook("left"));
+		buttonBack.whenActive(new ReleaseHook("right"));
 		
-		leftThumb.whenActive(new ReleaseHook("left"));
-		rightThumb.whenActive(new ReleaseHook("right"));
+		leftThumb.whenActive(new SolenoidReverse());
+		rightThumb.whenActive(new OpenClose());
 				
 		if (x.getRawAxis(2) > 0)
 			new Climb("left");

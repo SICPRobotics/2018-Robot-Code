@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class IntakeArm extends Subsystem 
 {
 	VictorSP intakeRight, intakeLeft, armRight, armLeft;
-	DoubleSolenoid hanSolo;
+	DoubleSolenoid hanSolo, openShut;
 	
 	public IntakeArm()
 	{
@@ -21,6 +21,9 @@ public class IntakeArm extends Subsystem
 		
 		hanSolo = new DoubleSolenoid(0,1);
 		hanSolo.set(DoubleSolenoid.Value.kReverse);
+		
+		openShut = new DoubleSolenoid(2,3);
+		openShut.set(DoubleSolenoid.Value.kReverse);
 	}
 
     public void initDefaultCommand() {}
@@ -62,9 +65,14 @@ public class IntakeArm extends Subsystem
     	hanSolo.set(DoubleSolenoid.Value.kReverse);
     }
 
-    public void off()
+    public void open()
     {
-		hanSolo.set(DoubleSolenoid.Value.kOff);
+    	openShut.set(DoubleSolenoid.Value.kForward);
+    }
+    
+    public void shut()
+    {
+    	openShut.set(DoubleSolenoid.Value.kReverse);
     }
 }
 
