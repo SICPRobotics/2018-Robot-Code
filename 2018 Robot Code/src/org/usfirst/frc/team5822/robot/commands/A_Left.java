@@ -10,7 +10,6 @@ public class A_Left extends CommandGroup
     	if (gameData.charAt(0) == 'L' && gameData.charAt(1) != 'L')
     	{
     		// Left Side Switch	
-    		System.out.println("Left Position/Left Switch");
     		addSequential(new DriveForward(148.875));
     		addParallel(new MoveArm(RobotMap.k_potSwitch));
     		addSequential(new TurnGroup(90));
@@ -20,7 +19,6 @@ public class A_Left extends CommandGroup
     	else if (gameData.charAt(0) != 'L' && gameData.charAt(1) == 'L')
     	{
     		// Left Side Scale
-    		System.out.println("Left Position/Left Scale");
 			addSequential(new DriveForward(304.875));
 			addParallel(new MoveArm(RobotMap.k_potScale));
 			addSequential(new TurnGroup(90));
@@ -31,7 +29,6 @@ public class A_Left extends CommandGroup
     	{
     		if (side == 0)
     		{
-    			System.out.println("Left Position/Left Switch");
         		addSequential(new DriveForward(148.875));
         		addParallel(new MoveArm(RobotMap.k_potSwitch));
         		addSequential(new TurnGroup(90));
@@ -40,7 +37,6 @@ public class A_Left extends CommandGroup
     		}
     		else if (side == 1)
     		{
-        		System.out.println("Left Position/Left Scale");
     			addSequential(new DriveForward(304.875));
     			addParallel(new MoveArm(RobotMap.k_potScale));
     			addSequential(new TurnGroup(90));
