@@ -59,6 +59,7 @@ public class Robot extends TimedRobot
 		c.setClosedLoopControl(true);
 		
 		SmartDashboard.putNumber("Gyro", sensors.getGyro()); 
+		SmartDashboard.putNumber("Potentiometer", sensors.getPot());
 		SmartDashboard.putData("Location Selection", locationChooser);
 		SmartDashboard.putData("Goal Selection", goalChooser);
 	}
