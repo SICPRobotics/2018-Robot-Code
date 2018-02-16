@@ -17,7 +17,6 @@ public class A_Right extends CommandGroup
     		addSequential(new TurnGroup(-90));
     		addSequential(new DriveForward(19.435));
     		addSequential(new Intake(-.7, false));
-    		
     	} 
     	else 
     	{
