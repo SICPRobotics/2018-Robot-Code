@@ -24,10 +24,7 @@ public class ReleaseHook extends Command
     // Called repeatedly when this Command is scheduled to run
     protected void execute() 
     {
-    	if (hookSide == "left")
-    		Robot.climber.releaseLeft();
-    	if (hookSide == "right")
-    		Robot.climber.releaseRight();
+    	Robot.climber.release();
     }
 
     // Make this return true when this Command no longer needs to run execute()
