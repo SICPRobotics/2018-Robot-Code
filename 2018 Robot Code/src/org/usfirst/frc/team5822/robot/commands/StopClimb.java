@@ -7,35 +7,32 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class Climb extends Command 
-{
-	String hook;
+public class StopClimb extends Command {
+
+	boolean isLeftTrigger;
 	
-    public Climb(String side) 
+    public StopClimb(boolean leftSide) 
     {
-        hook = side;
-    	requires(Robot.climber);
+        requires(Robot.climber);
+        isLeftTrigger = leftSide;
     }
 
     // Called just before this Command runs the first time
-    protected void initialize() 
-    {
-    	if (!Robot.isOldRobot) {}
-    	//	Robot.c.setClosedLoopControl(false);
+    protected void initialize() {
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() 
     {
-    	if (hook == "left")
-    		Robot.climber.climbLeft();
-    	if (hook == "right")
-    		Robot.climber.climbRight();
+    	if(isLeftTrigger)
+    		Robot.climber.stopClimbLeft();
+    	else
+    		Robot.climber.stopClimbRight();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return true;
     }
 
     // Called once after isFinished returns true

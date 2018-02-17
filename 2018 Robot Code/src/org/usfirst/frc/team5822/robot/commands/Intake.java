@@ -31,17 +31,12 @@ public class Intake extends Command
 
     protected boolean isFinished() 
     {
+    	if (speed == 0)
+    		return true;
         return false;
     }
 
-    protected void end() 
-    {
-    	Robot.intakeArm.intakeMotors(0);
-    	if(speed < 0)
-    	{
-    		Robot.intakeArm.shut();
-    	}
-    }
+    protected void end() {}
     
     protected void interrupted() 
     {	

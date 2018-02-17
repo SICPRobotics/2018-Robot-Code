@@ -30,14 +30,12 @@ public class Drivetrain extends PIDSubsystem
 		isTurning = false; 
 		isBackwards = false; 
 				
-		frontL = new WPI_TalonSRX(RobotMap.k_frontLeft); //4
-		rearL = new WPI_TalonSRX(RobotMap.k_rearLeft); //1
+		frontL = new WPI_TalonSRX(RobotMap.k_frontLeft); 
+		rearL = new WPI_TalonSRX(RobotMap.k_rearLeft); 
 		
-		frontR = new WPI_TalonSRX(RobotMap.k_frontRight); //2
-		rearR = new WPI_TalonSRX(RobotMap.k_rearRight); //3
-		
-		
-		
+		frontR = new WPI_TalonSRX(RobotMap.k_frontRight); 
+		rearR = new WPI_TalonSRX(RobotMap.k_rearRight); 
+				
 		//rearL.setInverted(false);
 		//rearL.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 0); 
 		//frontR.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 0); 

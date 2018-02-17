@@ -6,11 +6,11 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.buttons.Trigger;
 
 public class OI 
 {	
-	Joystick j = new Joystick(RobotMap.k_joystick1);
-	XboxController x = new XboxController(RobotMap.k_xboxCntrl);
+	XboxController x = Robot.x;
 
 	Button j1 = new JoystickButton(Robot.j, 1);
 	Button j2 = new JoystickButton(Robot.j, 2);
@@ -33,7 +33,10 @@ public class OI
 	Button buttonStart = new JoystickButton(x, 8); //Old 10 
 	Button leftThumb = new JoystickButton(x, 9);
 	Button rightThumb = new JoystickButton(x, 10);
-
+		
+	XboxTrigger leftTrig = new XboxTrigger(true);
+	XboxTrigger rightTrig = new XboxTrigger(false);
+	
 	public OI()
 	{
 		buttonA.whenPressed(new ArmButton("Floor", RobotMap.k_potFloor));
@@ -46,16 +49,17 @@ public class OI
 		buttonRB.whenPressed(new Intake(-.10)); 
 		buttonRB.whenReleased(new Intake(0));
 		
-		buttonStart.whenPressed(new SolenoidReverse());
-		buttonBack.whenPressed(new SolenoidForward());
+// TODO: re-enable for solenoid
+//		buttonStart.whenPressed(new SolenoidReverse());
+//		buttonBack.whenPressed(new SolenoidForward());
 		
 		leftThumb.whenPressed(new ReleaseHook());
 		rightThumb.whenPressed(new OpenClose());
 				
-		if (x.getRawAxis(2) > 0)
-			new Climb("left");
-		if(x.getRawAxis(3) > 0)
-			new Climb("right");
+		leftTrig.whenActive(new Climb("left"));
+		leftTrig.whenInactive(new StopClimb(true));
+		rightTrig.whenActive(new Climb("right"));
+		rightTrig.whenInactive(new StopClimb(false));
 		
 		new MoveArm(x.getRawAxis(1)); 
 		
@@ -66,8 +70,9 @@ public class OI
 		
 		j3.whenActive(new Climb("left"));
 		j4.whenActive(new Climb("right"));
-		j5.whenPressed(new SolenoidForward());
-		j6.whenPressed(new SolenoidReverse());
+		// TODO: re-enable for solenoid
+//		j5.whenPressed(new SolenoidForward());
+//		j6.whenPressed(new SolenoidReverse());
 		j7.whenActive(new ReleaseHook());
 		j8.whenActive(new OpenClose());
 		j10.whenPressed(new FallDown(-1));

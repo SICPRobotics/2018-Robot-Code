@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.command.*;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -22,17 +23,19 @@ public class Robot extends TimedRobot
 	public static IntakeArm intakeArm;
 	public static AntiFallMech antiFall;
 	public static Climber climber;
-	public static boolean isOldRobot = true;
+	
+	public static boolean isOldRobot = false;
 	
 	public static AutoMode autoMode;	
 	Command m_autonomousCommand;
 			
 	public static Joystick j = new Joystick(RobotMap.k_joystick1);
+	public static XboxController x = new XboxController(RobotMap.k_xboxCntrl);
 	public String fieldDataIMP;
 
-	public static Compressor c;
+	//public static Compressor c;
 
-	UsbCamera cami = CameraServer.getInstance().startAutomaticCapture(0);
+	//UsbCamera cami = CameraServer.getInstance().startAutomaticCapture(0);
 	
 	SendableChooser<Integer> locationChooser = new SendableChooser<>();
 	SendableChooser<Integer> goalChooser = new SendableChooser<>();
@@ -54,10 +57,13 @@ public class Robot extends TimedRobot
 		sensors = new Sensors();
 		intakeArm = new IntakeArm();
 		antiFall = new AntiFallMech();
+		climber = new Climber();
 		oi = new OI(); 
 	
-		c = new Compressor(0);
-		c.setClosedLoopControl(true);
+		if (!isOldRobot) {
+		//	c = new Compressor(0);
+		//	c.setClosedLoopControl(true);
+		}
 		
 		SmartDashboard.putNumber("Gyro", sensors.getGyro()); 
 		SmartDashboard.putNumber("Potentiometer", sensors.getPot());
@@ -72,20 +78,18 @@ public class Robot extends TimedRobot
 	}                                 
 	
 	@Override
-	public void disabledPeriodic() 
-	{
-	   	//Scheduler.getInstance().removeAll();
-	}	
+	public void disabledPeriodic() {}	
 	
 	@Override
 	public void autonomousInit() 
 	{
 		Robot.sensors.resetGyro();
-		driveTrain.setPoint(0);
-
+		Drivetrain.setPoint(0);
+		
 		fieldDataIMP = DriverStation.getInstance().getGameSpecificMessage(); 		
 		position = locationChooser.getSelected();
 		goal = goalChooser.getSelected();
+		
 		m_autonomousCommand = new AutoMode(fieldDataIMP, position, goal);
 		m_autonomousCommand.start();
 	}
@@ -94,7 +98,6 @@ public class Robot extends TimedRobot
     public void autonomousPeriodic() 
     {
     	Scheduler.getInstance().run();
-		System.out.println("Drivetrain encoders in subsystem: " + driveTrain.encDistance());
 		
 		SmartDashboard.putNumber("Gyro", sensors.getGyro()); 
 		SmartDashboard.putData("Location Selection", locationChooser);
@@ -112,7 +115,7 @@ public class Robot extends TimedRobot
 		Robot.sensors.resetEncoders();
 	}
 
- 
+    int count = 0;
 	@Override
 	public void teleopPeriodic() 
 	{
@@ -120,6 +123,10 @@ public class Robot extends TimedRobot
 		driveTrain.cheesyDrive(j);
 		//System.out.println("pot: " + Robot.sensors.getPot());
 		SmartDashboard.putNumber("Gyro", sensors.getGyro());
+		SmartDashboard.putNumber("Potentiometer", sensors.getPot());
+		if (count++ % 50 == 0) {
+			System.out.println("Potentiometer: " + sensors.getPot());
+		}
 	}
 
 	@Override

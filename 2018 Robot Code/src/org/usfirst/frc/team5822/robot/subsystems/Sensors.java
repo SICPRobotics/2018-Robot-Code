@@ -13,7 +13,6 @@ import edu.wpi.first.wpilibj.AnalogPotentiometer;
 
 public class Sensors extends Subsystem 
 {
-	
 	static ADXRS450_Gyro gyro;
 	static Encoder leftEncoder, rightEncoder;
 	static double gyroAngle;
@@ -21,7 +20,11 @@ public class Sensors extends Subsystem
 	
 	public Sensors()
 	{
-		if (Robot.isOldRobot) return;
+		if (Robot.isOldRobot) 
+		{
+			pot = new AnalogPotentiometer(RobotMap.k_pot, 3600, -180); 
+			return;
+		}
 		gyro = new ADXRS450_Gyro();
 		
 		leftEncoder = new Encoder(RobotMap.k_leftEncoder_A, RobotMap.k_leftEncoder_B, false, Encoder.EncodingType.k4X);
@@ -39,13 +42,14 @@ public class Sensors extends Subsystem
 		rightEncoder.setSamplesToAverage(7);
 		rightEncoder.setReverseDirection(true);
 		
-		pot = new AnalogPotentiometer(RobotMap.k_pot, 3600, -180); 
+		pot = new AnalogPotentiometer(RobotMap.k_pot); 
 	}
 	
 	public double getPot()
 	{
-		System.out.println("Sensors getPot");
-		if (Robot.isOldRobot) return 0;
+	//	System.out.println("Sensors getPot");
+	//	if (Robot.isOldRobot) return 0;
+//		System.out.println("Pot: " + pot.get());
 		return pot.get();
 	}
 	
@@ -66,7 +70,7 @@ public class Sensors extends Subsystem
 	
 	public double getGyro()
 	{
-		System.out.println("Sensors getGyro");
+		//System.out.println("Sensors getGyro");
 		if (Robot.isOldRobot) return 0;
 		return gyro.getAngle();
 	}
