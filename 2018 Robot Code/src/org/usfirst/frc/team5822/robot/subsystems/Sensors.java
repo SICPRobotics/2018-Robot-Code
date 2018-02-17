@@ -41,7 +41,7 @@ public class Sensors extends Subsystem
 		rightEncoder.setReverseDirection(false);
 		rightEncoder.setSamplesToAverage(7);
 		rightEncoder.setReverseDirection(true);
-		
+		//hi
 		pot = new AnalogPotentiometer(RobotMap.k_pot); 
 	}
 	
