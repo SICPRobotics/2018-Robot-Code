@@ -11,7 +11,7 @@ public class A_Right extends CommandGroup
     	if (gameData.charAt(0) == 'R' && gameData.charAt(1) != 'R')
     	{
     		//Right Side Switch
-    		System.out.println("Right Position/ R !R / Right Switch");
+    		System.out.println("Right Position/Right Switch");
     		addSequential(new DriveForward(148.875));
     		addParallel(new MoveArm(RobotMap.k_potSwitch));
     		addSequential(new TurnGroup(-90));
@@ -21,20 +21,19 @@ public class A_Right extends CommandGroup
     	else if (gameData.charAt(0) != 'R' && gameData.charAt(1) == 'R')
     	{
     		// Right Side Scale
-			System.out.println("Right Position/ !R R/ Right Scale");
+			System.out.println("Right Position/Right Scale");
 			addSequential(new DriveForward(304.875));
 			addParallel(new MoveArm(RobotMap.k_potScale));
 			addSequential(new TurnGroup(-90));
 			addSequential(new DriveForward(5.755));
 			addSequential(new Intake(-.7));
     	}
-    	else if (gameData.charAt(0) == 'R' && gameData.charAt(1) == 'R')
+    	else if (gameData.charAt(0) == 'L' && gameData.charAt(1) == 'L')
     	{
-			System.out.println("Right Position/R R");
     		if (side == 0)
     		{
         		//Right Side Switch
-        		System.out.println("User Chose Switch");
+        		System.out.println("Right Position/Right Switch");
         		addSequential(new DriveForward(148.875));
         		addParallel(new MoveArm(RobotMap.k_potSwitch));
         		addSequential(new TurnGroup(-90));
@@ -44,7 +43,7 @@ public class A_Right extends CommandGroup
     		else if (side == 1)
     		{
         		// Right Side Scale
-    			System.out.println("User Chose Scale");
+    			System.out.println("Right Position/Right Scale");
     			addSequential(new DriveForward(304.875));
     			addParallel(new MoveArm(RobotMap.k_potScale));
     			addSequential(new TurnGroup(-90));
@@ -55,7 +54,7 @@ public class A_Right extends CommandGroup
     	else 
     	{
     		// Cross Baseline
-    		System.out.println("Right Position/!R !R /Cross Baseline");
+    		System.out.println("Left Position/Cross Baseline");
     		addSequential(new DriveForward(148.875));
     	}
     }
