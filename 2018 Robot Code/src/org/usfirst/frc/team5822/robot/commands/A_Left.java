@@ -14,7 +14,7 @@ public class A_Left extends CommandGroup
     		addParallel(new MoveArm(RobotMap.k_potSwitch));
     		addSequential(new TurnGroup(90));
     		addSequential(new DriveForward(19.435));
-    		addSequential(new Intake(-.7, false));
+    		addSequential(new Intake(-.7));
     	} 
     	else if (gameData.charAt(0) != 'L' && gameData.charAt(1) == 'L')
     	{
@@ -23,7 +23,7 @@ public class A_Left extends CommandGroup
 			addParallel(new MoveArm(RobotMap.k_potScale));
 			addSequential(new TurnGroup(90));
 			addSequential(new DriveForward(5.755)); 
-			addSequential(new Intake(-.7, false));
+			addSequential(new Intake(-.7));
     	}
     	else if (gameData.charAt(0) == 'L' && gameData.charAt(1) == 'L')
     	{
@@ -33,7 +33,7 @@ public class A_Left extends CommandGroup
         		addParallel(new MoveArm(RobotMap.k_potSwitch));
         		addSequential(new TurnGroup(90));
         		addSequential(new DriveForward(19.435));
-        		addSequential(new Intake(-.7, false));
+        		addSequential(new Intake(-.7));
     		}
     		else if (side == 1)
     		{
@@ -41,7 +41,7 @@ public class A_Left extends CommandGroup
     			addParallel(new MoveArm(RobotMap.k_potScale));
     			addSequential(new TurnGroup(90));
     			addSequential(new DriveForward(5.755)); 
-    			addSequential(new Intake(-.7, false));
+    			addSequential(new Intake(-.7));
     		}
     	}
     		

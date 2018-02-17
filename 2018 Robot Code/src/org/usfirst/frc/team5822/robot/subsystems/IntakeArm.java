@@ -1,5 +1,6 @@
 package org.usfirst.frc.team5822.robot.subsystems;
 
+import org.usfirst.frc.team5822.robot.Robot;
 import org.usfirst.frc.team5822.robot.RobotMap;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
@@ -18,6 +19,7 @@ public class IntakeArm extends Subsystem
 	
 	public IntakeArm()
 	{
+		if (Robot.isOldRobot) return;
 		intakeRight = new VictorSP(RobotMap.k_intakeRight);
 		intakeLeft = new VictorSP(RobotMap.k_intakeLeft);
 		intakeLeft.setInverted(true);	
@@ -37,48 +39,46 @@ public class IntakeArm extends Subsystem
 
     public void initDefaultCommand() {}
     
-    public void armMotors(boolean reverse, double speed)
+    public void armMotors(double speed)
     {
-    	if (!reverse)
-    	{
+    	System.out.println("IntakeArm armMotors: " + speed);
+    	if (Robot.isOldRobot) return;
     		arm.set(speed);
-    	}
-    	else
-    	{
-    		arm.set(-speed);
-       	}
     }
-    public void intakeMotors(double speed, boolean oneSide)
-    {
-    	if (!oneSide)
-    	{
-    		intakeRight.set(speed);
-    		intakeLeft.set(speed);
-    	} 
-    	else if (oneSide)
-    	{
-    		intakeLeft.set(speed);
-    		intakeRight.set(-speed - 0.8);
-    	}
+    
+    public void intakeMotors(double speed)
+    {	
+    	System.out.println("IntakeArm intakeMotors: " + speed);
+    	if (Robot.isOldRobot) return;
+    	intakeRight.set(speed);
+    	intakeLeft.set(speed);
     }
     
     public void forward()
     {
+    	System.out.println("IntakeArm forward");
+    	if (Robot.isOldRobot) return;
     	hanSolo.set(DoubleSolenoid.Value.kForward);
     }
     
     public void reverse()
     {
+    	System.out.println("IntakeArm reverse");
+    	if (Robot.isOldRobot) return;
     	hanSolo.set(DoubleSolenoid.Value.kReverse);
     }
 
     public void open()
     {
+    	System.out.println("IntakeArm open");
+    	if (Robot.isOldRobot) return;
     	openShut.set(DoubleSolenoid.Value.kForward);
     }
     
     public void shut()
     {
+    	System.out.println("IntakeArm shut");
+    	if (Robot.isOldRobot) return;
     	openShut.set(DoubleSolenoid.Value.kReverse);
     }
 }

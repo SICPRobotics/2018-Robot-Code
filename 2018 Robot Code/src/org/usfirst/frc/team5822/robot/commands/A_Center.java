@@ -25,7 +25,7 @@ public class A_Center extends CommandGroup
     		addSequential(new DriveForward(61));
     		addSequential(new TurnGroup(90));
     		addSequential(new DriveForward(60.785));
-    		addSequential(new Intake(-.7, false));
+    		addSequential(new Intake(-.7));
     	} 
     	else if (gameData.charAt(1) == 'R') 
     	{
@@ -37,7 +37,7 @@ public class A_Center extends CommandGroup
     		addSequential(new DriveForward(46.2));
     		addSequential(new TurnGroup(-90));
     		addSequential(new DriveForward(60.785));
-    		addSequential(new Intake(-.7, false));
+    		addSequential(new Intake(-.7));
     	}
     	
     }

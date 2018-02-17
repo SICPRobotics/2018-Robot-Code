@@ -8,13 +8,11 @@ import edu.wpi.first.wpilibj.command.Command;
 public class Intake extends Command 
 {
 	double speed;
-	boolean side;
 	
-	public Intake(double d, boolean oneSide) 
+	public Intake(double d) 
     {
         requires(Robot.intakeArm);
-        speed = d;
-        side = oneSide;   
+        speed = d;   
     }
 
     protected void initialize() 
@@ -28,7 +26,7 @@ public class Intake extends Command
 
     protected void execute() 
     {
-    	Robot.intakeArm.intakeMotors(speed, side);
+    	Robot.intakeArm.intakeMotors(speed);
     }
 
     protected boolean isFinished() 
@@ -38,7 +36,7 @@ public class Intake extends Command
 
     protected void end() 
     {
-    	Robot.intakeArm.intakeMotors(0, true);
+    	Robot.intakeArm.intakeMotors(0);
     	if(speed < 0)
     	{
     		Robot.intakeArm.shut();

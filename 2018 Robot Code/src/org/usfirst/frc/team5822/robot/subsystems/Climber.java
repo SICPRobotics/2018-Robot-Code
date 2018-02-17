@@ -1,5 +1,6 @@
 package org.usfirst.frc.team5822.robot.subsystems;
 
+import org.usfirst.frc.team5822.robot.Robot;
 import org.usfirst.frc.team5822.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
@@ -14,24 +15,37 @@ public class Climber extends Subsystem
 	DoubleSolenoid release;
 	public Climber()
 	{
-		climberL = new VictorSP(RobotMap.k_climbLeft);
-		climberR = new VictorSP(RobotMap.k_climbRight);
-		//servo1 = new Servo(RobotMap.k_servo1);
-		//servo2 = new Servo(RobotMap.k_servo2);
-		release = new DoubleSolenoid(RobotMap.k_climberSolo1, RobotMap.k_climberSolo2);
-		release.set(DoubleSolenoid.Value.kReverse);
+		if (Robot.isOldRobot) {
+			climberL = null;
+			climberR = null;
+			release = null;
+		} else {
+			climberL = new VictorSP(RobotMap.k_climbLeft);
+			climberR = new VictorSP(RobotMap.k_climbRight);
+
+			// servo1 = new Servo(RobotMap.k_servo1);
+			// servo2 = new Servo(RobotMap.k_servo2);
+			release = new DoubleSolenoid(RobotMap.k_climberSolo1, RobotMap.k_climberSolo2);
+			release.set(DoubleSolenoid.Value.kReverse);
+		}
 	}
 	
 	public void climbLeft()
 	{
+		System.out.println("Climber - climbLeft");
+		if (Robot.isOldRobot) {return;}
 		climberL.set(.5);
 	}
 	public void climbRight()
 	{
+		System.out.println("Climber - climbRight");
+		if (Robot.isOldRobot) {return;}
 		climberR.set(.5);
 	}
 	public void release()
 	{
+		System.out.println("Climber - release");
+		if (Robot.isOldRobot) {return;}
 		release.set(DoubleSolenoid.Value.kForward);
 	}
 	

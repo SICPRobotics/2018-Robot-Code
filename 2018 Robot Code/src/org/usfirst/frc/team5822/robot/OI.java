@@ -41,26 +41,29 @@ public class OI
 		buttonX.whenPressed(new ArmButton("Exchange", RobotMap.k_potExchange)); 
 		buttonY.whenPressed(new ArmButton("Scale", RobotMap.k_potScale)); 
 
-		buttonLB.whenPressed(new Intake(.60, false));
-		buttonLB.whenReleased(new Intake(0, false));		
-		buttonRB.whenPressed(new Intake(-.10, false)); 
-		buttonRB.whenReleased(new Intake(0, false));
+		buttonLB.whenPressed(new Intake(.60));
+		buttonLB.whenReleased(new Intake(0));		
+		buttonRB.whenPressed(new Intake(-.10)); 
+		buttonRB.whenReleased(new Intake(0));
 		
-		buttonStart.whenActive(new SolenoidReverse());
-		buttonBack.whenActive(new SolenoidForward());
+		buttonStart.whenPressed(new SolenoidReverse());
+		buttonBack.whenPressed(new SolenoidForward());
 		
-		leftThumb.whenActive(new ReleaseHook());
-		rightThumb.whenActive(new OpenClose());
+		leftThumb.whenPressed(new ReleaseHook());
+		rightThumb.whenPressed(new OpenClose());
 				
 		if (x.getRawAxis(2) > 0)
 			new Climb("left");
 		if(x.getRawAxis(3) > 0)
 			new Climb("right");
 		
-		j1.whenPressed(new Intake(.60, false));
-		j1.whenReleased(new Intake(0, false));
-		j2.whenPressed(new Intake(-.60, false));
-		j2.whenReleased(new Intake(0, false));
+		new MoveArm(x.getRawAxis(1)); 
+		
+		j1.whenPressed(new Intake(.60));
+		j1.whenReleased(new Intake(0));
+		j2.whenPressed(new Intake(-.60));
+		j2.whenReleased(new Intake(0));
+		
 		j3.whenActive(new Climb("left"));
 		j4.whenActive(new Climb("right"));
 		j5.whenPressed(new SolenoidForward());

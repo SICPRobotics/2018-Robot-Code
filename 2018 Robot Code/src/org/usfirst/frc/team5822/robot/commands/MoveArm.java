@@ -7,9 +7,8 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class MoveArm extends Command 
 {
-	double desiredDegrees;
-	
-	boolean finish;
+	double desiredDegrees, currentDegrees, aBot, aTop, bTop, cTop, dTop, speedUpA, speedUpB, speedUpC, speedUpD, speedDownA, speedDownB, speedDownC, speedDownD;
+	boolean goingUp;
 	
     public MoveArm(double degrees) 
     {
@@ -21,70 +20,55 @@ public class MoveArm extends Command
     // Called just before this Command runs the first time
     protected void initialize() 
     {
-    		if(Robot.sensors.getPot() < desiredDegrees)
-    			finish = true;
-    		else if(Robot.sensors.getPot() > desiredDegrees)
-    			finish = false;
+    	if(Robot.sensors.getPot() < desiredDegrees)
+    		goingUp = true;
+    	else if(Robot.sensors.getPot() > desiredDegrees)
+    		goingUp = false;
     }
 
-    // Called repeatedly when this Command is scheduled to run
-    // IMPORTANT: Check that the motors are moving the right way.
     protected void execute() 
     {
-    		
-    		if(Robot.sensors.getPot() < desiredDegrees)
-    		{
-    			if (Robot.sensors.getPot() < desiredDegrees - 500)
-    			{
-    				Robot.intakeArm.armMotors(true, 1.0);
-    			} 
-    			else if (Robot.sensors.getPot() < desiredDegrees - 300)
-    			{
-    				Robot.intakeArm.armMotors(true, .5);
-    			}
-    			else if (Robot.sensors.getPot() < desiredDegrees - 200)
-    			{
-    				Robot.intakeArm.armMotors(true, .1);
-    			}
-    		} 
-    		else if (Robot.sensors.getPot() > desiredDegrees)
-    		{
-    			if (Robot.sensors.getPot() > desiredDegrees + 500)
-    			{
-    				Robot.intakeArm.armMotors(false, 1.0);
-    			} 
-    			else if (Robot.sensors.getPot() > desiredDegrees + 300)
-    			{
-    				Robot.intakeArm.armMotors(false, .5);
-    			}
-    			else if (Robot.sensors.getPot() > desiredDegrees + 200)
-    			{
-    				Robot.intakeArm.armMotors(false, .1);
-    			}
-    			finish = false;
-    		}
+    	currentDegrees = Robot.sensors.getPot();
+    	double speed = 0;
+    	
+    	if (goingUp)
+    	{
+    		if (currentDegrees < aTop)
+    			speed = speedUpA;
+    		else if (currentDegrees < bTop)
+    			speed = speedUpB;
+    		else if (currentDegrees < cTop)
+    			speed = speedUpC;
+    		else
+    			speed = speedUpD;
+    	}
+    	else
+    	{
+    		if (currentDegrees > cTop)
+    			speed = speedDownD;
+    		else if (currentDegrees > bTop)
+    			speed = speedDownC;
+    		else if (currentDegrees > aTop)
+    			speed = speedDownB;
+    		else
+    			speed = speedDownA;
+    	}
+    	
+    	Robot.intakeArm.armMotors(speed);
     }
 
-    // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() 
     {
-    		if (finish)
-    		{
-    			if (Robot.sensors.getPot() > desiredDegrees)
-    				return true;
-    		}
-    		else if (!finish)
-    		{
-    			if (Robot.sensors.getPot() < desiredDegrees)
-    				return true;
-    		}
-    		return false;
+    	if (goingUp && Robot.sensors.getPot() > desiredDegrees)
+    		return true;
+    	if (!goingUp && Robot.sensors.getPot() < desiredDegrees)
+    		return true;
+    	return false;
     }
 
-    // Called once after isFinished returns true
     protected void end() 
     {
-    		Robot.intakeArm.armMotors(true, 0);
+    		Robot.intakeArm.armMotors(0);
     }
 
     // Called when another command which requires one or more of the same

@@ -22,6 +22,7 @@ public class Robot extends TimedRobot
 	public static IntakeArm intakeArm;
 	public static AntiFallMech antiFall;
 	public static Climber climber;
+	public static boolean isOldRobot = true;
 	
 	public static AutoMode autoMode;	
 	Command m_autonomousCommand;
