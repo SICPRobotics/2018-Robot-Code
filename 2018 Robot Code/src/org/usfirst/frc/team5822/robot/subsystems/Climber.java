@@ -12,24 +12,21 @@ public class Climber extends Subsystem
 {
 	VictorSP climberL, climberR;
 //	Servo servo1, servo2;
-	// TODO: re-enable for solenoid
-//	DoubleSolenoid release;
+	DoubleSolenoid release;
 	public Climber()
 	{
 		if (Robot.isOldRobot) {
 			climberL = null;
 			climberR = null;
-			// TODO: re-enable for solenoid
-//			release = null;
+			release = null;
 		} else {
 			climberL = new VictorSP(RobotMap.k_climbLeft);
 			climberR = new VictorSP(RobotMap.k_climbRight);
 
 			// servo1 = new Servo(RobotMap.k_servo1);
 			// servo2 = new Servo(RobotMap.k_servo2);
-			// TODO: re-enable for solenoid
-//			release = new DoubleSolenoid(RobotMap.k_climberSolo1, RobotMap.k_climberSolo2);
-//			release.set(DoubleSolenoid.Value.kReverse);
+			release = new DoubleSolenoid(RobotMap.k_climberSolo1, RobotMap.k_climberSolo2);
+			release.set(DoubleSolenoid.Value.kReverse);
 		}
 	}
 	
@@ -61,8 +58,7 @@ public class Climber extends Subsystem
 	{
 		System.out.println("Climber - release");
 		if (Robot.isOldRobot) {return;}
-		// TODO: re-enable for solenoid
-//		release.set(DoubleSolenoid.Value.kForward);
+		release.set(DoubleSolenoid.Value.kForward);
 	}
 	
     public void initDefaultCommand() {}

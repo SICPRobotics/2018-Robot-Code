@@ -11,8 +11,7 @@ public class ArmButton extends CommandGroup {
     {
        if (area == "Floor")
        {
-    	// TODO: re-enable for solenoid
-//    	   addSequential(new SolenoidForward());
+       	   addSequential(new SolenoidForward());
     	   addSequential(new MoveArm(degrees));
        }
        else

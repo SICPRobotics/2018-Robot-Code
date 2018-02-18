@@ -87,7 +87,6 @@ public class Drivetrain extends PIDSubsystem
     		{
     			robotBase.tankDrive(.4 - output, .4 + output);
     		}
-    			
     }
 	
 	public void changeIsTurning(boolean val)
@@ -119,6 +118,7 @@ public class Drivetrain extends PIDSubsystem
     		{
     			moveValue = 0; 
     		}
+    		
 
     		//creates a dead zone on x axis value only if the y axis value is small 
     		if (Math.abs(rotateValue) < 0.005 && Math.abs(moveValue) < 0.1)
@@ -128,7 +128,7 @@ public class Drivetrain extends PIDSubsystem
 
     		//scale down the values 
     		moveValue = moveValue * scale * -1; 
-    		rotateValue = rotateValue * 0.6; //rotation scale factor used last year (2016), can change 
+    		rotateValue = rotateValue; //rotation scale factor used last year (2016), can change 
 		
     		robotBase.arcadeDrive(moveValue, rotateValue, true);
     }

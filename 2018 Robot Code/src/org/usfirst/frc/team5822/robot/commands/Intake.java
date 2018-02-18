@@ -11,22 +11,18 @@ public class Intake extends Command
 	
 	public Intake(double d) 
     {
-        requires(Robot.intakeArm);
+        requires(Robot.intake);
         speed = d;   
     }
 
     protected void initialize() 
     {	
     	System.out.println("intake command starting");
-    	if (speed < 0)
-    	{
-    		Robot.intakeArm.open();
-    	}
     }
 
     protected void execute() 
     {
-    	Robot.intakeArm.intakeMotors(speed);
+    	Robot.intake.intakeMotors(speed);
     }
 
     protected boolean isFinished() 

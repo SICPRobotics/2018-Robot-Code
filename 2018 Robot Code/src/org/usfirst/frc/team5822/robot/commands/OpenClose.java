@@ -9,7 +9,7 @@ public class OpenClose extends Command
 	
 	public OpenClose() 
     {
-    	requires(Robot.intakeArm);
+    	requires(Robot.intake);
     }
 
     protected void initialize() 
@@ -20,9 +20,9 @@ public class OpenClose extends Command
     protected void execute() 
     {
     	if (direction)
-    		Robot.intakeArm.open();
+    		Robot.intake.open();
     	else if (!direction)
-    		Robot.intakeArm.shut();
+    		Robot.intake.shut();
     }
 
     protected boolean isFinished() 

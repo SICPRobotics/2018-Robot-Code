@@ -8,12 +8,12 @@ public class SolenoidReverse extends Command
 
     public SolenoidReverse() 
     {
-        requires(Robot.intakeArm);
+        requires(Robot.intake);
     }
 
     protected void initialize() 
     {
-    	Robot.intakeArm.reverse();
+    	Robot.intake.reverse();
     }
 
     protected void execute() {}

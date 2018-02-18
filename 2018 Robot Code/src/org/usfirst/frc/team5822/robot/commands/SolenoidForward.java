@@ -9,12 +9,12 @@ public class SolenoidForward extends Command
 {
     public SolenoidForward() 
     {
-        requires(Robot.intakeArm);
+        requires(Robot.intake);
     }
 
     protected void initialize() 
     {
-    	Robot.intakeArm.forward();
+    	Robot.intake.forward();
     }
 
     protected void execute() {}

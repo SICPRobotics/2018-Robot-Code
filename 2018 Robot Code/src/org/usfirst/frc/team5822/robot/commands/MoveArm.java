@@ -13,7 +13,7 @@ public class MoveArm extends Command
 	
     public MoveArm(double degrees) 
     {
-    	requires(Robot.intakeArm);
+    	requires(Robot.intake);
    		requires(Robot.sensors);
         desiredDegrees = degrees;
     }
@@ -26,7 +26,7 @@ public class MoveArm extends Command
 //    		goingUp = true;
 //    	else if(Robot.sensors.getPot() > desiredDegrees)
 //    		goingUp = false;
-    	Robot.intakeArm.armMotors(desiredDegrees);
+    	Robot.intake.armMotors(desiredDegrees);
     }
 
     protected void execute() 
@@ -73,7 +73,7 @@ public class MoveArm extends Command
 
     protected void end() 
     {
-    		Robot.intakeArm.armMotors(0);
+    		Robot.intake.armMotors(0);
     }
 
     // Called when another command which requires one or more of the same

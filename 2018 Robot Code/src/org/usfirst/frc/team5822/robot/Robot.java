@@ -14,15 +14,18 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team5822.robot.commands.AutoMode;
 import org.usfirst.frc.team5822.robot.subsystems.*;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
+
 public class Robot extends TimedRobot 
 {
 	public static OI oi;
 
 	public static Drivetrain driveTrain;
 	public static Sensors sensors;
-	public static IntakeArm intakeArm;
+	public static Intake intake;
 	public static AntiFallMech antiFall;
 	public static Climber climber;
+	public static ArmPID arm;
 	
 	public static boolean isOldRobot = false;
 	
@@ -32,8 +35,8 @@ public class Robot extends TimedRobot
 	public static Joystick j = new Joystick(RobotMap.k_joystick1);
 	public static XboxController x = new XboxController(RobotMap.k_xboxCntrl);
 	public String fieldDataIMP;
-
-	//public static Compressor c;
+//TODO: comment back in
+//	public static Compressor c;
 
 	//UsbCamera cami = CameraServer.getInstance().startAutomaticCapture(0);
 	
@@ -55,14 +58,17 @@ public class Robot extends TimedRobot
 		
 		driveTrain = new Drivetrain();
 		sensors = new Sensors();
-		intakeArm = new IntakeArm();
+		intake = new Intake();
 		antiFall = new AntiFallMech();
 		climber = new Climber();
+		arm = new ArmPID();
+		//TODO: disable arm pids every time we disbale bot
 		oi = new OI(); 
 	
 		if (!isOldRobot) {
-		//	c = new Compressor(0);
-		//	c.setClosedLoopControl(true);
+//TODO: comment back in
+			//			c = new Compressor(0);
+//			c.setClosedLoopControl(true);
 		}
 		
 		SmartDashboard.putNumber("Gyro", sensors.getGyro()); 
@@ -127,6 +133,8 @@ public class Robot extends TimedRobot
 		if (count++ % 50 == 0) {
 			System.out.println("Potentiometer: " + sensors.getPot());
 		}
+		
+		intake.manualCntrl(x.getRawAxis(5) * -1);
 	}
 
 	@Override

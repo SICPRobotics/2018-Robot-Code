@@ -39,22 +39,26 @@ public class OI
 	
 	public OI()
 	{
-		buttonA.whenPressed(new ArmButton("Floor", RobotMap.k_potFloor));
-		buttonB.whenPressed(new ArmButton("Switch", RobotMap.k_potSwitch)); 
-		buttonX.whenPressed(new ArmButton("Exchange", RobotMap.k_potExchange)); 
-		buttonY.whenPressed(new ArmButton("Scale", RobotMap.k_potScale)); 
-
+//		buttonA.whenPressed(new ArmButton("Floor", RobotMap.k_potFloor));
+//		buttonB.whenPressed(new ArmButton("Switch", RobotMap.k_potSwitch)); 
+//		buttonX.whenPressed(new ArmButton("Exchange", RobotMap.k_potExchange)); 
+//		buttonY.whenPressed(new ArmButton("Scale", RobotMap.k_potScale)); 
+//TODO: probably will end up deleting these
+		
+		buttonB.whenPressed(new MoveArmPID(.25));
+		buttonX.whenPressed(new MoveArmPID(.15));
+		
+		
 		buttonLB.whenPressed(new Intake(.60));
 		buttonLB.whenReleased(new Intake(0));		
-		buttonRB.whenPressed(new Intake(-.10)); 
+		buttonRB.whenPressed(new Intake(-.550)); 
 		buttonRB.whenReleased(new Intake(0));
 		
-// TODO: re-enable for solenoid
-//		buttonStart.whenPressed(new SolenoidReverse());
-//		buttonBack.whenPressed(new SolenoidForward());
+		buttonStart.whenPressed(new SolenoidForward());
+		buttonBack.whenPressed(new SolenoidReverse());
 		
-		leftThumb.whenPressed(new ReleaseHook());
-		rightThumb.whenPressed(new OpenClose());
+		rightThumb.whenPressed(new ReleaseHook());
+		leftThumb.whenPressed(new OpenClose());
 				
 		leftTrig.whenActive(new Climb("left"));
 		leftTrig.whenInactive(new StopClimb(true));
@@ -70,9 +74,8 @@ public class OI
 		
 		j3.whenActive(new Climb("left"));
 		j4.whenActive(new Climb("right"));
-		// TODO: re-enable for solenoid
-//		j5.whenPressed(new SolenoidForward());
-//		j6.whenPressed(new SolenoidReverse());
+		j5.whenPressed(new SolenoidForward());
+		j6.whenPressed(new SolenoidReverse());
 		j7.whenActive(new ReleaseHook());
 		j8.whenActive(new OpenClose());
 		j10.whenPressed(new FallDown(-1));
