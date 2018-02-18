@@ -20,7 +20,7 @@ public class A_Center extends CommandGroup
     		//Left Side Switch
     		System.out.println("Center Position/Left Switch");
     		addSequential(new DriveForward(40.875));
-    		addParallel(new MoveArm(RobotMap.k_potSwitch));
+    		addParallel(new MoveArmScale(RobotMap.k_potSwitch));
     		addSequential(new TurnGroup(-90));
     		addSequential(new DriveForward(61));
     		addSequential(new TurnGroup(90));
@@ -32,7 +32,7 @@ public class A_Center extends CommandGroup
     		// Right Side Switch
     		System.out.println("Center Position/Right Switch");
     		addSequential(new DriveForward(40.875));
-    		addParallel(new MoveArm(RobotMap.k_potSwitch));
+    		addParallel(new MoveArmScale(RobotMap.k_potSwitch));
     		addSequential(new TurnGroup(90));
     		addSequential(new DriveForward(46.2));
     		addSequential(new TurnGroup(-90));

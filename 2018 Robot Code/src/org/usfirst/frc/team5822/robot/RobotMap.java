@@ -48,10 +48,10 @@ public class RobotMap
 	
 	//Arm height
 	public static double k_potClimb;
-	public static double k_potScale = 1600;
-	public static double k_potSwitch = 700;
-	public static double k_potFloor = 200; //340
-	public static double k_potExchange = 360;
+	public static double k_potScale = .49;
+	public static double k_potSwitch = .24;
+	public static double k_potFloor = .15; 
+	public static double k_potExchange = .15;
 	public static double  aTop = 750; 
 	public static double  bTop = 1330; 
 	public static double  cTop = 1550;
@@ -60,8 +60,4 @@ public class RobotMap
 	public static double  speedUpB = 0.5;
 	public static double  speedUpC = 0.25;
 	public static double  speedUpD = 0.15;
-	public static double  speedDownA = -0.1; 
-	public static double  speedDownB = -0.1;
-	public static double  speedDownC = -0.1;
-	public static double  speedDownD = -0.1;
 }

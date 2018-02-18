@@ -45,9 +45,10 @@ public class OI
 //		buttonY.whenPressed(new ArmButton("Scale", RobotMap.k_potScale)); 
 //TODO: probably will end up deleting these
 		
-		buttonB.whenPressed(new MoveArmPID(.25));
-		buttonX.whenPressed(new MoveArmPID(.15));
-		
+		buttonA.whenPressed(new LowerArm());
+		buttonB.whenPressed(new MoveArmPID(RobotMap.k_potSwitch));
+		buttonX.whenPressed(new MoveArmPID(RobotMap.k_potExchange));
+		buttonY.whenPressed(new MoveArmScale(RobotMap.k_potScale));
 		
 		buttonLB.whenPressed(new Intake(.60));
 		buttonLB.whenReleased(new Intake(0));		
@@ -65,7 +66,7 @@ public class OI
 		rightTrig.whenActive(new Climb("right"));
 		rightTrig.whenInactive(new StopClimb(false));
 		
-		new MoveArm(x.getRawAxis(1)); 
+		new MoveArmScale(x.getRawAxis(1)); 
 		
 		j1.whenPressed(new Intake(.60));
 		j1.whenReleased(new Intake(0));

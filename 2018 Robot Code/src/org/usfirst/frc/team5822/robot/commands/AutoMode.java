@@ -18,6 +18,7 @@ public class AutoMode extends CommandGroup
     	final int centerSide = 1;
     	final int rightSide = 2;
     	Robot.sensors.resetGyro();
+    	
     	switch (fieldPosition)
     	{
     		case leftSide:

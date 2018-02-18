@@ -7,26 +7,16 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class MoveArmPID extends Command 
-{
-	double setpoint;
-  
-	public MoveArmPID(double set) 
-    {
-    	requires(Robot.arm);
-    	setpoint = set;
+public class DisableArmPID extends Command {
+
+    public DisableArmPID() {
+        requires(Robot.arm);
     }
-	public MoveArmPID(double set, double min, double max) 
-    {
-    	requires(Robot.arm);
-    	setpoint = set;
-    	Robot.arm.setOutputRange(min, max);
-    }
+
     // Called just before this Command runs the first time
     protected void initialize() 
     {
-    	Robot.arm.setSetpoint(setpoint);
-    	Robot.arm.enable();
+    	Robot.arm.disable();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -35,7 +25,7 @@ public class MoveArmPID extends Command
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return true;
     }
 
     // Called once after isFinished returns true

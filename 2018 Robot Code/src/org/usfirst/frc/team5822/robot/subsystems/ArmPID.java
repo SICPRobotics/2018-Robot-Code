@@ -23,21 +23,25 @@ public class ArmPID extends PIDSubsystem
     	victor.follow(talon);
     }
 
-    public void initDefaultCommand() {
-        // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
+    public void initDefaultCommand() {}
+    
+    public double getPot()
+    {
+    	return pot.get();
     }
 
-    protected double returnPIDInput() {
-        // Return your input value for the PID loop
-        // e.g. a sensor, like a potentiometer:
-        // yourPot.getAverageVoltage() / kYourMaxVoltage;
+    protected double returnPIDInput() 
+    {
         return pot.get();
     }
 
-    protected void usePIDOutput(double output) {
-        // Use output to drive your system, like a motor
-        // e.g. yourMotor.set(output);
+    protected void usePIDOutput(double output) 
+    {
     	talon.pidWrite(output);
+    }
+    
+    public void armMotors(double speed)
+    {
+    	talon.set(speed);
     }
 }

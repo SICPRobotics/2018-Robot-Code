@@ -12,12 +12,12 @@ public class ArmButton extends CommandGroup {
        if (area == "Floor")
        {
        	   addSequential(new SolenoidForward());
-    	   addSequential(new MoveArm(degrees));
+    	   addSequential(new MoveArmScale(degrees));
        }
        else
        {
 //    	   addSequential(new SolenoidReverse());
-    	   addSequential(new MoveArm(degrees));
+    	   addSequential(new MoveArmScale(degrees));
        }
     }
 }

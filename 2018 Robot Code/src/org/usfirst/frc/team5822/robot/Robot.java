@@ -12,6 +12,8 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team5822.robot.commands.AutoMode;
+import org.usfirst.frc.team5822.robot.commands.DisableArmPID;
+import org.usfirst.frc.team5822.robot.commands.getFieldData;
 import org.usfirst.frc.team5822.robot.subsystems.*;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
@@ -43,8 +45,8 @@ public class Robot extends TimedRobot
 	SendableChooser<Integer> locationChooser = new SendableChooser<>();
 	SendableChooser<Integer> goalChooser = new SendableChooser<>();
 	
-	int position = 1; //default center 
-	int goal = 0; //default switch
+	public static int position = 1; //default center 
+	public static int goal = 0; //default switch
 	
 	@Override
 	public void robotInit() 
@@ -80,11 +82,15 @@ public class Robot extends TimedRobot
 	@Override
 	public void disabledInit() 
 	{
-		Scheduler.getInstance().removeAll();
+		Command disable = new DisableArmPID();
+		disable.start();
 	}                                 
 	
 	@Override
-	public void disabledPeriodic() {}	
+	public void disabledPeriodic() 
+	{
+		Scheduler.getInstance().removeAll();
+	}	
 	
 	@Override
 	public void autonomousInit() 
@@ -92,11 +98,10 @@ public class Robot extends TimedRobot
 		Robot.sensors.resetGyro();
 		Drivetrain.setPoint(0);
 		
-		fieldDataIMP = DriverStation.getInstance().getGameSpecificMessage(); 		
 		position = locationChooser.getSelected();
 		goal = goalChooser.getSelected();
-		
-		m_autonomousCommand = new AutoMode(fieldDataIMP, position, goal);
+	
+		m_autonomousCommand = new getFieldData();
 		m_autonomousCommand.start();
 	}
  

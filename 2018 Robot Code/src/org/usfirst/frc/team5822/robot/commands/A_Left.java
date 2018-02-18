@@ -11,7 +11,7 @@ public class A_Left extends CommandGroup
     	{
     		// Left Side Switch	
     		addSequential(new DriveForward(148.875));
-    		addParallel(new MoveArm(RobotMap.k_potSwitch));
+    		addParallel(new MoveArmScale(RobotMap.k_potSwitch));
     		addSequential(new TurnGroup(90));
     		addSequential(new DriveForward(19.435));
     		addSequential(new Intake(-.7));
@@ -20,7 +20,7 @@ public class A_Left extends CommandGroup
     	{
     		// Left Side Scale
 			addSequential(new DriveForward(304.875));
-			addParallel(new MoveArm(RobotMap.k_potScale));
+			addParallel(new MoveArmScale(RobotMap.k_potScale));
 			addSequential(new TurnGroup(90));
 			addSequential(new DriveForward(5.755)); 
 			addSequential(new Intake(-.7));
@@ -30,7 +30,7 @@ public class A_Left extends CommandGroup
     		if (side == 0)
     		{
         		addSequential(new DriveForward(148.875));
-        		addParallel(new MoveArm(RobotMap.k_potSwitch));
+        		addParallel(new MoveArmScale(RobotMap.k_potSwitch));
         		addSequential(new TurnGroup(90));
         		addSequential(new DriveForward(19.435));
         		addSequential(new Intake(-.7));
@@ -38,7 +38,7 @@ public class A_Left extends CommandGroup
     		else if (side == 1)
     		{
     			addSequential(new DriveForward(304.875));
-    			addParallel(new MoveArm(RobotMap.k_potScale));
+    			addParallel(new MoveArmScale(RobotMap.k_potScale));
     			addSequential(new TurnGroup(90));
     			addSequential(new DriveForward(5.755)); 
     			addSequential(new Intake(-.7));
