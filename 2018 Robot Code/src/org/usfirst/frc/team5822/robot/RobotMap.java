@@ -5,8 +5,8 @@ public class RobotMap
     //motors
     public static int k_rearLeft = 1;
     public static int k_frontLeft = 4;
-    public static int k_rearRight = 3;
-    public static int k_frontRight = 2;
+    public static int k_rearRight = 2;
+    public static int k_frontRight = 3;
     
     public static int k_intakeLeft = 5;
 	public static int k_intakeRight = 6;
@@ -48,16 +48,16 @@ public class RobotMap
 	
 	//Arm height
 	public static double k_potClimb;
-	public static double k_potScale = .49;
-	public static double k_potSwitch = .24;
+	public static double k_potScale = .52;
+	public static double k_potSwitch = .3; //.2213
 	public static double k_potFloor = .15; 
 	public static double k_potExchange = .15;
-	public static double  aTop = 750; 
-	public static double  bTop = 1330; 
-	public static double  cTop = 1550;
-	public static double  dTop = 1700;
-	public static double  speedUpA = 0.4; 
-	public static double  speedUpB = 0.5;
-	public static double  speedUpC = 0.25;
-	public static double  speedUpD = 0.15;
+	public static double aTop = .258; 
+	public static double bTop = .33; 
+	public static double cTop = .467;
+	public static double dTop = .5;
+	public static double speedUpA = 1; 
+	public static double speedUpB = 1;
+	public static double speedUpC = 0.5;
+	public static double speedUpD = 0.3;
 }

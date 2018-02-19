@@ -38,16 +38,17 @@ public class getFieldData extends Command {
     	if (count++%50 == 0)
     		System.out.println("Field Data: " + fieldDataLength + "Match Time: " + matchTime);
     	
-    	if (fieldDataLength < 2 && matchTime > 10)
+    	if (fieldDataLength < 2 || matchTime > 10)
     	{
     		return false;
     	}
-    	return true;
+    	else return true;
     }
 
     // Called once after isFinished returns true
     protected void end() 
     {
+    	System.out.println("ending getFieldData");
     	Command auto = new AutoMode(fieldDataIMP, Robot.position, Robot.goal);
     	auto.start();
     }

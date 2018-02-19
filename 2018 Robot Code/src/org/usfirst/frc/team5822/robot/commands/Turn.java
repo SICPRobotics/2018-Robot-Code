@@ -26,7 +26,7 @@ public class Turn extends Command
     // Called just before this Command runs the first time
     protected void initialize() 
     {
-    	
+    	System.out.println("Starting Turn");
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -44,6 +44,7 @@ public class Turn extends Command
         {
        		if (angle > Robot.sensors.getGyro())
        		{
+       			System.out.println("is Finished direction");
            		return true;
             }
         }
@@ -51,6 +52,7 @@ public class Turn extends Command
         {
        		if (angle < Robot.sensors.getGyro())
        		{
+       			System.out.println("is Finished !direction");
            		return true;
             }
         }

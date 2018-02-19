@@ -20,24 +20,26 @@ public class A_Center extends CommandGroup
     		//Left Side Switch
     		System.out.println("Center Position/Left Switch");
     		addSequential(new DriveForward(40.875));
-    		addParallel(new MoveArmScale(RobotMap.k_potSwitch));
     		addSequential(new TurnGroup(-90));
     		addSequential(new DriveForward(61));
     		addSequential(new TurnGroup(90));
+    		addSequential(new MoveArmPID(RobotMap.k_potSwitch));
     		addSequential(new DriveForward(60.785));
     		addSequential(new Intake(-.7));
     	} 
-    	else if (gameData.charAt(1) == 'R') 
+    	else if (gameData.charAt(0) == 'R') 
     	{
     		// Right Side Switch
     		System.out.println("Center Position/Right Switch");
     		addSequential(new DriveForward(40.875));
-    		addParallel(new MoveArmScale(RobotMap.k_potSwitch));
+    		
     		addSequential(new TurnGroup(90));
     		addSequential(new DriveForward(46.2));
     		addSequential(new TurnGroup(-90));
+    		addSequential(new MoveArmPID(RobotMap.k_potSwitch));
+    		
     		addSequential(new DriveForward(60.785));
-    		addSequential(new Intake(-.7));
+    		addSequential(new Intake(-.8));
     	}
     	
     }

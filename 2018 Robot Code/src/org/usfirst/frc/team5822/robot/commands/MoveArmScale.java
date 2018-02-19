@@ -13,7 +13,7 @@ public class MoveArmScale extends Command
 	
     public MoveArmScale(double degrees) 
     {
-    	requires(Robot.intake);
+    	requires(Robot.arm);
    		requires(Robot.sensors);
         desiredDegrees = degrees;
     }
@@ -25,24 +25,36 @@ public class MoveArmScale extends Command
 
     protected void execute() 
     {
-    	currentDegrees = Robot.sensors.getPot();
+    	currentDegrees = Robot.arm.getPot();
     	double speed = 0;
   
     	if (currentDegrees < RobotMap.aTop)
+    	{
     		speed = RobotMap.speedUpA;
+    		System.out.println("Zone A");
+    	}
     	else if (currentDegrees < RobotMap.bTop)
+    	{
     		speed = RobotMap.speedUpB;
+    		System.out.println("Zone B");
+    	}
     	else if (currentDegrees < RobotMap.cTop)
+    	{
     		speed = RobotMap.speedUpC;
+    		System.out.println("Zone C");
+    	}
     	else
+    	{
     		speed = RobotMap.speedUpD;
+    		System.out.println("Zone D");
+    	}
     	
     	Robot.arm.armMotors(speed);
     }
 
     protected boolean isFinished() 
     {
-    	if (Robot.arm.getPot() > RobotMap.cTop)
+    	if (Robot.arm.getPot() > RobotMap.dTop)
     		return true;
     	return false;
     }

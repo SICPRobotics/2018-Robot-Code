@@ -37,8 +37,7 @@ public class Robot extends TimedRobot
 	public static Joystick j = new Joystick(RobotMap.k_joystick1);
 	public static XboxController x = new XboxController(RobotMap.k_xboxCntrl);
 	public String fieldDataIMP;
-//TODO: comment back in
-//	public static Compressor c;
+	public static Compressor c;
 
 	//UsbCamera cami = CameraServer.getInstance().startAutomaticCapture(0);
 	
@@ -67,10 +66,10 @@ public class Robot extends TimedRobot
 		//TODO: disable arm pids every time we disbale bot
 		oi = new OI(); 
 	
-		if (!isOldRobot) {
-//TODO: comment back in
-			//			c = new Compressor(0);
-//			c.setClosedLoopControl(true);
+		if (!isOldRobot) 
+		{
+			c = new Compressor(0);
+			c.setClosedLoopControl(true);
 		}
 		
 		SmartDashboard.putNumber("Gyro", sensors.getGyro()); 
@@ -96,11 +95,12 @@ public class Robot extends TimedRobot
 	public void autonomousInit() 
 	{
 		Robot.sensors.resetGyro();
-		Drivetrain.setPoint(0);
-		
-		position = locationChooser.getSelected();
-		goal = goalChooser.getSelected();
 	
+		driveTrain.setSetpoint(0);
+		position = 1;
+		//position = locationChooser.getSelected();
+		//goal = goalChooser.getSelected();
+		goal = 0;
 		m_autonomousCommand = new getFieldData();
 		m_autonomousCommand.start();
 	}
@@ -108,6 +108,7 @@ public class Robot extends TimedRobot
     @Override
     public void autonomousPeriodic() 
     {
+    	//System.out.println("gyro angle: " + sensors.getGyro());
     	Scheduler.getInstance().run();
 		
 		SmartDashboard.putNumber("Gyro", sensors.getGyro()); 
@@ -122,8 +123,9 @@ public class Robot extends TimedRobot
 		{
 			m_autonomousCommand.cancel();
 		}
+		Scheduler.getInstance().removeAll();
 		Robot.driveTrain.disable(); 
-		Robot.sensors.resetEncoders();
+		Robot.driveTrain.resetEncoders();
 	}
 
     int count = 0;
@@ -135,10 +137,10 @@ public class Robot extends TimedRobot
 		//System.out.println("pot: " + Robot.sensors.getPot());
 		SmartDashboard.putNumber("Gyro", sensors.getGyro());
 		SmartDashboard.putNumber("Potentiometer", sensors.getPot());
-		if (count++ % 50 == 0) {
-			System.out.println("Potentiometer: " + sensors.getPot());
-		}
-		
+//		if (count++ % 50 == 0) {
+			System.out.println("Potentiometer: " + arm.getPot());
+//		}
+		System.out.println(driveTrain.encDistance());
 		intake.manualCntrl(x.getRawAxis(5) * -1);
 	}
 

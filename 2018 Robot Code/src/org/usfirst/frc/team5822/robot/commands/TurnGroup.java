@@ -12,6 +12,7 @@ public class TurnGroup extends CommandGroup
 
     public TurnGroup(double degrees) 
     {
+    	System.out.println("starting TurnGroup");
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
@@ -19,13 +20,13 @@ public class TurnGroup extends CommandGroup
     	Robot.sensors.resetGyro();
     	if (degrees < 0)
     	{
-    		addSequential(new Turn(degrees, .3, true));
-    		addSequential(new Turn(degrees, -.1, false));
+    		addSequential(new Turn(degrees, .45, true));
+    		addSequential(new Turn(degrees, -.26, false));
     	}
     	else if (degrees > 0)
     	{
-    		addSequential(new Turn(degrees, -.3, false));
-    		addSequential(new Turn(degrees, .1, true));
+    		addSequential(new Turn(degrees, -.45, false));
+    		addSequential(new Turn(degrees, .26, true));
     	}
     	System.out.println("Gryo: " + Robot.sensors.getGyro());
     	System.out.println("Finished Turn Group");

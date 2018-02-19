@@ -4,6 +4,7 @@ import org.usfirst.frc.team5822.robot.Robot;
 import org.usfirst.frc.team5822.robot.RobotMap;
 
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
+import com.ctre.phoenix.motorcontrol.SensorCollection;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
@@ -14,7 +15,7 @@ import edu.wpi.first.wpilibj.command.PIDSubsystem;
 public class Drivetrain extends PIDSubsystem 
 {
 	WPI_TalonSRX frontL, frontR, rearL, rearR;
-	DifferentialDrive robotBase;
+	static DifferentialDrive robotBase;
 	SpeedControllerGroup left, right, autoDrive; 	
 	
 	static double setpoint; 
@@ -23,7 +24,7 @@ public class Drivetrain extends PIDSubsystem
 	
 	public Drivetrain()
 	{
-		super("driveTrain", .02, 0.00, 0); 
+		super("driveTrain", .04, 0.00, 0); 
 		setAbsoluteTolerance(0.001);
 		getPIDController().setContinuous(false);
 		setpoint = 0; 
@@ -32,9 +33,12 @@ public class Drivetrain extends PIDSubsystem
 				
 		frontL = new WPI_TalonSRX(RobotMap.k_frontLeft); 
 		rearL = new WPI_TalonSRX(RobotMap.k_rearLeft); 
+		rearL.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 0);
 		
 		frontR = new WPI_TalonSRX(RobotMap.k_frontRight); 
 		rearR = new WPI_TalonSRX(RobotMap.k_rearRight); 
+		rearR.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 0);
+		
 				
 		//rearL.setInverted(false);
 		//rearL.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 0); 
@@ -49,20 +53,22 @@ public class Drivetrain extends PIDSubsystem
 	
 	public double encDistance()
 	{
-		int pulseWidthPos = rearL.getSensorCollection().getPulseWidthPosition();
-		int pulseWidthPos1 = frontR.getSensorCollection().getPulseWidthPosition();
-		return (pulseWidthPos + pulseWidthPos1)/2;
-	}
-	
-	/*public static void setOuts(double left, double right)
-	{
-		drive.setLeftRightMotorOutputs(left, right); 
-	}*/
+		double rightEnc, leftEnc;
+		int nativeUnits1 = rearL.getSelectedSensorPosition(0);
+		leftEnc = nativeUnits1 * .0046019424 * -1;//.0092038847;
+		int nativeUnits2 = rearR.getSelectedSensorPosition(0);
+		rightEnc = nativeUnits2 * .0046019424;
+		double dist =(leftEnc + rightEnc) /2;
 		
-	public static double setPoint(double set)
+		System.out.println("enc at " + dist);
+		return dist;
+	}
+	public void resetEncoders()
 	{
-		setpoint = set;  
-		return setpoint; 
+		System.out.println("reset encoders");
+		rearL.setSelectedSensorPosition(0, 0, 0);
+		rearR.setSelectedSensorPosition(0,0,0);
+		System.out.println("encoders at " + encDistance());
 	}
 	
 	// returns the sensor value that is providing the feedback for the system
@@ -75,18 +81,21 @@ public class Drivetrain extends PIDSubsystem
 	{
 		isBackwards = backwards; 
 	}
-	
+	public void drive() 
+	{
+		robotBase.arcadeDrive(.5,0);
+	}
     protected void usePIDOutput(double output) 
     {
-    		System.out.print("Output: " + output);
-    		if(isBackwards)
-    		{
-    			robotBase.tankDrive(-.5 + output, -.5 - output);
-    		}
-    		else 
-    		{
-    			robotBase.tankDrive(.4 - output, .4 + output);
-    		}
+//    		System.out.println("Output: " + output);
+//    		if(isBackwards)
+//    		{
+//    			robotBase.tankDrive(.5 + output, .5 - output);
+//    		}
+//    		else 
+//    		{
+//    			robotBase.tankDrive(-.4 - output,.4 + output);
+//    		}
     }
 	
 	public void changeIsTurning(boolean val)

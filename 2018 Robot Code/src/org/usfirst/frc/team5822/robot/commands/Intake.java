@@ -32,7 +32,10 @@ public class Intake extends Command
         return false;
     }
 
-    protected void end() {}
+    protected void end() 
+    {
+    	Robot.intake.intakeMotors(0);
+    }
     
     protected void interrupted() 
     {	

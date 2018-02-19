@@ -13,38 +13,36 @@ public class DriveForward extends Command
 	
     public DriveForward(double distanceTOmove) 
     {
-    		requires(Robot.driveTrain);
+    	requires(Robot.driveTrain);
 		requires(Robot.sensors);
-		distance = -distanceTOmove;    
+		distance = distanceTOmove;    
     }
 
     // Called just before this Command runs the first time
     protected void initialize() 
     {
-    		Robot.sensors.resetEncoders();
+    		Robot.driveTrain.resetEncoders();
     		Robot.sensors.resetGyro();
     		System.out.println("DriveForward Init");
-    		Drivetrain.pidBackwards(true);
-    		Robot.driveTrain.enable();
+    		//Drivetrain.pidBackwards(true);
+    		//Robot.driveTrain.enable();
+    		//Robot.driveTrain.drive();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() 
     {
-    		System.out.print("Drive Forward");
-    		//Robot.driveTrain.autoDrive(.2, .2);
+    	Robot.driveTrain.drive();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() 
     {
-    	
-    	if (distance > Robot.sensors.rightEncoderDistance())
+    	if (Robot.driveTrain.encDistance() > distance)
     	{
     		return true;
     	}
-    	
-    		return false;
+    	return false;
     }
     
     // Called once after isFinished returns true

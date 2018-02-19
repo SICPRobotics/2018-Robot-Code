@@ -14,7 +14,7 @@ import edu.wpi.first.wpilibj.AnalogPotentiometer;
 public class Sensors extends Subsystem 
 {
 	static ADXRS450_Gyro gyro;
-	static Encoder leftEncoder, rightEncoder;
+	//static Encoder leftEncoder, rightEncoder;
 	static double gyroAngle;
 	//static AnalogPotentiometer pot;
 	
@@ -27,21 +27,21 @@ public class Sensors extends Subsystem
 		}
 		gyro = new ADXRS450_Gyro();
 		
-		leftEncoder = new Encoder(RobotMap.k_leftEncoder_A, RobotMap.k_leftEncoder_B, false, Encoder.EncodingType.k4X);
-		leftEncoder.setMaxPeriod(.1);
-		leftEncoder.setMinRate(10);
-		leftEncoder.setDistancePerPulse(5);
-		leftEncoder.setReverseDirection(true);
-		leftEncoder.setSamplesToAverage(7);
-		
-		rightEncoder = new Encoder(RobotMap.k_rightEncoder_A, RobotMap.k_rightEncoder_B, false, Encoder.EncodingType.k4X);
-		rightEncoder.setMaxPeriod(.1);
-		rightEncoder.setMinRate(10);
-		rightEncoder.setDistancePerPulse(.0532);
-		rightEncoder.setReverseDirection(false);
-		rightEncoder.setSamplesToAverage(7);
-		rightEncoder.setReverseDirection(true);
-		//pot = new AnalogPotentiometer(RobotMap.k_pot); 
+//		leftEncoder = new Encoder(RobotMap.k_leftEncoder_A, RobotMap.k_leftEncoder_B, false, Encoder.EncodingType.k4X);
+//		leftEncoder.setMaxPeriod(.1);
+//		leftEncoder.setMinRate(10);
+//		leftEncoder.setDistancePerPulse(5);
+//		leftEncoder.setReverseDirection(true);
+//		leftEncoder.setSamplesToAverage(7);
+//		
+//		rightEncoder = new Encoder(RobotMap.k_rightEncoder_A, RobotMap.k_rightEncoder_B, false, Encoder.EncodingType.k4X);
+//		rightEncoder.setMaxPeriod(.1);
+//		rightEncoder.setMinRate(10);
+//		rightEncoder.setDistancePerPulse(.0532);
+//		rightEncoder.setReverseDirection(false);
+//		rightEncoder.setSamplesToAverage(7);
+//		rightEncoder.setReverseDirection(true);
+//		//pot = new AnalogPotentiometer(RobotMap.k_pot); 
 	}
 	
 	public double getPot()
@@ -54,13 +54,13 @@ public class Sensors extends Subsystem
 		//TODO: move all pot stuff to new subsystem
 	}
 	
-	public void resetEncoders()
-	{
-		System.out.println("Sensors resetEncoders");
-		if (Robot.isOldRobot) return;
-		rightEncoder.reset();
-		leftEncoder.reset();
-	}
+//	public void resetEncoders()
+//	{
+//		System.out.println("Sensors resetEncoders");
+//		if (Robot.isOldRobot) return;
+//		rightEncoder.reset();
+//		leftEncoder.reset();
+//	}
 	public void resetGyro()
 	{
 		System.out.println("Sensors resetGyro");
@@ -76,13 +76,14 @@ public class Sensors extends Subsystem
 		return gyro.getAngle();
 	}
 	
-	public double rightEncoderDistance()
-	{
-		System.out.println("Sensors rightEncoderDistance");
-		if (Robot.isOldRobot) return 0;
-		System.out.print("Right Encoder Distance: " + rightEncoder.getDistance() + " ");
-		return rightEncoder.getDistance();
-	}
+//	public double rightEncoderDistance()
+//	{
+//		System.out.println("Sensors rightEncoderDistance");
+//		//if (Robot.isOldRobot) return 0;
+//		System.out.println("Left Encoder Distance " + leftEncoder.getDistance());
+//		System.out.println("Right Encoder Distance: " + rightEncoder.getDistance() + " ");
+//		return rightEncoder.getDistance();
+//	}
 	
     public void initDefaultCommand() {}
 }

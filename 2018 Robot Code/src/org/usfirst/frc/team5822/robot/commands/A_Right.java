@@ -12,10 +12,11 @@ public class A_Right extends CommandGroup
     	{
     		//Right Side Switch
     		System.out.println("Right Position/Right Switch");
-    		addSequential(new DriveForward(148.875));
-    		addParallel(new MoveArmScale(RobotMap.k_potSwitch));
+    		addSequential(new MoveArmPID(RobotMap.k_potSwitch));
+    		addSequential(new DriveForward(140)); //148.875
     		addSequential(new TurnGroup(-90));
     		addSequential(new DriveForward(19.435));
+    		
     		addSequential(new Intake(-.7));
     	} 
     	else if (gameData.charAt(0) != 'R' && gameData.charAt(1) == 'R')
@@ -23,21 +24,22 @@ public class A_Right extends CommandGroup
     		// Right Side Scale
 			System.out.println("Right Position/Right Scale");
 			addSequential(new DriveForward(304.875));
-			addParallel(new MoveArmScale(RobotMap.k_potScale));
 			addSequential(new TurnGroup(-90));
 			addSequential(new DriveForward(5.755));
+			addParallel(new MoveArmScale(RobotMap.k_potScale));
 			addSequential(new Intake(-.7));
     	}
-    	else if (gameData.charAt(0) == 'L' && gameData.charAt(1) == 'L')
+    	else if (gameData.charAt(0) == 'R' && gameData.charAt(1) == 'R')
     	{
     		if (side == 0)
     		{
         		//Right Side Switch
         		System.out.println("Right Position/Right Switch");
+        		addSequential(new MoveArmPID(RobotMap.k_potSwitch));
         		addSequential(new DriveForward(148.875));
-        		addParallel(new MoveArmScale(RobotMap.k_potSwitch));
         		addSequential(new TurnGroup(-90));
-        		addSequential(new DriveForward(19.435));
+        		addSequential(new DriveForward(26));
+        		addParallel(new MoveArmPID(RobotMap.k_potSwitch));
         		addSequential(new Intake(-.7));
     		}
     		else if (side == 1)
@@ -45,9 +47,9 @@ public class A_Right extends CommandGroup
         		// Right Side Scale
     			System.out.println("Right Position/Right Scale");
     			addSequential(new DriveForward(304.875));
-    			addParallel(new MoveArmScale(RobotMap.k_potScale));
     			addSequential(new TurnGroup(-90));
     			addSequential(new DriveForward(5.755));
+    			addParallel(new MoveArmScale(RobotMap.k_potScale));
     			addSequential(new Intake(-.7));
     		}
     	}    		

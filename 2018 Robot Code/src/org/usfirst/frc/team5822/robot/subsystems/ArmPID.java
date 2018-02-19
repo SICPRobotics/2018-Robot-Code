@@ -19,7 +19,7 @@ public class ArmPID extends PIDSubsystem
 	
     public ArmPID() 
     {
-    	super("arm", 4.0,0.0,0.0);
+    	super("arm", 8.0,0.0,0.0);
     	victor.follow(talon);
     }
 

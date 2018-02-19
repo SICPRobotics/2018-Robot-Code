@@ -52,7 +52,7 @@ public class OI
 		
 		buttonLB.whenPressed(new Intake(.60));
 		buttonLB.whenReleased(new Intake(0));		
-		buttonRB.whenPressed(new Intake(-.550)); 
+		buttonRB.whenPressed(new Intake(-.750)); 
 		buttonRB.whenReleased(new Intake(0));
 		
 		buttonStart.whenPressed(new SolenoidForward());
