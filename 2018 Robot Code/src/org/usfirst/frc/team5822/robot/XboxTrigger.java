@@ -1,12 +1,7 @@
 package org.usfirst.frc.team5822.robot;
 
-import org.usfirst.frc.team5822.robot.commands.Climb;
-
 import edu.wpi.first.wpilibj.buttons.Trigger;
 
-/**
- *
- */
 public class XboxTrigger extends Trigger 
 {
 	boolean isLeftTrigger;

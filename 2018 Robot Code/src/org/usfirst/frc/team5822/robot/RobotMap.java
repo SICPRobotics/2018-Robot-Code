@@ -17,8 +17,7 @@ public class RobotMap
 	public static int k_climbLeft = 7;
 	public static int k_climbRight = 8;
 	
-	//public static int k_servo1 = 0;
-	//public static int k_servo2 = 1;
+	public static int k_feet = 11;
 	
 	//solenoids
 	public static int k_intakeSolo1 = 0;
@@ -43,21 +42,23 @@ public class RobotMap
     public static int k_joystick1 = 0;
     public static int k_xboxCntrl = 1;
 	
-//    public static double k_switch = 0;
-//    public static double k_scale = 1;
-	
-	//Arm height
-	public static double k_potClimb;
+    public static final int k_leftSide = 0;
+    public static final int k_centerSide = 1;
+    public static final int k_rightSide = 2;
+    
+	//arm heights
 	public static double k_potScale = .52;
-	public static double k_potSwitch = .3; //.2213
+	public static double k_potSwitch = .24; //.2213
 	public static double k_potFloor = .15; 
 	public static double k_potExchange = .15;
 	public static double aTop = .258; 
 	public static double bTop = .33; 
 	public static double cTop = .467;
 	public static double dTop = .5;
-	public static double speedUpA = 1; 
-	public static double speedUpB = 1;
-	public static double speedUpC = 0.5;
-	public static double speedUpD = 0.3;
+	
+	//arm speeds
+	public static double speedA = 1; 
+	public static double speedB = 1;
+	public static double speedC = 0.5;
+	public static double speedD = 0.3;
 }

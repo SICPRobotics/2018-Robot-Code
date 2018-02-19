@@ -10,8 +10,6 @@ import edu.wpi.first.wpilibj.buttons.Trigger;
 
 public class OI 
 {	
-	XboxController x = Robot.x;
-
 	Button j1 = new JoystickButton(Robot.j, 1);
 	Button j2 = new JoystickButton(Robot.j, 2);
 	Button j3 = new JoystickButton(Robot.j, 3);
@@ -23,37 +21,31 @@ public class OI
 	Button j10 = new JoystickButton(Robot.j, 10); 
 	Button j12 = new JoystickButton(Robot.j, 12);
 
-	Button buttonA = new JoystickButton(x, 1); //Old 2
-	Button buttonB = new JoystickButton(x, 2); //Old 3
-	Button buttonX = new JoystickButton(x, 3); //Old 1
-	Button buttonY = new JoystickButton(x, 4); 
-	Button buttonLB = new JoystickButton(x, 5);
-	Button buttonRB = new JoystickButton(x, 6); 
-	Button buttonBack = new JoystickButton(x, 7); //Old 9
-	Button buttonStart = new JoystickButton(x, 8); //Old 10 
-	Button leftThumb = new JoystickButton(x, 9);
-	Button rightThumb = new JoystickButton(x, 10);
+	Button buttonA = new JoystickButton(Robot.x, 1); //Old 2
+	Button buttonB = new JoystickButton(Robot.x, 2); //Old 3
+	Button buttonX = new JoystickButton(Robot.x, 3); //Old 1
+	Button buttonY = new JoystickButton(Robot.x, 4); 
+	Button buttonLB = new JoystickButton(Robot.x, 5);
+	Button buttonRB = new JoystickButton(Robot.x, 6); 
+	Button buttonBack = new JoystickButton(Robot.x, 7); //Old 9
+	Button buttonStart = new JoystickButton(Robot.x, 8); //Old 10 
+	Button leftThumb = new JoystickButton(Robot.x, 9);
+	Button rightThumb = new JoystickButton(Robot.x, 10);
 		
 	XboxTrigger leftTrig = new XboxTrigger(true);
 	XboxTrigger rightTrig = new XboxTrigger(false);
 	
 	public OI()
-	{
-//		buttonA.whenPressed(new ArmButton("Floor", RobotMap.k_potFloor));
-//		buttonB.whenPressed(new ArmButton("Switch", RobotMap.k_potSwitch)); 
-//		buttonX.whenPressed(new ArmButton("Exchange", RobotMap.k_potExchange)); 
-//		buttonY.whenPressed(new ArmButton("Scale", RobotMap.k_potScale)); 
-//TODO: probably will end up deleting these
-		
+	{		
 		buttonA.whenPressed(new LowerArm());
 		buttonB.whenPressed(new MoveArmPID(RobotMap.k_potSwitch));
 		buttonX.whenPressed(new MoveArmPID(RobotMap.k_potExchange));
 		buttonY.whenPressed(new MoveArmScale(RobotMap.k_potScale));
 		
-		buttonLB.whenPressed(new Intake(.60));
-		buttonLB.whenReleased(new Intake(0));		
-		buttonRB.whenPressed(new Intake(-.750)); 
-		buttonRB.whenReleased(new Intake(0));
+		buttonLB.whenPressed(new MoveIntake(.60));
+		buttonLB.whenReleased(new MoveIntake(0));		
+		buttonRB.whenPressed(new MoveIntake(-.750)); 
+		buttonRB.whenReleased(new MoveIntake(0));
 		
 		buttonStart.whenPressed(new SolenoidForward());
 		buttonBack.whenPressed(new SolenoidReverse());
@@ -66,12 +58,10 @@ public class OI
 		rightTrig.whenActive(new Climb("right"));
 		rightTrig.whenInactive(new StopClimb(false));
 		
-		new MoveArmScale(x.getRawAxis(1)); 
-		
-		j1.whenPressed(new Intake(.60));
-		j1.whenReleased(new Intake(0));
-		j2.whenPressed(new Intake(-.60));
-		j2.whenReleased(new Intake(0));
+		j1.whenPressed(new MoveIntake(.60));
+		j1.whenReleased(new MoveIntake(0));
+		j2.whenPressed(new MoveIntake(-.60));
+		j2.whenReleased(new MoveIntake(0));
 		
 		j3.whenActive(new Climb("left"));
 		j4.whenActive(new Climb("right"));

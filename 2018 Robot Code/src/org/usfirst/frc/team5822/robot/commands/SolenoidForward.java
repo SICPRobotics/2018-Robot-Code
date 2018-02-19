@@ -1,9 +1,7 @@
 package org.usfirst.frc.team5822.robot.commands;
 
 import org.usfirst.frc.team5822.robot.Robot;
-
 import edu.wpi.first.wpilibj.command.Command;
-
 
 public class SolenoidForward extends Command 
 {

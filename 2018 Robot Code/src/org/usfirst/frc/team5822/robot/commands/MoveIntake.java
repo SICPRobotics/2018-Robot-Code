@@ -1,20 +1,19 @@
 package org.usfirst.frc.team5822.robot.commands;
 
 import org.usfirst.frc.team5822.robot.Robot;
-import org.usfirst.frc.team5822.robot.subsystems.*;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class Intake extends Command 
+public class MoveIntake extends Command 
 {
 	double speed;
 	
-	public Intake(double d) 
+	public MoveIntake(double d) 
     {
         requires(Robot.intake);
         speed = d;   
     }
-
+	
     protected void initialize() 
     {	
     	System.out.println("intake command starting");
@@ -37,7 +36,5 @@ public class Intake extends Command
     	Robot.intake.intakeMotors(0);
     }
     
-    protected void interrupted() 
-    {	
-    }
+    protected void interrupted() {}
 }

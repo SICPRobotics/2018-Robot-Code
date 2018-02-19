@@ -5,40 +5,39 @@ import org.usfirst.frc.team5822.robot.Robot;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
-public class FallDown extends Command 
+public class MoveIntakeAuto extends Command 
 {
-	int direction;
-	Timer timer;
+	double speed;
+	Timer timer = new Timer();
 	
-    public FallDown(int updown) 
+	public MoveIntakeAuto(double d) 
     {
-    	requires(Robot.antiFall);
-    	direction = updown;
-    	timer = new Timer();
+        requires(Robot.intake);
+        speed = d;   
     }
 
     protected void initialize() 
-    {
+    {	
+    	System.out.println("intake command starting");
     	timer.start();
     }
 
     protected void execute() 
     {
-    	Robot.antiFall.move(direction);
+    	Robot.intake.intakeMotors(speed);
     }
 
     protected boolean isFinished() 
     {
-    	if (timer.get() > .5)
-    		return true;
-    	return false;
-    }
-   
-    protected void end() 
-    {
-    	timer.stop();
-    	timer.reset();
+    	if (timer.get() < 3)
+    		return false;
+    	return true;
     }
 
+    protected void end() 
+    {
+    	Robot.intake.intakeMotors(0);
+    }
+    
     protected void interrupted() {}
 }

@@ -1,61 +1,52 @@
+
 package org.usfirst.frc.team5822.robot.commands;
 
 import org.usfirst.frc.team5822.robot.Robot;
-import org.usfirst.frc.team5822.robot.subsystems.Drivetrain;
-import org.usfirst.frc.team5822.robot.subsystems.Sensors;
-
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class DriveForward extends Command 
 {
-	
-	double distance;
+	double distance, startingPos;
+	Timer time; 
 	
     public DriveForward(double distanceTOmove) 
     {
     	requires(Robot.driveTrain);
 		requires(Robot.sensors);
 		distance = distanceTOmove;    
+		time = new Timer();
     }
 
-    // Called just before this Command runs the first time
     protected void initialize() 
     {
-    		Robot.driveTrain.resetEncoders();
-    		Robot.sensors.resetGyro();
-    		System.out.println("DriveForward Init");
-    		//Drivetrain.pidBackwards(true);
-    		//Robot.driveTrain.enable();
-    		//Robot.driveTrain.drive();
+   		Robot.driveTrain.resetEncoders();
+    	System.out.println("DriveForward Init");
+    	startingPos = Robot.driveTrain.encDistance();
+    	System.out.println("starting pos: " + startingPos);
+    	time.start();
     }
 
-    // Called repeatedly when this Command is scheduled to run
     protected void execute() 
     {
-    	Robot.driveTrain.drive();
+    	System.out.println("encoder distance: " + Robot.driveTrain.encDistance());
+    	if (time.get() > .3)
+    		Robot.driveTrain.drive();
     }
 
-    // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() 
     {
-    	if (Robot.driveTrain.encDistance() > distance)
+    	if (Robot.driveTrain.encDistance() > distance && time.get() > .3)
     	{
     		return true;
     	}
     	return false;
     }
     
-    // Called once after isFinished returns true
     protected void end() 
     {
-    		Robot.driveTrain.disable();
-    		System.out.println("End: Drive Forward");
+    	System.out.println("End: Drive Forward");
     }
 
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
-    protected void interrupted() 
-    {
-    	
-    }
+    protected void interrupted() {}
 }

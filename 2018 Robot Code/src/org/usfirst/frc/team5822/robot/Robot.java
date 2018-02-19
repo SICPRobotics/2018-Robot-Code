@@ -13,10 +13,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team5822.robot.commands.AutoMode;
 import org.usfirst.frc.team5822.robot.commands.DisableArmPID;
+import org.usfirst.frc.team5822.robot.commands.MoveIntake;
 import org.usfirst.frc.team5822.robot.commands.getFieldData;
 import org.usfirst.frc.team5822.robot.subsystems.*;
-
-import com.ctre.phoenix.motorcontrol.ControlMode;
 
 public class Robot extends TimedRobot 
 {
@@ -29,17 +28,15 @@ public class Robot extends TimedRobot
 	public static Climber climber;
 	public static ArmPID arm;
 	
-	public static boolean isOldRobot = false;
+	public static Compressor c;
+	//UsbCamera cami = CameraServer.getInstance().startAutomaticCapture(0);
 	
-	public static AutoMode autoMode;	
-	Command m_autonomousCommand;
-			
 	public static Joystick j = new Joystick(RobotMap.k_joystick1);
 	public static XboxController x = new XboxController(RobotMap.k_xboxCntrl);
+	
 	public String fieldDataIMP;
-	public static Compressor c;
-
-	//UsbCamera cami = CameraServer.getInstance().startAutomaticCapture(0);
+	public static boolean isOldRobot = false;
+	Command m_autonomousCommand;
 	
 	SendableChooser<Integer> locationChooser = new SendableChooser<>();
 	SendableChooser<Integer> goalChooser = new SendableChooser<>();
@@ -63,7 +60,7 @@ public class Robot extends TimedRobot
 		antiFall = new AntiFallMech();
 		climber = new Climber();
 		arm = new ArmPID();
-		//TODO: disable arm pids every time we disbale bot
+		
 		oi = new OI(); 
 	
 		if (!isOldRobot) 
@@ -73,7 +70,7 @@ public class Robot extends TimedRobot
 		}
 		
 		SmartDashboard.putNumber("Gyro", sensors.getGyro()); 
-		SmartDashboard.putNumber("Potentiometer", sensors.getPot());
+		SmartDashboard.putNumber("Potentiometer", arm.getPot());
 		SmartDashboard.putData("Location Selection", locationChooser);
 		SmartDashboard.putData("Goal Selection", goalChooser);
 	}
@@ -83,6 +80,8 @@ public class Robot extends TimedRobot
 	{
 		Command disable = new DisableArmPID();
 		disable.start();
+		Command stopIntake = new MoveIntake(0);
+		stopIntake.start();
 	}                                 
 	
 	@Override
@@ -96,11 +95,12 @@ public class Robot extends TimedRobot
 	{
 		Robot.sensors.resetGyro();
 	
-		driveTrain.setSetpoint(0);
-		position = 1;
+		//TODO: figure out how to get these values from the SD
 		//position = locationChooser.getSelected();
 		//goal = goalChooser.getSelected();
+		position = 1;
 		goal = 0;
+		
 		m_autonomousCommand = new getFieldData();
 		m_autonomousCommand.start();
 	}
@@ -108,7 +108,6 @@ public class Robot extends TimedRobot
     @Override
     public void autonomousPeriodic() 
     {
-    	//System.out.println("gyro angle: " + sensors.getGyro());
     	Scheduler.getInstance().run();
 		
 		SmartDashboard.putNumber("Gyro", sensors.getGyro()); 
@@ -124,24 +123,21 @@ public class Robot extends TimedRobot
 			m_autonomousCommand.cancel();
 		}
 		Scheduler.getInstance().removeAll();
-		Robot.driveTrain.disable(); 
 		Robot.driveTrain.resetEncoders();
 	}
 
-    int count = 0;
+   // int count = 0;
 	@Override
 	public void teleopPeriodic() 
 	{
 		Scheduler.getInstance().run();
 		driveTrain.cheesyDrive(j);
-		//System.out.println("pot: " + Robot.sensors.getPot());
 		SmartDashboard.putNumber("Gyro", sensors.getGyro());
-		SmartDashboard.putNumber("Potentiometer", sensors.getPot());
-//		if (count++ % 50 == 0) {
-			System.out.println("Potentiometer: " + arm.getPot());
+		SmartDashboard.putNumber("Potentiometer", arm.getPot());
+//		if (count++ % 50 == 0) 
+//		{
+//			System.out.println("Potentiometer: " + arm.getPot());
 //		}
-		System.out.println(driveTrain.encDistance());
-		intake.manualCntrl(x.getRawAxis(5) * -1);
 	}
 
 	@Override

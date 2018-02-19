@@ -5,7 +5,6 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 
 public class A_Right extends CommandGroup 
 {
-
     public A_Right(String gameData, int side) 
     {
     	if (gameData.charAt(0) == 'R' && gameData.charAt(1) != 'R')
@@ -14,20 +13,19 @@ public class A_Right extends CommandGroup
     		System.out.println("Right Position/Right Switch");
     		addSequential(new MoveArmPID(RobotMap.k_potSwitch));
     		addSequential(new DriveForward(140)); //148.875
-    		addSequential(new TurnGroup(-90));
+    		addSequential(new Turn(-90, .4, true));
     		addSequential(new DriveForward(19.435));
-    		
-    		addSequential(new Intake(-.7));
+    		addSequential(new MoveIntake(-.7));
     	} 
     	else if (gameData.charAt(0) != 'R' && gameData.charAt(1) == 'R')
     	{
     		// Right Side Scale
 			System.out.println("Right Position/Right Scale");
 			addSequential(new DriveForward(304.875));
-			addSequential(new TurnGroup(-90));
+			addSequential(new Turn(-90, .4, true));
+			addSequential(new MoveArmScale(RobotMap.k_potScale));
 			addSequential(new DriveForward(5.755));
-			addParallel(new MoveArmScale(RobotMap.k_potScale));
-			addSequential(new Intake(-.7));
+			addSequential(new MoveIntake(-.7));
     	}
     	else if (gameData.charAt(0) == 'R' && gameData.charAt(1) == 'R')
     	{
@@ -36,22 +34,21 @@ public class A_Right extends CommandGroup
         		//Right Side Switch
         		System.out.println("Right Position/Right Switch");
         		addSequential(new MoveArmPID(RobotMap.k_potSwitch));
-        		addSequential(new DriveForward(148.875));
-        		addSequential(new TurnGroup(-90));
-        		addSequential(new DriveForward(26));
-        		addParallel(new MoveArmPID(RobotMap.k_potSwitch));
-        		addSequential(new Intake(-.7));
-    		}
+        		addSequential(new DriveForward(140)); //148.875
+        		addSequential(new Turn(-90, .4, true));
+        		addSequential(new DriveForward(19.435));
+        		addSequential(new MoveIntake(-.7));
+        	}
     		else if (side == 1)
     		{
         		// Right Side Scale
     			System.out.println("Right Position/Right Scale");
     			addSequential(new DriveForward(304.875));
-    			addSequential(new TurnGroup(-90));
+    			addSequential(new Turn(-90, .4, true));
+    			addSequential(new MoveArmScale(RobotMap.k_potScale));
     			addSequential(new DriveForward(5.755));
-    			addParallel(new MoveArmScale(RobotMap.k_potScale));
-    			addSequential(new Intake(-.7));
-    		}
+    			addSequential(new MoveIntake(-.7));
+        	}
     	}    		
     	else 
     	{

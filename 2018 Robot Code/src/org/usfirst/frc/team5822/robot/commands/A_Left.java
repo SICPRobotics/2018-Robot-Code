@@ -5,47 +5,51 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 
 public class A_Left extends CommandGroup
 {
-    public A_Left(String gameData, int side) 
+    public A_Left(String gameData, int goal) 
     {
     	if (gameData.charAt(0) == 'L' && gameData.charAt(1) != 'L')
     	{
     		// Left Side Switch	
+    		System.out.println("Left Position/Left Switch");
     		addSequential(new DriveForward(148.875));
-    		addSequential(new TurnGroup(90));
+    		addSequential(new MoveArmPID(RobotMap.k_potSwitch));
+    		addSequential(new Turn(90, -.4, false));
     		addSequential(new DriveForward(19.435));
-    		addParallel(new MoveArmPID(RobotMap.k_potSwitch));
-    		addSequential(new Intake(-.7));
+    		addSequential(new MoveIntake(-.7));
     	} 
     	else if (gameData.charAt(0) != 'L' && gameData.charAt(1) == 'L')
     	{
     		// Left Side Scale
+    		System.out.println("Left Position/Left Scale");
 			addSequential(new DriveForward(304.875));
-			addSequential(new TurnGroup(90));
+			addSequential(new MoveArmScale(RobotMap.k_potScale));
+			addSequential(new Turn(90, -.4, false));
 			addSequential(new DriveForward(5.755)); 
-			addParallel(new MoveArmScale(RobotMap.k_potScale));
-			addSequential(new Intake(-.7));
+			addSequential(new MoveIntake(-.7));
     	}
     	else if (gameData.charAt(0) == 'L' && gameData.charAt(1) == 'L')
     	{
-    		if (side == 0)
+    		if (goal == 0)
     		{
+    			// Left Side Switch	
+    			System.out.println("Left Position/Left Switch");
         		addSequential(new DriveForward(148.875));
-        		addParallel(new MoveArmScale(RobotMap.k_potSwitch));
-        		addSequential(new TurnGroup(90));
+        		addSequential(new MoveArmPID(RobotMap.k_potSwitch));
+        		addSequential(new Turn(90, -.4, false));
         		addSequential(new DriveForward(19.435));
-        		addParallel(new MoveArmPID(RobotMap.k_potSwitch));
-        		addSequential(new Intake(-.7));
+        		addSequential(new MoveIntake(-.7));
     		}
-    		else if (side == 1)
+    		else if (goal == 1)
     		{
+    			// Left Side Scale
+    			System.out.println("Left Position/Left Scale");
     			addSequential(new DriveForward(304.875));
-    			addSequential(new TurnGroup(90));
+    			addSequential(new MoveArmScale(RobotMap.k_potScale));
+    			addSequential(new Turn(90, -.4, false));
     			addSequential(new DriveForward(5.755)); 
-    			addParallel(new MoveArmScale(RobotMap.k_potScale));
-    			addSequential(new Intake(-.7));
+    			addSequential(new MoveIntake(-.7));
     		}
     	}
-    		
     	else 
     	{
     		// Cross Baseline
