@@ -5,7 +5,7 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class OpenClose extends Command 
 {
-	boolean direction = true;
+	public static boolean direction = true;
 	
 	public OpenClose() 
     {

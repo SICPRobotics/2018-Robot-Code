@@ -2,6 +2,7 @@ package org.usfirst.frc.team5822.robot.subsystems;
 
 import org.usfirst.frc.team5822.robot.Robot;
 import org.usfirst.frc.team5822.robot.RobotMap;
+import org.usfirst.frc.team5822.robot.commands.OpenClose;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.VictorSP;
@@ -49,7 +50,17 @@ public class Intake extends Subsystem
     	if (Robot.isOldRobot) return;
     	hanSolo.set(DoubleSolenoid.Value.kReverse);
     }
-
+    public static String position()
+    {
+    	if (!OpenClose.direction)
+    	{
+    		return "Open";
+    	}
+    	else
+    	{
+    		return "Close";
+    	}
+    }
     public void open()
     {
     	System.out.println("IntakeArm open");
