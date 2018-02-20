@@ -41,16 +41,17 @@ public class Robot extends TimedRobot
 	SendableChooser<Integer> locationChooser = new SendableChooser<>();
 	SendableChooser<Integer> goalChooser = new SendableChooser<>();
 	
-	public static int position = 1; //default center 
-	public static int goal = 0; //default switch
+	public static int position; //default center 
+	public static int goal; //default switch
 	
 	@Override
 	public void robotInit() 
 	{
-		locationChooser.addDefault("Left", 0);
-		locationChooser.addObject("Center", 1);
-		locationChooser.addObject("Right", 2);
+		locationChooser.addDefault("Left", RobotMap.k_leftSide);
+		locationChooser.addObject("Center", RobotMap.k_centerSide);
+		locationChooser.addObject("Right", RobotMap.k_rightSide);
 	
+		
 		goalChooser.addDefault("Switch", 0);
 		goalChooser.addObject("Scale", 1);
 		
@@ -69,6 +70,7 @@ public class Robot extends TimedRobot
 			c.setClosedLoopControl(true);
 		}
 		
+		SmartDashboard.putString("Intake Position:", intake.position());
 		SmartDashboard.putNumber("Gyro", sensors.getGyro()); 
 		SmartDashboard.putNumber("Potentiometer", arm.getPot());
 		SmartDashboard.putData("Location Selection", locationChooser);
@@ -94,12 +96,11 @@ public class Robot extends TimedRobot
 	public void autonomousInit() 
 	{
 		Robot.sensors.resetGyro();
-	
+		
 		//TODO: figure out how to get these values from the SD
-		//position = locationChooser.getSelected();
-		//goal = goalChooser.getSelected();
-		position = 2;
-		goal = 0;
+		position = locationChooser.getSelected();
+		goal = goalChooser.getSelected();
+		
 		
 		m_autonomousCommand = new getFieldData();
 		m_autonomousCommand.start();
@@ -110,9 +111,10 @@ public class Robot extends TimedRobot
     {
     	Scheduler.getInstance().run();
 		
-		SmartDashboard.putNumber("Gyro", sensors.getGyro()); 
-		SmartDashboard.putData("Location Selection", locationChooser);
-		SmartDashboard.putData("Goal Chooser", goalChooser);
+    	SmartDashboard.putString("Intake Position:", intake.position());
+    	SmartDashboard.putNumber("Gyro", sensors.getGyro()); 
+    	SmartDashboard.putData("Location Selection", locationChooser);
+    	SmartDashboard.putData("Goal Chooser", goalChooser);
     }
     
     @Override

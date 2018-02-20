@@ -20,7 +20,7 @@ public class Climber extends Subsystem
 		} else {
 			climberL = new VictorSP(RobotMap.k_climbLeft);
 			climberR = new VictorSP(RobotMap.k_climbRight);
-
+			
 			release = new DoubleSolenoid(RobotMap.k_climberSolo1, RobotMap.k_climberSolo2);
 			release.set(DoubleSolenoid.Value.kReverse);
 		}

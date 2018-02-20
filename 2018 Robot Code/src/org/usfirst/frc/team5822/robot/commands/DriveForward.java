@@ -21,15 +21,15 @@ public class DriveForward extends Command
     protected void initialize() 
     {
    		Robot.driveTrain.resetEncoders();
-    	System.out.println("DriveForward Init");
+    	//System.out.println("DriveForward Init");
     	startingPos = Robot.driveTrain.encDistance();
-    	System.out.println("starting pos: " + startingPos);
+    	//System.out.println("starting pos: " + startingPos);
     	time.start();
     }
 
     protected void execute() 
     {
-    	System.out.println("encoder distance: " + Robot.driveTrain.encDistance());
+    	//System.out.println("encoder distance: " + Robot.driveTrain.encDistance());
     	if (time.get() > .3)
     		Robot.driveTrain.drive();
     }
@@ -45,7 +45,7 @@ public class DriveForward extends Command
     
     protected void end() 
     {
-    	System.out.println("End: Drive Forward");
+    	//System.out.println("End: Drive Forward");
     }
 
     protected void interrupted() {}
