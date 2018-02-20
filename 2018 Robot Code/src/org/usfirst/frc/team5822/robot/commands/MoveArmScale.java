@@ -7,14 +7,11 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class MoveArmScale extends Command 
 {
-	double desiredDegrees, currentDegrees;
-	boolean goingUp;
+	double currentDegrees;
 	
     public MoveArmScale(double degrees) 
     {
     	requires(Robot.arm);
-   		requires(Robot.sensors);
-        desiredDegrees = degrees;
     }
 
     protected void initialize() {}
@@ -39,10 +36,14 @@ public class MoveArmScale extends Command
     		speed = RobotMap.speedC;
     		System.out.println("Zone C");
     	}
-    	else
+    	else if (currentDegrees < RobotMap.dTop)
     	{
     		speed = RobotMap.speedD;
-    		System.out.println("Zone D");
+    		System.out.println("Zone D"); 
+    	}
+    	else
+    	{
+    		speed = -.2;
     	}
     	
     	Robot.arm.armMotors(speed);

@@ -21,29 +21,22 @@ public class A_Center extends CommandGroup
 //    		addSequential(new MoveIntake(-.7));
     		
     		addSequential(new DriveForward(5));
-    		addSequential(new Turn(-23.96, .4, true));
-    		//addSequential(new MoveArmPID(RobotMap.k_potSwitch));
-    		addSequential(new DriveForward(147.73));
-    		addSequential(new Turn(23.96, -.4, false));
+    		addSequential(new Turn(-28, .4, true));
+    		addSequential(new MoveArmPID(RobotMap.k_potSwitch));
+    		addSequential(new DriveForward(95));
+    		addSequential(new Turn(25, -.4, false));
     		addSequential(new MoveIntakeAuto(-.7));
+    		addSequential(new LowerArm());
     	} 
     	else if (gameData.charAt(0) == 'R') 
     	{
     		// Right Side Switch
     		System.out.println("Center Position/Right Switch");
-//    		addSequential(new DriveForward(40.875)); 
-//    		addSequential(new Turn(90, -.4, false));
-//    		addSequential(new DriveForward(46.2));
-//    		addSequential(new Turn(-90, .4, true));
-//    		addSequential(new MoveArmPID(RobotMap.k_potSwitch));
-//    		addSequential(new DriveForward(60.785));
-//    		addSequential(new MoveIntake(-.8));
-    		
     		addSequential(new DriveForward(5));
     		addSequential(new Turn(20.3, -.4, false));
     		addSequential(new MoveArmPID(RobotMap.k_potSwitch));
     		addSequential(new DriveForward(90));
-    		addSequential(new Turn(-25, .4, true));
+    		addSequential(new Turn(-21.5, .4, true));
     		addSequential(new MoveIntakeAuto(-.78));
     		addSequential(new LowerArm());
     		

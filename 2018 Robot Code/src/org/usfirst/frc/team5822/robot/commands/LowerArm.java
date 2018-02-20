@@ -17,36 +17,41 @@ public class LowerArm extends Command
 
     protected void initialize() 
     {
-        period = 2;
-        initPos = Robot.arm.getPot();
-        endTargetPos = RobotMap.k_potFloor;
-        deltaPos = endTargetPos - initPos;
-        time = new Timer();
-
-        Robot.arm.setSetpoint(initPos);
-    	Robot.arm.enable();
+//        period = 2;
+//        initPos = Robot.arm.getPot();
+//        endTargetPos = RobotMap.k_potFloor;
+//        deltaPos = endTargetPos - initPos;
+    	  time = new Timer();
+//
+//        Robot.arm.setSetpoint(initPos);
+//    	Robot.arm.enable();
+//    	time.start();
+    	Robot.arm.disable();
+    	Robot.arm.armMotors(0);
     	time.start();
     }
 
     protected void execute() 
     {
-    	double progress = 1 - (period - time.get()) / period;
-    	double targetPos = initPos + (progress * deltaPos);
-    	Robot.arm.setSetpoint(targetPos);
+    	Robot.arm.armMotors(-.1);
+//    	double progress = 1 - (period - time.get()) / period;
+//    	double targetPos = initPos + (progress * deltaPos);
+//    	Robot.arm.setSetpoint(targetPos);
     }
 
     protected boolean isFinished() 
     {
-    	if (time.get() >= period)
+    	if (time.get() >= .3)
     		return true;
     	return false;
     }
 
     protected void end() 
     {
-    	time.stop();
-    	time.reset();
+//    	time.stop();
+//    	time.reset();
     	Robot.arm.disable();
+    	Robot.arm.armMotors(0);
     }
 
     protected void interrupted() {}

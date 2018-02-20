@@ -53,12 +53,12 @@ public class RobotMap
 	public static double k_potExchange = .15;
 	public static double aTop = .258; 
 	public static double bTop = .33; 
-	public static double cTop = .467;
-	public static double dTop = .5;
+	public static double cTop = .43; //.467
+	public static double dTop = .48;
 	
 	//arm speeds
-	public static double speedA = 1; 
-	public static double speedB = 1;
-	public static double speedC = 0.5;
-	public static double speedD = 0.3;
+	public static double speedA = .8; 
+	public static double speedB = .5;
+	public static double speedC = .4;
+	public static double speedD = .15;
 }

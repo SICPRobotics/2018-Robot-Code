@@ -15,7 +15,8 @@ public class A_Left extends CommandGroup
     		addSequential(new MoveArmPID(RobotMap.k_potSwitch));
     		addSequential(new Turn(90, -.4, false));
     		addSequential(new DriveForward(19.435));
-    		addSequential(new MoveIntake(-.7));
+    		addSequential(new MoveIntakeAuto(-.7));
+    		addSequential(new LowerArm());
     	} 
     	else if (gameData.charAt(0) != 'L' && gameData.charAt(1) == 'L')
     	{
@@ -25,7 +26,10 @@ public class A_Left extends CommandGroup
 			addSequential(new MoveArmScale(RobotMap.k_potScale));
 			addSequential(new Turn(90, -.4, false));
 			addSequential(new DriveForward(5.755)); 
-			addSequential(new MoveIntake(-.7));
+    		addSequential(new MoveIntakeAuto(-.7));
+    		addSequential(new LowerArm());
+    		addSequential(new LowerArm());
+    		addSequential(new LowerArm());
     	}
     	else if (gameData.charAt(0) == 'L' && gameData.charAt(1) == 'L')
     	{
@@ -33,11 +37,12 @@ public class A_Left extends CommandGroup
     		{
     			// Left Side Switch	
     			System.out.println("Left Position/Left Switch");
-        		addSequential(new DriveForward(148.875));
+        		addSequential(new DriveForward(140));
         		addSequential(new MoveArmPID(RobotMap.k_potSwitch));
         		addSequential(new Turn(90, -.4, false));
-        		addSequential(new DriveForward(19.435));
-        		addSequential(new MoveIntake(-.7));
+        		//addSequential(new DriveForward(5));
+        		addSequential(new MoveIntakeAuto(-.7));
+        		addSequential(new LowerArm());
     		}
     		else if (goal == 1)
     		{
@@ -47,7 +52,10 @@ public class A_Left extends CommandGroup
     			addSequential(new MoveArmScale(RobotMap.k_potScale));
     			addSequential(new Turn(90, -.4, false));
     			addSequential(new DriveForward(5.755)); 
-    			addSequential(new MoveIntake(-.7));
+        		addSequential(new MoveIntakeAuto(-.7));
+        		addSequential(new LowerArm());
+        		addSequential(new LowerArm());
+        		addSequential(new LowerArm());
     		}
     	}
     	else 

@@ -98,7 +98,7 @@ public class Robot extends TimedRobot
 		//TODO: figure out how to get these values from the SD
 		//position = locationChooser.getSelected();
 		//goal = goalChooser.getSelected();
-		position = 1;
+		position = 2;
 		goal = 0;
 		
 		m_autonomousCommand = new getFieldData();

@@ -29,7 +29,7 @@ public class MoveIntakeAuto extends Command
 
     protected boolean isFinished() 
     {
-    	if (timer.get() < 3)
+    	if (timer.get() < 2)
     		return false;
     	return true;
     }
