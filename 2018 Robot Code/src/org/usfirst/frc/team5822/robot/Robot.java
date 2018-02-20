@@ -29,7 +29,7 @@ public class Robot extends TimedRobot
 	public static ArmPID arm;
 	
 	public static Compressor c;
-	//UsbCamera cami = CameraServer.getInstance().startAutomaticCapture(0);
+	UsbCamera cami = CameraServer.getInstance().startAutomaticCapture(0);
 	
 	public static Joystick j = new Joystick(RobotMap.k_joystick1);
 	public static XboxController x = new XboxController(RobotMap.k_xboxCntrl);
@@ -47,6 +47,8 @@ public class Robot extends TimedRobot
 	@Override
 	public void robotInit() 
 	{
+	    	cami.setFPS(60);
+	    	
 		locationChooser.addDefault("Left", RobotMap.k_leftSide);
 		locationChooser.addObject("Center", RobotMap.k_centerSide);
 		locationChooser.addObject("Right", RobotMap.k_rightSide);
@@ -69,7 +71,7 @@ public class Robot extends TimedRobot
 			c = new Compressor(0);
 			c.setClosedLoopControl(true);
 		}
-		
+		//SmartDashboard.
 		SmartDashboard.putString("Intake Position:", intake.position());
 		SmartDashboard.putNumber("Gyro", sensors.getGyro()); 
 		SmartDashboard.putNumber("Potentiometer", arm.getPot());
@@ -134,6 +136,7 @@ public class Robot extends TimedRobot
 	{
 		Scheduler.getInstance().run();
 		driveTrain.cheesyDrive(j);
+		SmartDashboard.putString("Intake Position:", intake.position());
 		SmartDashboard.putNumber("Gyro", sensors.getGyro());
 		SmartDashboard.putNumber("Potentiometer", arm.getPot());
 //		if (count++ % 50 == 0) 

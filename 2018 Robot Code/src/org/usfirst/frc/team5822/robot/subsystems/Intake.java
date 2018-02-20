@@ -67,7 +67,7 @@ public class Intake extends Subsystem
     
     public String position()
     {
-	if (OpenClose.direction)
+	if (!OpenClose.direction)
 	{
 	    return "Open";
 	}
