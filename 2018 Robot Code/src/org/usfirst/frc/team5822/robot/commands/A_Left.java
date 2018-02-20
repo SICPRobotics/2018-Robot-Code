@@ -22,14 +22,15 @@ public class A_Left extends CommandGroup
     	{
     		// Left Side Scale
     		System.out.println("Left Position/Left Scale");
-			addSequential(new DriveForward(304.875));
+			addSequential(new DriveForward(285));
+			addSequential(new Turn(-90, .4, true));
+			addSequential(new DriveBackward(-3));
 			addSequential(new MoveArmScale(RobotMap.k_potScale));
-			addSequential(new Turn(90, -.4, false));
-			addSequential(new DriveForward(5.755)); 
-    		addSequential(new MoveIntakeAuto(-.7));
-    		addSequential(new LowerArm());
-    		addSequential(new LowerArm());
-    		addSequential(new LowerArm());
+			addSequential(new MoveIntakeAuto(0));
+			addSequential(new MoveIntakeAuto(-.7));
+			addSequential(new LowerArm());
+			addSequential(new LowerArm());
+    		addSequential(new LowerArm());     
     	}
     	else if (gameData.charAt(0) == 'L' && gameData.charAt(1) == 'L')
     	{
@@ -48,13 +49,14 @@ public class A_Left extends CommandGroup
     		{
     			// Left Side Scale
     			System.out.println("Left Position/Left Scale");
-    			addSequential(new DriveForward(304.875));
+    			addSequential(new DriveForward(285));
+    			addSequential(new Turn(-82, .4, true));
+    			addSequential(new DriveBackward(-10));
     			addSequential(new MoveArmScale(RobotMap.k_potScale));
-    			addSequential(new Turn(90, -.4, false));
-    			addSequential(new DriveForward(5.755)); 
-        		addSequential(new MoveIntakeAuto(-.7));
-        		addSequential(new LowerArm());
-        		addSequential(new LowerArm());
+    			addSequential(new MoveIntakeAuto(0));
+    			addSequential(new MoveIntakeAuto(-.7));
+    			addSequential(new LowerArm());
+    			addSequential(new LowerArm());
         		addSequential(new LowerArm());
     		}
     	}

@@ -29,6 +29,7 @@ public class Sensors extends Subsystem
 	public double getGyro()
 	{
 		if (Robot.isOldRobot) return 0;
+	//	System.out.println("gyro: " + gyro.getAngle());
 		return gyro.getAngle();
 	}
 	

@@ -22,14 +22,15 @@ public class A_Right extends CommandGroup
     	{
     		// Right Side Scale
 			System.out.println("Right Position/Right Scale");
-			addSequential(new DriveForward(304.875));
-			addSequential(new MoveArmScale(RobotMap.k_potScale));
-			addSequential(new Turn(-90, .4, true));
-			addSequential(new DriveForward(5.755));
+			addSequential(new DriveForward(285));
+			addSequential(new Turn(82, -.4, false));
+			addSequential(new DriveBackward(-10));
+			addParallel(new MoveArmScale(RobotMap.k_potScale));
+			addSequential(new MoveIntakeAuto(0));
 			addSequential(new MoveIntakeAuto(-.7));
 			addSequential(new LowerArm());
-    		addSequential(new LowerArm());
-    		addSequential(new LowerArm());
+			addSequential(new LowerArm());
+    		addSequential(new LowerArm());    
     	}
     	else if (gameData.charAt(0) == 'R' && gameData.charAt(1) == 'R')
     	{
@@ -48,10 +49,11 @@ public class A_Right extends CommandGroup
     		{
         		// Right Side Scale
     			System.out.println("Right Position/Right Scale");
-    			addSequential(new DriveForward(304.875));
-    			addSequential(new MoveArmScale(RobotMap.k_potScale));
-    			addSequential(new Turn(-90, .5, true));
-    			addSequential(new DriveForward(5.755));
+    			addSequential(new DriveForward(285));
+    			addSequential(new Turn(82, -.4, false));
+    			addSequential(new DriveBackward(-10));
+    			addParallel(new MoveArmScale(RobotMap.k_potScale));
+    			addSequential(new MoveIntakeAuto(0));
     			addSequential(new MoveIntakeAuto(-.7));
     			addSequential(new LowerArm());
     			addSequential(new LowerArm());

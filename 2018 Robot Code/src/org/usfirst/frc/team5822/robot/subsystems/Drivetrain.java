@@ -48,7 +48,7 @@ public class Drivetrain extends PIDSubsystem
 		rightEnc = nativeUnits2 * .0046019424;
 		double dist = (leftEnc + rightEnc) /2;
 		
-//  	System.out.println("enc at " + dist);
+  	System.out.println("enc at " + dist);
 		return dist;
 	}
 
@@ -68,9 +68,14 @@ public class Drivetrain extends PIDSubsystem
 		return Robot.sensors.getGyro(); 
     }
 
-	public void drive() 
+	public void driveForward() 
 	{
-		robotBase.arcadeDrive(.6,0);
+		robotBase.arcadeDrive(.65,0);
+	}
+	
+	public void driveBackward() 
+	{
+		robotBase.arcadeDrive(-.5,0);
 	}
     
 	protected void usePIDOutput(double output) {}

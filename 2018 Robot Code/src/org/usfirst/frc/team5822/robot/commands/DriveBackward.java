@@ -5,12 +5,12 @@ import org.usfirst.frc.team5822.robot.Robot;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
-public class DriveForward extends Command 
+public class DriveBackward extends Command 
 {
 	double distance, startingPos;
 	Timer time; 
 	
-    public DriveForward(double distanceTOmove) 
+    public DriveBackward(double distanceTOmove) 
     {
     	requires(Robot.driveTrain);
 		requires(Robot.sensors);
@@ -31,12 +31,12 @@ public class DriveForward extends Command
     {
     	System.out.println("encoder distance: " + Robot.driveTrain.encDistance());
     	if (time.get() > .3)
-    		Robot.driveTrain.driveForward();
+    		Robot.driveTrain.driveBackward();
     }
 
     protected boolean isFinished() 
     {
-    	if (Robot.driveTrain.encDistance() > distance && time.get() > .3)
+    	if (Robot.driveTrain.encDistance() < distance && time.get() > .3)
     	{
     		return true;
     	}
