@@ -12,14 +12,6 @@ public class A_Center extends CommandGroup
     	{
     		//Left Side Switch
     		System.out.println("Center Position/Left Switch");
-//    		addSequential(new DriveForward(40.875));
-//    		addSequential(new Turn(-90, .4, true));
-//    		addSequential(new DriveForward(61));
-//    		addSequential(new Turn(90, -.4, false));
-//    		addSequential(new MoveArmPID(RobotMap.k_potSwitch));
-//    		addSequential(new DriveForward(60.785));
-//    		addSequential(new MoveIntake(-.7));
-    		
     		addSequential(new DriveForward(5));
     		addSequential(new Turn(-28, .4, true));
     		addSequential(new MoveArmPID(RobotMap.k_potSwitch));
