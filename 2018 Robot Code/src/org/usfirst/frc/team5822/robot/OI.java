@@ -39,7 +39,7 @@ public class OI
 	{		
 		buttonA.whenPressed(new LowerArm());
 		buttonB.whenPressed(new MoveArmPID(RobotMap.k_potSwitch));
-		buttonX.whenPressed(new MoveArmPID(RobotMap.k_potExchange));
+		buttonX.whenPressed(new OpenClose());
 		buttonY.whenPressed(new MoveArmScale(RobotMap.k_potScale));
 		
 		buttonLB.whenPressed(new MoveIntake(.60));
@@ -47,12 +47,12 @@ public class OI
 		buttonRB.whenPressed(new MoveIntake(-.750)); 
 		buttonRB.whenReleased(new MoveIntake(0));
 		
-		buttonStart.whenPressed(new SolenoidForward());
-		buttonBack.whenPressed(new SolenoidReverse());
+		buttonStart.whenPressed(new ReleaseHook());
+		//buttonBack.whenPressed(???);
 		
-		rightThumb.whenPressed(new ReleaseHook());
-		leftThumb.whenPressed(new OpenClose());
-				
+		rightThumb.whenPressed(new SolenoidForward());
+		leftThumb.whenPressed(new SolenoidReverse());
+			
 		leftTrig.whenActive(new Climb("left"));
 		leftTrig.whenInactive(new StopClimb(true));
 		rightTrig.whenActive(new Climb("right"));

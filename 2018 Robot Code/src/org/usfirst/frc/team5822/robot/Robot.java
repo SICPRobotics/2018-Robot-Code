@@ -61,6 +61,7 @@ public class Robot extends TimedRobot
 		climber = new Climber();
 		arm = new ArmPID();
 		
+		
 		oi = new OI(); 
 	
 		if (!isOldRobot) 

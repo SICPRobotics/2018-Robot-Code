@@ -19,15 +19,16 @@ public class A_Center extends CommandGroup
     		addSequential(new Turn(25, -.4, false));
     		addSequential(new MoveIntakeAuto(-.7));
     		addSequential(new LowerArm());
-    		/*addSequential(new DriveBackward(-20));
-    		addSequential(new Turn(-theta, .5, true));
-    		addSequential(new DriveForward(z));
-    		addSequential(new Turn(theta, -.5, false));
-    		addSequential(new DriveForward(40 + y/2));
-    		addSequential(new Turn(90, -.4, false));
+    		
+    		addSequential(new DriveBackward(-20));
+    		addSequential(new Turn(-41.4096, .5, true));
+    		addSequential(new DriveForward(90.33));
+    		addSequential(new Turn(41.4096, -.5, false));
+    		addSequential(new DriveForward(60));
+    		addSequential(new Turn90(false));
     		addSequential(new DriveForward(37));
-    		addSequential(new Turn(90, -.4, false));
-    		*/ 		
+    		addSequential(new Turn90(false));
+    		 		
     	} 
     	else if (gameData.charAt(0) == 'R') 
     	{
