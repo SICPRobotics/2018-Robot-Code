@@ -108,7 +108,7 @@ public class Robot extends TimedRobot
     public void autonomousPeriodic() 
     {
     	Scheduler.getInstance().run();
-		
+		System.out.print("Position: " + position);
 		SmartDashboard.putNumber("Gyro", sensors.getGyro()); 
 		SmartDashboard.putData("Location Selection", locationChooser);
 		SmartDashboard.putData("Goal Chooser", goalChooser);

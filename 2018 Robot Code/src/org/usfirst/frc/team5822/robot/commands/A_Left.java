@@ -9,12 +9,13 @@ public class A_Left extends CommandGroup
     {
     	if (gameData.charAt(0) == 'L' && gameData.charAt(1) != 'L')
     	{
-    		// Left Side Switch	
-    		System.out.println("Left Position/Left Switch");
-    		addSequential(new DriveForward(148.875));
+    		//Left Side Switch
+    		System.out.println("Center Position/Left Switch");
+    		addSequential(new DriveForward(5));
+    		addSequential(new Turn(-28, .4, true));
     		addSequential(new MoveArmPID(RobotMap.k_potSwitch));
-    		addSequential(new Turn(90, -.4, false));
-    		addSequential(new DriveForward(19.435));
+    		addSequential(new DriveForward(95));
+    		addSequential(new Turn(25, -.4, false));
     		addSequential(new MoveIntakeAuto(-.7));
     		addSequential(new LowerArm());
     	} 
@@ -24,7 +25,7 @@ public class A_Left extends CommandGroup
     		System.out.println("Left Position/Left Scale");
 			addSequential(new DriveForward(285));
 			addSequential(new Turn(-95, .4, true));
-		//	addSequential(new DriveBackward(-));
+		//	addSequential(new DriveBackward(0));
 			addSequential(new MoveArmScale(RobotMap.k_potScale));
 			addSequential(new MoveIntakeAuto(0));
 			addSequential(new MoveIntakeAuto(-.7));
@@ -36,28 +37,29 @@ public class A_Left extends CommandGroup
     	{
     		if (goal == 0)
     		{
-    			// Left Side Switch	
-    			System.out.println("Left Position/Left Switch");
-        		addSequential(new DriveForward(140));
+    			//Left Side Switch
+        		System.out.println("Center Position/Left Switch");
+        		addSequential(new DriveForward(5));
+        		addSequential(new Turn(-28, .4, true));
         		addSequential(new MoveArmPID(RobotMap.k_potSwitch));
-        		addSequential(new Turn(90, -.4, false));
-        		//addSequential(new DriveForward(5));
+        		addSequential(new DriveForward(95));
+        		addSequential(new Turn(25, -.4, false));
         		addSequential(new MoveIntakeAuto(-.7));
         		addSequential(new LowerArm());
     		}
     		else if (goal == 1)
     		{
     			// Left Side Scale
-    			System.out.println("Left Position/Left Scale");
+        		System.out.println("Left Position/Left Scale");
     			addSequential(new DriveForward(285));
-    			addSequential(new Turn(-82, .4, true));
-    			addSequential(new DriveBackward(-10));
+    			addSequential(new Turn(-95, .4, true));
+    		//	addSequential(new DriveBackward(0));
     			addSequential(new MoveArmScale(RobotMap.k_potScale));
     			addSequential(new MoveIntakeAuto(0));
     			addSequential(new MoveIntakeAuto(-.7));
     			addSequential(new LowerArm());
     			addSequential(new LowerArm());
-        		addSequential(new LowerArm());
+        		addSequential(new LowerArm());  
     		}
     	}
     	else 

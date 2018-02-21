@@ -9,13 +9,14 @@ public class A_Right extends CommandGroup
     {
     	if (gameData.charAt(0) == 'R' && gameData.charAt(1) != 'R')
     	{
-    		//Right Side Switch
-    		System.out.println("Right Position/Right Switch");
-    		addSequential(new DriveForward(140)); //148.875
+    		// Right Side Switch
+    		System.out.println("Center Position/Right Switch");
+    		addSequential(new DriveForward(5));
+    		addSequential(new Turn(20.3, -.4, false));
     		addSequential(new MoveArmPID(RobotMap.k_potSwitch));
-    		addSequential(new Turn(-90, .4, true));
-    		addSequential(new DriveForward(19.435));
-    		addSequential(new MoveIntakeAuto(-.7));
+    		addSequential(new DriveForward(90));
+    		addSequential(new Turn(-21.5, .4, true));
+    		addSequential(new MoveIntakeAuto(-.78));
     		addSequential(new LowerArm());
     	} 
     	else if (gameData.charAt(0) != 'R' && gameData.charAt(1) == 'R')
@@ -36,13 +37,14 @@ public class A_Right extends CommandGroup
     	{
     		if (side == 0)
     		{
-    			//Right Side Switch
-        		System.out.println("Right Position/Right Switch");
-        		addSequential(new DriveForward(140)); //148.875
+    			// Right Side Switch
+        		System.out.println("Center Position/Right Switch");
+        		addSequential(new DriveForward(5));
+        		addSequential(new Turn(20.3, -.4, false));
         		addSequential(new MoveArmPID(RobotMap.k_potSwitch));
-        		addSequential(new Turn(-90, .6, true));
-        		addSequential(new DriveForward(19.435));
-        		addSequential(new MoveIntakeAuto(-.7));
+        		addSequential(new DriveForward(90));
+        		addSequential(new Turn(-21.5, .4, true));
+        		addSequential(new MoveIntakeAuto(-.78));
         		addSequential(new LowerArm());
         	}
     		else if (side == 1)
