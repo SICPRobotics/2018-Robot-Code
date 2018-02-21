@@ -98,9 +98,9 @@ public class Robot extends TimedRobot
 		Robot.sensors.resetGyro();
 	
 		//TODO: figure out how to get these values from the SD
-		position = locationChooser.getSelected();
+		//position = locationChooser.getSelected();
 		goal = goalChooser.getSelected();
-		
+		position = 1;
 		m_autonomousCommand = new getFieldData();
 		m_autonomousCommand.start();
 	}

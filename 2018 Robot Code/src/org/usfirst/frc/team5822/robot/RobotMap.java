@@ -48,7 +48,7 @@ public class RobotMap
     
 	//arm heights
 	public static double k_potScale = .52;
-	public static double k_potSwitch = .24; //.2213
+	public static double k_potSwitch = .27; //.2213
 	public static double k_potFloor = .15; 
 	public static double k_potExchange = .15;
 	public static double aTop = .19714; //.258 
@@ -56,14 +56,14 @@ public class RobotMap
 	public static double cTop = .29143; //.43
 	public static double dTop = .33857; //.48
 	public static double eTop = .38571;
-	public static double fTop = .43286;
+	public static double fTop = .44286;
 	public static double gTop = .48;
 	//arm speeds
-	public static double speedA = 1; //.8 
-	public static double speedB = .8; //.5
+	public static double speedA = .8; //.8 
+	public static double speedB = .7; //.5
 	public static double speedC = .6; //.4
 	public static double speedD = .5; //.15
-	public static double speedE = .4;
+	public static double speedE = .45;
 	public static double speedF = .3;
 	public static double speedG = .15;
 }

@@ -14,7 +14,7 @@ public class ArmPID extends PIDSubsystem
 	
     public ArmPID() 
     {
-    	super("arm", 6.0, 0.0, 0.0); //originally 4 
+    	super("arm", 7.0, 0.0, 0.0); //originally 4 
     	talon.setInverted(true);
        	victor.follow(talon);
     }
@@ -39,5 +39,6 @@ public class ArmPID extends PIDSubsystem
     public void armMotors(double speed)
     {
     	talon.set(speed);
+    	System.out.println(getPot());
     }
 }
