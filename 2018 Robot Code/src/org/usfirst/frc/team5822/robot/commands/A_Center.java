@@ -19,6 +19,15 @@ public class A_Center extends CommandGroup
     		addSequential(new Turn(25, -.4, false));
     		addSequential(new MoveIntakeAuto(-.7));
     		addSequential(new LowerArm());
+    		/*addSequential(new DriveBackward(-20));
+    		addSequential(new Turn(-theta, .5, true));
+    		addSequential(new DriveForward(z));
+    		addSequential(new Turn(theta, -.5, false));
+    		addSequential(new DriveForward(40 + y/2));
+    		addSequential(new Turn(90, -.4, false));
+    		addSequential(new DriveForward(37));
+    		addSequential(new Turn(90, -.4, false));
+    		*/ 		
     	} 
     	else if (gameData.charAt(0) == 'R') 
     	{
@@ -31,7 +40,15 @@ public class A_Center extends CommandGroup
     		addSequential(new Turn(-21.5, .4, true));
     		addSequential(new MoveIntakeAuto(-.78));
     		addSequential(new LowerArm());
-    		
+    		/*addSequential(new DriveBackward(-20));
+    		addSequential(new Turn(theta, -.5, false));
+    		addSequential(new DriveForward(z));
+    		addSequential(new Turn(-theta, .5, true));
+    		addSequential(new DriveForward(40 + y/2));
+    		addSequential(new Turn(-90, .4, true));
+    		addSequential(new DriveForward(37));
+    		addSequential(new Turn(-90, .4, true));
+    		*/
     	}
     }
 }

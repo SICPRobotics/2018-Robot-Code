@@ -25,7 +25,7 @@ public class A_Left extends CommandGroup
     		System.out.println("Left Position/Left Scale");
 			addSequential(new DriveForward(285));
 			addSequential(new Turn(-95, .4, true));
-		//	addSequential(new DriveBackward(0));
+			//addSequential(new DriveBackward(0));
 			addSequential(new MoveArmScale(RobotMap.k_potScale));
 			addSequential(new MoveIntakeAuto(0));
 			addSequential(new MoveIntakeAuto(-.7));
@@ -53,7 +53,7 @@ public class A_Left extends CommandGroup
         		System.out.println("Left Position/Left Scale");
     			addSequential(new DriveForward(285));
     			addSequential(new Turn(-95, .4, true));
-    		//	addSequential(new DriveBackward(0));
+    			//addSequential(new DriveBackward(0));
     			addSequential(new MoveArmScale(RobotMap.k_potScale));
     			addSequential(new MoveIntakeAuto(0));
     			addSequential(new MoveIntakeAuto(-.7));

@@ -41,6 +41,21 @@ public class MoveArmScale extends Command
     		speed = RobotMap.speedD;
     		System.out.println("Zone D"); 
     	}
+    	else if (currentDegrees < RobotMap.eTop)
+    	{
+    		speed = RobotMap.speedE;
+    		System.out.println("Zone E"); 
+    	}
+    	else if (currentDegrees < RobotMap.fTop)
+    	{
+    		speed = RobotMap.speedF;
+    		System.out.println("Zone F"); 
+    	}
+    	else if (currentDegrees < RobotMap.gTop)
+    	{
+    		speed = RobotMap.speedG;
+    		System.out.println("Zone G"); 
+    	}
     	else
     	{
     		speed = -.2;
