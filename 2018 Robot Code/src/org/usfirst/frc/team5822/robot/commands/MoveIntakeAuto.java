@@ -18,7 +18,7 @@ public class MoveIntakeAuto extends Command
 
     protected void initialize() 
     {	
-    	System.out.println("intake command starting");
+    	System.out.println("intake auto command starting");
     	timer.start();
     }
 
@@ -29,7 +29,7 @@ public class MoveIntakeAuto extends Command
 
     protected boolean isFinished() 
     {
-    	if (timer.get() < 2)
+    	if (timer.get() < 1.25)
     		return false;
     	return true;
     }

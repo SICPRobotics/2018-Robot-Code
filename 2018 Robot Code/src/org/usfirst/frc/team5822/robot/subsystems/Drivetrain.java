@@ -70,7 +70,7 @@ public class Drivetrain extends PIDSubsystem
 
 	public void driveForward() 
 	{
-		robotBase.arcadeDrive(.65,0);
+		robotBase.arcadeDrive(.5,0);
 	}
 	
 	public void driveBackward() 
