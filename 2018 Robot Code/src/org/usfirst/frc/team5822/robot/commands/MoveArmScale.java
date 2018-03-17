@@ -24,37 +24,42 @@ public class MoveArmScale extends Command
     	if (currentDegrees < RobotMap.aTop)
     	{
     		speed = RobotMap.speedA;
-    		System.out.println("Zone A");
+    		System.out.println("Zone A" + " pot: " + Robot.arm.getPot());
     	}
     	else if (currentDegrees < RobotMap.bTop)
     	{
     		speed = RobotMap.speedB;
-    		System.out.println("Zone B");
+    		System.out.println("Zone B" + " pot: " + Robot.arm.getPot());
     	}
     	else if (currentDegrees < RobotMap.cTop)
     	{
     		speed = RobotMap.speedC;
-    		System.out.println("Zone C");
+    		System.out.println("Zone C" + " pot: " + Robot.arm.getPot());
     	}
     	else if (currentDegrees < RobotMap.dTop)
     	{
     		speed = RobotMap.speedD;
-    		System.out.println("Zone D"); 
+    		System.out.println("Zone D" + " pot: " + Robot.arm.getPot()); 
     	}
     	else if (currentDegrees < RobotMap.eTop)
     	{
     		speed = RobotMap.speedE;
-    		System.out.println("Zone E"); 
+    		System.out.println("Zone E" + " pot: " + Robot.arm.getPot()); 
+    	}
+    	else if (currentDegrees < RobotMap.hTop)
+    	{
+    		speed = RobotMap.speedH;
+    		System.out.println("Zone H" + " pot: " + Robot.arm.getPot());
     	}
     	else if (currentDegrees < RobotMap.fTop)
     	{
     		speed = RobotMap.speedF;
-    		System.out.println("Zone F"); 
+    		System.out.println("Zone F" + " pot: " + Robot.arm.getPot()); 
     	}
     	else if (currentDegrees < RobotMap.gTop)
     	{
     		speed = RobotMap.speedG;
-    		System.out.println("Zone G"); 
+    		System.out.println("Zone G" + " pot: " + Robot.arm.getPot()); 
     	}
     	else
     	{

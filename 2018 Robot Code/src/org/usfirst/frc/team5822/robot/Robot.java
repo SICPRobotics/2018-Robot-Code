@@ -29,7 +29,7 @@ public class Robot extends TimedRobot
 	public static ArmPID arm;
 	
 	public static Compressor c;
-	//UsbCamera cami = CameraServer.getInstance().startAutomaticCapture(0);
+	UsbCamera cami = CameraServer.getInstance().startAutomaticCapture(0);
 	
 	public static Joystick j = new Joystick(RobotMap.k_joystick1);
 	public static XboxController x = new XboxController(RobotMap.k_xboxCntrl);
@@ -47,8 +47,9 @@ public class Robot extends TimedRobot
 	@Override
 	public void robotInit() 
 	{
-		locationChooser.addDefault("Left", 0);
-		locationChooser.addObject("Center", 1);
+
+		locationChooser.addDefault("Center", 1);
+		locationChooser.addObject("Left", 0);
 		locationChooser.addObject("Right", 2);
 	
 		goalChooser.addDefault("Switch", 0);
@@ -70,11 +71,13 @@ public class Robot extends TimedRobot
 			c.setClosedLoopControl(true);
 		}
 		
-		SmartDashboard.putString("Intake Position:", intake.position());
+		//SmartDashboard.putString("Intake Position:", Intake.position());
 		SmartDashboard.putNumber("Gyro", sensors.getGyro()); 
 		SmartDashboard.putNumber("Potentiometer", arm.getPot());
 		SmartDashboard.putData("Location Selection", locationChooser);
 		SmartDashboard.putData("Goal Selection", goalChooser);
+		SmartDashboard.putBoolean("Intake - Open/Close", Intake.position());
+		//.putBoolean("Intake In/Out ", value);
 	}
 
 	@Override
@@ -97,10 +100,9 @@ public class Robot extends TimedRobot
 	{
 		Robot.sensors.resetGyro();
 	
-		//TODO: figure out how to get these values from the SD
-		//position = locationChooser.getSelected();
+		position = locationChooser.getSelected();
 		goal = goalChooser.getSelected();
-		position = 1;
+		//position = 1;
 		m_autonomousCommand = new getFieldData();
 		m_autonomousCommand.start();
 	}
@@ -109,10 +111,10 @@ public class Robot extends TimedRobot
     public void autonomousPeriodic() 
     {
     	Scheduler.getInstance().run();
-		System.out.print("Position: " + position);
-		SmartDashboard.putNumber("Gyro", sensors.getGyro()); 
-		SmartDashboard.putData("Location Selection", locationChooser);
-		SmartDashboard.putData("Goal Chooser", goalChooser);
+		//System.out.print("Position: " + position);
+		//SmartDashboard.putNumber("Gyro", sensors.getGyro()); 
+		//SmartDashboard.putData("Location Selection", locationChooser);
+		//SmartDashboard.putData("Goal Chooser", goalChooser);
     }
     
     @Override
@@ -132,8 +134,8 @@ public class Robot extends TimedRobot
 	{
 		Scheduler.getInstance().run();
 		driveTrain.cheesyDrive(j);
-		SmartDashboard.putNumber("Gyro", sensors.getGyro());
-		SmartDashboard.putNumber("Potentiometer", arm.getPot());
+		//SmartDashboard.putNumber("Gyro", sensors.getGyro());
+		//SmartDashboard.putNumber("Potentiometer", arm.getPot());
 //		if (count++ % 50 == 0) 
 //		{
 //			System.out.println("Potentiometer: " + arm.getPot());

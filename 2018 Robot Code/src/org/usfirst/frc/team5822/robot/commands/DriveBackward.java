@@ -29,7 +29,7 @@ public class DriveBackward extends Command
 
     protected void execute() 
     {
-    	System.out.println("encoder distance: " + Robot.driveTrain.encDistance());
+    	//System.out.println("encoder distance: " + Robot.driveTrain.encDistance());
     	if (time.get() > .3)
     		Robot.driveTrain.driveBackward();
     }

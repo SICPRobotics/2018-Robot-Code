@@ -23,13 +23,13 @@ public class DriveForward extends Command
    		Robot.driveTrain.resetEncoders();
     	System.out.println("DriveForward Init");
     	startingPos = Robot.driveTrain.encDistance();
-    	System.out.println("starting pos: " + startingPos);
+    	//System.out.println("starting pos: " + startingPos);
     	time.start();
     }
 
     protected void execute() 
     {
-    	System.out.println("encoder distance: " + Robot.driveTrain.encDistance());
+    	//System.out.println("encoder distance: " + Robot.driveTrain.encDistance());
     	if (time.get() > .3)
     		Robot.driveTrain.driveForward();
     }

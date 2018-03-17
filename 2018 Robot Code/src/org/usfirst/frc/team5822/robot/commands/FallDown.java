@@ -7,13 +7,13 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class FallDown extends Command 
 {
-	int direction;
+	double speed;
 	Timer timer;
 	
-    public FallDown(int updown) 
+    public FallDown(double updown) 
     {
     	requires(Robot.antiFall);
-    	direction = updown;
+    	speed = updown;
     	timer = new Timer();
     }
 
@@ -24,7 +24,7 @@ public class FallDown extends Command
 
     protected void execute() 
     {
-    	Robot.antiFall.move(direction);
+    	Robot.antiFall.move(speed);
     }
 
     protected boolean isFinished() 

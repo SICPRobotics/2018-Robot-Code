@@ -23,14 +23,18 @@ public class getFieldData extends Command
     	int fieldDataLength = fieldDataIMP.length();
     	double matchTime = DriverStation.getInstance().getMatchTime();
     	
-    	if (count++%50 == 0)
-    		System.out.println("Field Data: " + fieldDataLength + "Match Time: " + matchTime);
+//    	if (count++%50 == 0)
+//    		System.out.println("Field Data: " + fieldDataIMP + " Length: " + fieldDataLength + " Match Time: " + matchTime);
     	
-    	if (fieldDataLength < 2 || matchTime > 10)
+    	if (fieldDataLength < 2 && matchTime > 10)
     	{
     		return false;
     	}
-    	else return true;
+    	else 
+    	{		
+    		System.out.println("Field Data - Success: " + fieldDataIMP);
+    		return true;
+    	}
     }
 
     protected void end() 

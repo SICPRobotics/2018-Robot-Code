@@ -48,19 +48,19 @@ public class Drivetrain extends PIDSubsystem
 		rightEnc = nativeUnits2 * .0046019424;
 		double dist = (leftEnc + rightEnc) /2;
 		
-  	System.out.println("enc at " + dist);
+  //	System.out.println("enc at " + dist);
 		return dist;
 	}
 
 	public void resetEncoders()
 	{
 		System.out.println("reset encoders \n\n\n\n\n");
-		ErrorCode rL = rearL.setSelectedSensorPosition(0, 0, 10000);
-		
-		System.out.println("error code for left: " + rL);
-		ErrorCode rR = rearR.setSelectedSensorPosition(0,0,10000);
-		System.out.println("error code for right: " + rR);
-		System.out.println("after reset encoders at " + encDistance());
+//		ErrorCode rL = rearL.setSelectedSensorPosition(0, 0, 10000);
+//		
+//		System.out.println("error code for left: " + rL);
+//		ErrorCode rR = rearR.setSelectedSensorPosition(0,0,10000);
+//		System.out.println("error code for right: " + rR);
+//		System.out.println("after reset encoders at " + encDistance());
 	}
 	
 	protected double returnPIDInput() 
@@ -70,7 +70,7 @@ public class Drivetrain extends PIDSubsystem
 
 	public void driveForward() 
 	{
-		robotBase.arcadeDrive(.5,0);
+		robotBase.arcadeDrive(.63,0);
 	}
 	
 	public void driveBackward() 

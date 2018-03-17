@@ -15,9 +15,9 @@ public class RobotMap
 	public static int k_armRight = 9;
 	
 	public static int k_climbLeft = 7;
-	public static int k_climbRight = 8;
+	public static int k_climbRight = 11;
 	
-	public static int k_feet = 11;
+	public static int k_feet = 8;
 	
 	//solenoids
 	public static int k_intakeSolo1 = 0;
@@ -56,6 +56,7 @@ public class RobotMap
 	public static double cTop = .29143; //.43
 	public static double dTop = .33857; //.48
 	public static double eTop = .38571;
+	public static double hTop = .414285;
 	public static double fTop = .44286;
 	public static double gTop = .48;
 	//arm speeds
@@ -63,7 +64,8 @@ public class RobotMap
 	public static double speedB = .7; //.5
 	public static double speedC = .6; //.4
 	public static double speedD = .5; //.15
-	public static double speedE = .45;
-	public static double speedF = .3;
+	public static double speedE = .55; //.45 -> .5
+	public static double speedH = .45;
+	public static double speedF = .3; //.3
 	public static double speedG = .15;
 }

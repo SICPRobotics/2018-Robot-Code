@@ -31,7 +31,7 @@ public class Intake extends Subsystem
     
     public void intakeMotors(double speed)
     {	
-    	System.out.println("IntakeArm intakeMotors: " + speed);
+    	//System.out.println("IntakeArm intakeMotors: " + speed);
     	if (Robot.isOldRobot) return;
     	intakeRight.set(speed);
     	intakeLeft.set(speed);
@@ -50,16 +50,9 @@ public class Intake extends Subsystem
     	if (Robot.isOldRobot) return;
     	hanSolo.set(DoubleSolenoid.Value.kReverse);
     }
-    public static String position()
+    public static boolean position()
     {
-    	if (!OpenClose.direction)
-    	{
-    		return "Open";
-    	}
-    	else
-    	{
-    		return "Close";
-    	}
+    	return OpenClose.direction;
     }
     public void open()
     {

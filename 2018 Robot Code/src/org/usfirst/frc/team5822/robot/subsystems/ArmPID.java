@@ -39,6 +39,6 @@ public class ArmPID extends PIDSubsystem
     public void armMotors(double speed)
     {
     	talon.set(speed);
-    	System.out.println(getPot());
+    	//System.out.println("pot height: " + getPot());
     }
 }

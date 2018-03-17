@@ -69,7 +69,9 @@ public class OI
 		j6.whenPressed(new SolenoidReverse());
 		j7.whenActive(new ReleaseHook());
 		j8.whenActive(new OpenClose());
-		j10.whenPressed(new FallDown(-1));
-		j12.whenPressed(new FallDown(1));
+		j10.whenPressed(new FallDown(-.6));
+		j10.whenReleased(new FallDown(0));
+		j12.whenPressed(new FallDown(.6));
+		j12.whenReleased(new FallDown(0));
 	}
 }

@@ -23,10 +23,9 @@ public class A_Right extends CommandGroup
     		// Right Side Scale
 			System.out.println("Right Position/Right Scale");
 			addSequential(new DriveForward(285));
-			addSequential(new Turn(82, -.4, false));
+			addSequential(new Turn(82, -.45, false));
 			addSequential(new DriveBackward(-10));
 			addParallel(new MoveArmScale(RobotMap.k_potScale));
-			addSequential(new MoveIntakeAuto(0));
 			addSequential(new MoveIntakeAuto(-.7));
 			addSequential(new LowerArm());
 			addSequential(new LowerArm());
@@ -47,17 +46,16 @@ public class A_Right extends CommandGroup
         	}
     		else if (side == 1)
     		{
-        		// Right Side Scale
+    			// Right Side Scale
     			System.out.println("Right Position/Right Scale");
     			addSequential(new DriveForward(285));
-    			addSequential(new Turn(82, -.4, false));
+    			addSequential(new Turn(82, -.45, false));
     			addSequential(new DriveBackward(-10));
     			addParallel(new MoveArmScale(RobotMap.k_potScale));
-    			addSequential(new MoveIntakeAuto(0));
     			addSequential(new MoveIntakeAuto(-.7));
     			addSequential(new LowerArm());
     			addSequential(new LowerArm());
-        		addSequential(new LowerArm());        	
+        		addSequential(new LowerArm());
         	}
     	}    		
     	else 

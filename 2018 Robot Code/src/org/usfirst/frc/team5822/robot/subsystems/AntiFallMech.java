@@ -15,7 +15,7 @@ public class AntiFallMech extends Subsystem
 		feet = new VictorSP(RobotMap.k_feet);
 	}
 
-	public void move(int speed)
+	public void move(double speed)
 	{
 		if (Robot.isOldRobot) return;
 		feet.set(speed);

@@ -30,7 +30,7 @@ public class Climber extends Subsystem
 	{
 		System.out.println("Climber - climbLeft");
 		if (Robot.isOldRobot) {return;}
-		climberL.set(.5);
+		climberL.set(.75);
 	}
 	public void stopClimbLeft()
 	{
@@ -42,7 +42,7 @@ public class Climber extends Subsystem
 	{
 		System.out.println("Climber - climbRight");
 		if (Robot.isOldRobot) {return;}
-		climberR.set(.5);
+		//climberR.set(-.5);
 	}
 	public void stopClimbRight()
 	{
