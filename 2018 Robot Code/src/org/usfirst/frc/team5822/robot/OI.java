@@ -1,12 +1,8 @@
 package org.usfirst.frc.team5822.robot;
 
 import org.usfirst.frc.team5822.robot.commands.*;
-
-import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import edu.wpi.first.wpilibj.buttons.Trigger;
 
 public class OI 
 {	
@@ -21,14 +17,14 @@ public class OI
 	Button j10 = new JoystickButton(Robot.j, 10); 
 	Button j12 = new JoystickButton(Robot.j, 12);
 
-	Button buttonA = new JoystickButton(Robot.x, 1); //Old 2
-	Button buttonB = new JoystickButton(Robot.x, 2); //Old 3
-	Button buttonX = new JoystickButton(Robot.x, 3); //Old 1
+	Button buttonA = new JoystickButton(Robot.x, 1); 
+	Button buttonB = new JoystickButton(Robot.x, 2); 
+	Button buttonX = new JoystickButton(Robot.x, 3); 
 	Button buttonY = new JoystickButton(Robot.x, 4); 
 	Button buttonLB = new JoystickButton(Robot.x, 5);
 	Button buttonRB = new JoystickButton(Robot.x, 6); 
-	Button buttonBack = new JoystickButton(Robot.x, 7); //Old 9
-	Button buttonStart = new JoystickButton(Robot.x, 8); //Old 10 
+	Button buttonBack = new JoystickButton(Robot.x, 7); 
+	Button buttonStart = new JoystickButton(Robot.x, 8);  
 	Button leftThumb = new JoystickButton(Robot.x, 9);
 	Button rightThumb = new JoystickButton(Robot.x, 10);
 		
@@ -47,27 +43,26 @@ public class OI
 		buttonRB.whenPressed(new MoveIntake(-.750)); 
 		buttonRB.whenReleased(new MoveIntake(0));
 		
-		buttonStart.whenPressed(new ReleaseHook());
-		//buttonBack.whenPressed(???);
+		//buttonStart open
+		//buttonBack open
 		
 		rightThumb.whenPressed(new SolenoidForward());
 		leftThumb.whenPressed(new SolenoidReverse());
 			
 		leftTrig.whenActive(new Climb("left"));
-		leftTrig.whenInactive(new StopClimb(true));
-		rightTrig.whenActive(new Climb("right"));
-		rightTrig.whenInactive(new StopClimb(false));
+		leftTrig.whenInactive(new StopClimb());
+		rightTrig.whenActive(new MoveArmPID(RobotMap.k_potTravel)); //TODO: test this and ask Charles if he wants to switch buttons with OpenClose
 		
-		j1.whenPressed(new MoveIntake(.60));
+		j1.whenPressed(new MoveIntake(.75));
 		j1.whenReleased(new MoveIntake(0));
-		j2.whenPressed(new MoveIntake(-.60));
+		j2.whenPressed(new MoveIntake(-.75));
 		j2.whenReleased(new MoveIntake(0));
 		
 		j3.whenActive(new Climb("left"));
-		j4.whenActive(new Climb("right"));
+		//j4 open
 		j5.whenPressed(new SolenoidForward());
 		j6.whenPressed(new SolenoidReverse());
-		j7.whenActive(new ReleaseHook());
+		//j7 open
 		j8.whenActive(new OpenClose());
 		j10.whenPressed(new FallDown(-.6));
 		j10.whenReleased(new FallDown(0));

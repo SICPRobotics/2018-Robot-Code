@@ -3,7 +3,6 @@ package org.usfirst.frc.team5822.robot;
 import edu.wpi.cscore.UsbCamera;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.Compressor;
-import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.XboxController;
@@ -11,7 +10,6 @@ import edu.wpi.first.wpilibj.command.*;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import org.usfirst.frc.team5822.robot.commands.AutoMode;
 import org.usfirst.frc.team5822.robot.commands.DisableArmPID;
 import org.usfirst.frc.team5822.robot.commands.MoveIntake;
 import org.usfirst.frc.team5822.robot.commands.getFieldData;
@@ -46,14 +44,14 @@ public class Robot extends TimedRobot
 	
 	@Override
 	public void robotInit() 
-	{
-
-		locationChooser.addDefault("Center", 1);
+	{		
 		locationChooser.addObject("Left", 0);
+		locationChooser.addDefault("Center", 1);
 		locationChooser.addObject("Right", 2);
 	
 		goalChooser.addDefault("Switch", 0);
 		goalChooser.addObject("Scale", 1);
+		goalChooser.addObject("Baseline", 2);
 		
 		driveTrain = new Drivetrain();
 		sensors = new Sensors();
@@ -61,7 +59,6 @@ public class Robot extends TimedRobot
 		antiFall = new AntiFallMech();
 		climber = new Climber();
 		arm = new ArmPID();
-		
 		
 		oi = new OI(); 
 	
@@ -71,13 +68,10 @@ public class Robot extends TimedRobot
 			c.setClosedLoopControl(true);
 		}
 		
-		//SmartDashboard.putString("Intake Position:", Intake.position());
 		SmartDashboard.putNumber("Gyro", sensors.getGyro()); 
 		SmartDashboard.putNumber("Potentiometer", arm.getPot());
 		SmartDashboard.putData("Location Selection", locationChooser);
 		SmartDashboard.putData("Goal Selection", goalChooser);
-		SmartDashboard.putBoolean("Intake - Open/Close", Intake.position());
-		//.putBoolean("Intake In/Out ", value);
 	}
 
 	@Override
@@ -102,7 +96,6 @@ public class Robot extends TimedRobot
 	
 		position = locationChooser.getSelected();
 		goal = goalChooser.getSelected();
-		//position = 1;
 		m_autonomousCommand = new getFieldData();
 		m_autonomousCommand.start();
 	}

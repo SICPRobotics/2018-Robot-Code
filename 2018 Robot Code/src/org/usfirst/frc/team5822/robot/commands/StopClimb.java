@@ -5,22 +5,16 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class StopClimb extends Command 
 {
-	boolean isLeftTrigger;
-	
-    public StopClimb(boolean leftSide) 
+    public StopClimb() 
     {
         requires(Robot.climber);
-        isLeftTrigger = leftSide;
     }
 
     protected void initialize() {}
 
     protected void execute() 
     {
-    	if(isLeftTrigger)
-    		Robot.climber.stopClimbLeft();
-    	else
-    		Robot.climber.stopClimbRight();
+   		Robot.climber.stopClimbLeft();
     }
 
     protected boolean isFinished() 

@@ -5,7 +5,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 
 public class A_Right extends CommandGroup 
 {
-    public A_Right(String gameData, int side) 
+    public A_Right(String gameData, int goal) 
     {
     	if (gameData.charAt(0) == 'R' && gameData.charAt(1) != 'R')
     	{
@@ -33,7 +33,7 @@ public class A_Right extends CommandGroup
     	}
     	else if (gameData.charAt(0) == 'R' && gameData.charAt(1) == 'R')
     	{
-    		if (side == 0)
+    		if (goal == 0)
     		{
     			// Right Side Switch
         		System.out.println("Right Position/Right Switch");
@@ -44,7 +44,7 @@ public class A_Right extends CommandGroup
         		addSequential(new MoveIntakeAuto(-.78));
         		addSequential(new LowerArm());
         	}
-    		else if (side == 1)
+    		else if (goal == 1)
     		{
     			// Right Side Scale
     			System.out.println("Right Position/Right Scale");
@@ -57,6 +57,12 @@ public class A_Right extends CommandGroup
     			addSequential(new LowerArm());
         		addSequential(new LowerArm());
         	}
+    		else if (goal == 2)
+    		{
+    			// Cross Baseline
+        		System.out.println("Right Position/Cross Baseline");
+        		addSequential(new DriveForward(148.875));
+    		}
     	}    		
     	else 
     	{

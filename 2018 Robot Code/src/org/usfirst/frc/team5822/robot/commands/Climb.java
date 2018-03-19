@@ -5,26 +5,20 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class Climb extends Command 
 {
-	String hook;
-
 	public Climb(String side) 
     {
-        hook = side;
     	requires(Robot.climber);
     }
 
     protected void initialize() 
     {
-    	if (!Robot.isOldRobot) {}
-    	Robot.c.setClosedLoopControl(false);
+    	if (!Robot.isOldRobot) 
+    		Robot.c.setClosedLoopControl(false);
     }
 
     protected void execute() 
     {
-    	if (hook == "left")
-    		Robot.climber.climbLeft();
-    	if (hook == "right")
-    		Robot.climber.climbRight();
+    	Robot.climber.climbLeft();
     }
 
     protected boolean isFinished() 
@@ -32,8 +26,10 @@ public class Climb extends Command
         return false;
     }
 
-    protected void end() {}
-
-    protected void interrupted() {
+    protected void end() 
+    {
+    	Robot.c.setClosedLoopControl(true);
     }
+
+    protected void interrupted() {}
 }

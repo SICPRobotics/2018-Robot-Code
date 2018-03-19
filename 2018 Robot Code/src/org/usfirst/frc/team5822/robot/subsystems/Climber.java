@@ -19,8 +19,7 @@ public class Climber extends Subsystem
 			release = null;
 		} else {
 			climberL = new VictorSP(RobotMap.k_climbLeft);
-			climberR = new VictorSP(RobotMap.k_climbRight);
-
+			
 			release = new DoubleSolenoid(RobotMap.k_climberSolo1, RobotMap.k_climberSolo2);
 			release.set(DoubleSolenoid.Value.kReverse);
 		}
@@ -37,18 +36,6 @@ public class Climber extends Subsystem
 		System.out.println("Climber - stopClimbLeft");
 		if (Robot.isOldRobot) {return;}
 		climberL.set(0);
-	}
-	public void climbRight()
-	{
-		System.out.println("Climber - climbRight");
-		if (Robot.isOldRobot) {return;}
-		//climberR.set(-.5);
-	}
-	public void stopClimbRight()
-	{
-		System.out.println("Climber - stopClimbRight");
-		if (Robot.isOldRobot) {return;}
-		climberR.set(0);
 	}
 	public void release()
 	{
