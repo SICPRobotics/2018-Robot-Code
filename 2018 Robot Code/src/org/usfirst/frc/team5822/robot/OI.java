@@ -42,11 +42,10 @@ public class OI
 		buttonLB.whenReleased(new MoveIntake(0));		
 		buttonRB.whenPressed(new MoveIntake(-.8)); 
 		buttonRB.whenReleased(new MoveIntake(0));
-		//buttonBack.whenPressed(new MoveIntake(-1));
-		//buttonBack.whenReleased(new MoveIntake(0));
+		buttonBack.whenPressed(new MoveIntake(-1));
+		buttonBack.whenReleased(new MoveIntake(0));
 		
 		buttonStart.whenPressed(new MoveArmClimb());
-		//buttonBack open
 		
 		rightThumb.whenPressed(new SolenoidForward());
 		leftThumb.whenPressed(new SolenoidReverse());
