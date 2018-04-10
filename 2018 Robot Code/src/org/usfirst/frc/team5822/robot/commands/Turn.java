@@ -21,7 +21,7 @@ public class Turn extends Command
     protected void initialize() 
     {
     	System.out.println("Starting Turn");
-    	Robot.sensors.resetGyro();
+    	//Robot.sensors.resetGyro();
     }
 
     protected void execute() 

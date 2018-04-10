@@ -52,6 +52,16 @@ public class Drivetrain extends PIDSubsystem
 		return dist;
 	}
 
+//	public double rightEnc()
+//	{
+//		return rearR.getSelectedSensorPosition(0) * .0046019424;
+//	}
+//	
+//	public double leftEnc()
+//	{
+//		return rearL.getSelectedSensorPosition(0) * .0046019424 * -1;
+//	}
+	
 	public void resetEncoders()
 	{
 		System.out.println("reset encoders \n\n\n\n\n");
@@ -70,7 +80,7 @@ public class Drivetrain extends PIDSubsystem
 
 	public void driveForward() 
 	{
-		robotBase.arcadeDrive(.63,0);
+		robotBase.arcadeDrive(.63,.25);
 	}
 	
 	public void driveBackward() 
@@ -112,5 +122,11 @@ public class Drivetrain extends PIDSubsystem
     	moveValue = moveValue * scale * -1; 
     	rotateValue = rotateValue * scale;	
     	robotBase.arcadeDrive(moveValue, rotateValue, true);
+    }
+    
+    public void tankDrive(Joystick j1, Joystick j2)
+    {
+    	left.set(j1.getY());
+    	right.set(j2.getY());
     }
 }

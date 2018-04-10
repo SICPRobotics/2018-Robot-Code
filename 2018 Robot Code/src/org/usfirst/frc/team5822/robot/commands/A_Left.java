@@ -13,9 +13,10 @@ public class A_Left extends CommandGroup
 			System.out.println("Left Position/Left Switch");
     		addSequential(new MoveArmPID(RobotMap.k_potSwitch));
     		addSequential(new DriveForward(140));
-    		addSequential(new Turn(90, -.4, false));
-    		addSequential(new DriveForwardTime(3));
+    		addSequential(new Turn(85, -.4, false));
+    		addSequential(new DriveForwardTime(4));
     		addSequential(new MoveIntakeAuto(-.78));
+    		addSequential(new OpenClose());
     		addSequential(new LowerArm());
     	} 
     	else if (gameData.charAt(0) != 'L' && gameData.charAt(1) == 'L')
@@ -25,7 +26,7 @@ public class A_Left extends CommandGroup
 			addSequential(new DriveForward(285));
 			addSequential(new Turn(-95, .47, true));
 			addSequential(new MoveArmScale(RobotMap.k_potScale));
-			addSequential(new MoveIntakeAuto(-.7));
+		//	addSequential(new MoveIntakeAuto(-.7));
 			addSequential(new LowerArm());
 			addSequential(new LowerArm());
     	}
@@ -37,9 +38,10 @@ public class A_Left extends CommandGroup
     			System.out.println("Left Position/Left Switch");
         		addSequential(new MoveArmPID(RobotMap.k_potSwitch));
         		addSequential(new DriveForward(140));
-        		addSequential(new Turn(90, -.4, false));
-        		addSequential(new DriveForward(20));
+        		addSequential(new Turn(85, -.4, false));
+        		addSequential(new DriveForwardTime(4));
         		addSequential(new MoveIntakeAuto(-.78));
+        		addSequential(new OpenClose());
         		addSequential(new LowerArm());
     		}
     		else if (goal == 1)
@@ -49,7 +51,7 @@ public class A_Left extends CommandGroup
     			addSequential(new DriveForward(285));
     			addSequential(new Turn(-95, .47, true));
     			addSequential(new MoveArmScale(RobotMap.k_potScale));
-    			addSequential(new MoveIntakeAuto(-.7));
+    			//addSequential(new MoveIntakeAuto(-.7));
     			addSequential(new LowerArm());
     			addSequential(new LowerArm());
         		addSequential(new LowerArm());
@@ -58,14 +60,14 @@ public class A_Left extends CommandGroup
     		{
     			// Cross Baseline
         		System.out.println("Left Position/Cross Baseline");
-        		addSequential(new DriveForward(148.875));
+        		addSequential(new DriveForward(140));
     		}
     	}
     	else 
     	{
     		// Cross Baseline
     		System.out.println("Left Position/Cross Baseline");
-    		addSequential(new DriveForward(148.875));
+    		addSequential(new DriveForward(140));
     	}
     }
 }

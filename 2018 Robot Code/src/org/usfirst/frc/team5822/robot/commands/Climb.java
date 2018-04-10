@@ -28,6 +28,7 @@ public class Climb extends Command
 
     protected void end() 
     {
+    	System.out.println("climbend");
     	Robot.c.setClosedLoopControl(true);
     }
 

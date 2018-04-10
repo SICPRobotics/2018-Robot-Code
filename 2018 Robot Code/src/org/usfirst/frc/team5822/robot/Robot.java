@@ -6,6 +6,8 @@ import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.command.*;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -29,8 +31,12 @@ public class Robot extends TimedRobot
 	public static Compressor c;
 	UsbCamera cami = CameraServer.getInstance().startAutomaticCapture(0);
 	
-	public static Joystick j = new Joystick(RobotMap.k_joystick1);
+	public static Joystick j1 = new Joystick(RobotMap.k_joystick1);
+	public static Joystick j2 = new Joystick(RobotMap.k_joystick2);
 	public static XboxController x = new XboxController(RobotMap.k_xboxCntrl);
+	
+	Button j7 = new JoystickButton(j1, 7);
+	boolean arcadeDriveStyle = true;
 	
 	public String fieldDataIMP;
 	public static boolean isOldRobot = false;
@@ -45,9 +51,9 @@ public class Robot extends TimedRobot
 	@Override
 	public void robotInit() 
 	{		
-		locationChooser.addObject("Left", 0);
-		locationChooser.addDefault("Center", 1);
-		locationChooser.addObject("Right", 2);
+		locationChooser.addDefault("Left", 0);
+		locationChooser.addObject("Center", 1);
+		locationChooser.addDefault("Right", 2);
 	
 		goalChooser.addDefault("Switch", 0);
 		goalChooser.addObject("Scale", 1);
@@ -104,6 +110,7 @@ public class Robot extends TimedRobot
     public void autonomousPeriodic() 
     {
     	Scheduler.getInstance().run();
+    	//System.out.println("enc Distance: " + driveTrain.encDistance());
 		//System.out.print("Position: " + position);
 		//SmartDashboard.putNumber("Gyro", sensors.getGyro()); 
 		//SmartDashboard.putData("Location Selection", locationChooser);
@@ -126,7 +133,19 @@ public class Robot extends TimedRobot
 	public void teleopPeriodic() 
 	{
 		Scheduler.getInstance().run();
-		driveTrain.cheesyDrive(j);
+		//System.out.println("pot: " + arm.getPot());
+		if (j7.get())
+			arcadeDriveStyle = !arcadeDriveStyle;
+		if (arcadeDriveStyle)
+		{
+			driveTrain.cheesyDrive(j1);
+			//System.out.println("cheesy drive");
+		}
+		else
+		{
+			driveTrain.tankDrive(j1, j2);
+		//	System.out.println("tank drive");
+		}
 		//SmartDashboard.putNumber("Gyro", sensors.getGyro());
 		//SmartDashboard.putNumber("Potentiometer", arm.getPot());
 //		if (count++ % 50 == 0) 

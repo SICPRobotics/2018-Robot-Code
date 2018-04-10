@@ -5,11 +5,11 @@ import org.usfirst.frc.team5822.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class MoveArmScale extends Command 
+public class MoveArmClimb extends Command 
 {
 	double currentDegrees;
 	
-    public MoveArmScale(double degrees) 
+    public MoveArmClimb() 
     {
     	requires(Robot.arm);
     }
@@ -48,28 +48,18 @@ public class MoveArmScale extends Command
     	}
     	else if (currentDegrees < RobotMap.fTop)
     	{
-    		speed = RobotMap.speedF;
-    		System.out.println("Zone F" + " pot: " + Robot.arm.getPot());
+    		speed = RobotMap.speedG;
+    		System.out.println("Zone H" + " pot: " + Robot.arm.getPot());
     	}
     	else if (currentDegrees < RobotMap.gTop)
     	{
-    		speed = RobotMap.speedG;
-    		System.out.println("Zone G" + " pot: " + Robot.arm.getPot()); 
+    		speed = .4;
+    		System.out.println("Zone F" + " pot: " + Robot.arm.getPot()); 
     	}
-    	else if (currentDegrees < RobotMap.hTop)
+    	else 
     	{
-    		speed = RobotMap.speedH;
-    		System.out.println("Zone H" + " pot: " + Robot.arm.getPot()); 
-    	}
-    	else if (currentDegrees < RobotMap.iTop)
-    	{
-    		speed = RobotMap.speedI;
-    		System.out.println("Zone I" + " pot: " + Robot.arm.getPot()); 
-    	}
-    	else
-    	{
-    		System.out.println("past zones pot: " + Robot.arm.getPot());
-    		speed = 0.1;
+    		speed = .3;
+    		System.out.println("Climb - set to " + speed + " pot: " + Robot.arm.getPot()); 
     	}
     	
     	Robot.arm.armMotors(speed);

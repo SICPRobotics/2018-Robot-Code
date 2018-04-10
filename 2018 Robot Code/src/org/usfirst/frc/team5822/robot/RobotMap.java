@@ -34,6 +34,7 @@ public class RobotMap
 
     //joysticks
     public static int k_joystick1 = 0;
+    public static int k_joystick2 = 2;
     public static int k_xboxCntrl = 1;
 	
     public static final int k_leftSide = 0;
@@ -51,9 +52,10 @@ public class RobotMap
 	public static double cTop = .29143; //.43
 	public static double dTop = .33857; //.48
 	public static double eTop = .38571;
-	public static double hTop = .414285;
-	public static double fTop = .44286;
-	public static double gTop = .48;
+	public static double fTop = .414285;
+	public static double gTop = .455; //.44286
+	public static double hTop = .46;
+	public static double iTop = .5;
 	
 	//arm speeds
 	public static double speedA = .8; //.8 
@@ -61,7 +63,9 @@ public class RobotMap
 	public static double speedC = .6; //.4
 	public static double speedD = .5; //.15
 	public static double speedE = .55; //.45 -> .5
-	public static double speedH = .45;
-	public static double speedF = .3; //.3
-	public static double speedG = .15;
+	public static double speedF = .53;
+	public static double speedG = .3; //.3
+	public static double speedH = .23;
+	public static double speedI = .15;
+	
 }

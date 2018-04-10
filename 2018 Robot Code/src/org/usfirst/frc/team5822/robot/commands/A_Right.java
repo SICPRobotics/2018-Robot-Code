@@ -9,39 +9,41 @@ public class A_Right extends CommandGroup
     {
     	if (gameData.charAt(0) == 'R' && gameData.charAt(1) != 'R')
     	{
-    		// Right Side Switch
+			// Right Side Switch
     		System.out.println("Right Position/Right Switch");
     		addSequential(new MoveArmPID(RobotMap.k_potSwitch));
     		addSequential(new DriveForward(140));
     		addSequential(new Turn(-90, .4, true));
-    		addSequential(new DriveForward(20));
+    		addSequential(new DriveForwardTime(2));
     		addSequential(new MoveIntakeAuto(-.78));
+    		addSequential(new OpenClose());
     		addSequential(new LowerArm());
     	} 
     	else if (gameData.charAt(0) != 'R' && gameData.charAt(1) == 'R')
     	{
     		// Right Side Scale
 			System.out.println("Right Position/Right Scale");
-			addSequential(new DriveForward(285));
+			addSequential(new DriveForward(285)); 
 			addSequential(new Turn(82, -.45, false));
-			addSequential(new DriveBackward(-10));
+			addSequential(new DriveBackwardTime(2));
 			addParallel(new MoveArmScale(RobotMap.k_potScale));
-			addSequential(new MoveIntakeAuto(-.7));
+			//addSequential(new MoveIntakeAuto(-.7));
 			addSequential(new LowerArm());
 			addSequential(new LowerArm());
     		addSequential(new LowerArm());    
     	}
-    	else if (gameData.charAt(0) == 'R' && gameData.charAt(1) == 'R')
+    	if (gameData.charAt(0) == 'R' )//&& gameData.charAt(1) == 'R')
     	{
     		if (goal == 0)
     		{
     			// Right Side Switch
         		System.out.println("Right Position/Right Switch");
         		addSequential(new MoveArmPID(RobotMap.k_potSwitch));
-        		addSequential(new DriveForward(140));
+        		addSequential(new DriveForward(120));
         		addSequential(new Turn(-90, .4, true));
-        		addSequential(new DriveForward(20));
+        		addSequential(new DriveForwardTime(2));
         		addSequential(new MoveIntakeAuto(-.78));
+        		addSequential(new OpenClose());
         		addSequential(new LowerArm());
         	}
     		else if (goal == 1)
@@ -50,9 +52,9 @@ public class A_Right extends CommandGroup
     			System.out.println("Right Position/Right Scale");
     			addSequential(new DriveForward(285));
     			addSequential(new Turn(82, -.45, false));
-    			addSequential(new DriveBackward(-10));
+    			addSequential(new DriveBackwardTime(2));
     			addParallel(new MoveArmScale(RobotMap.k_potScale));
-    			addSequential(new MoveIntakeAuto(-.7));
+    			//addSequential(new MoveIntakeAuto(-.7));
     			addSequential(new LowerArm());
     			addSequential(new LowerArm());
         		addSequential(new LowerArm());
@@ -61,14 +63,15 @@ public class A_Right extends CommandGroup
     		{
     			// Cross Baseline
         		System.out.println("Right Position/Cross Baseline");
-        		addSequential(new DriveForward(148.875));
+        		//addSequential(new DriveForwardTime(2.25));
+        		addSequential(new DriveForward(140));
     		}
     	}    		
     	else 
     	{
     		// Cross Baseline
     		System.out.println("Right Position/Cross Baseline");
-    		addSequential(new DriveForward(148.875));
+    		addSequential(new DriveForward(140));
     	}
     }
 }

@@ -15,7 +15,7 @@ public class A_Center extends CommandGroup
     		addSequential(new Turn(-30, .4, true)); //-28
     		addSequential(new MoveArmPID(RobotMap.k_potSwitch));
     		addSequential(new DriveForward(103)); //92
-    		addSequential(new Turn(15, -.4, false)); //24
+    		addSequential(new Turn(0, -.4, false)); //24
     		addSequential(new DriveForwardTime(3));
     		addSequential(new MoveIntakeAuto(-.7));
     		addSequential(new OpenClose());
@@ -30,7 +30,7 @@ public class A_Center extends CommandGroup
     		addSequential(new Turn(15, -.4, false));
     		addSequential(new MoveArmPID(RobotMap.k_potSwitch));
     		addSequential(new DriveForward(95));
-    		addSequential(new Turn(-20, .4, true));
+    		addSequential(new Turn(5, .4, true)); //-15
     		addSequential(new DriveForward(5));
     		addSequential(new DriveForwardTime(2));
     		addSequential(new MoveIntakeAuto(-.8));

@@ -16,7 +16,7 @@ public class MoveIntake extends Command
 	
     protected void initialize() 
     {	
-    	System.out.println("intake command starting");
+    	//System.out.println("intake command starting");
     }
 
     protected void execute() 
