@@ -2,6 +2,7 @@ package org.usfirst.frc.team5822.robot.subsystems;
 
 import org.usfirst.frc.team5822.robot.Robot;
 import org.usfirst.frc.team5822.robot.RobotMap;
+
 import com.ctre.phoenix.ErrorCode;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
@@ -43,12 +44,13 @@ public class Drivetrain extends PIDSubsystem
 		double rightEnc, leftEnc;
 		int nativeUnits1 = rearL.getSelectedSensorPosition(0);
 		leftEnc = nativeUnits1 * .0046019424 * -1;
-		
+		System.out.println("left enc: " + leftEnc);
 		int nativeUnits2 = rearR.getSelectedSensorPosition(0);
 		rightEnc = nativeUnits2 * .0046019424;
-		double dist = (leftEnc + rightEnc) /2;
+		System.out.println("right enc: " + rightEnc);
 		
-  //	System.out.println("enc at " + dist);
+		double dist = (leftEnc + rightEnc) /2;
+		System.out.println("dist: " + dist);
 		return dist;
 	}
 
@@ -65,12 +67,12 @@ public class Drivetrain extends PIDSubsystem
 	public void resetEncoders()
 	{
 		System.out.println("reset encoders \n\n\n\n\n");
-//		ErrorCode rL = rearL.setSelectedSensorPosition(0, 0, 10000);
+		ErrorCode rL = rearL.setSelectedSensorPosition(0, 0, 10000);
 //		
-//		System.out.println("error code for left: " + rL);
-//		ErrorCode rR = rearR.setSelectedSensorPosition(0,0,10000);
-//		System.out.println("error code for right: " + rR);
-//		System.out.println("after reset encoders at " + encDistance());
+		System.out.println("error code for left: " + rL);
+		ErrorCode rR = rearR.setSelectedSensorPosition(0,0,10000);
+		System.out.println("error code for right: " + rR);
+		System.out.println("after reset encoders at " + encDistance());
 	}
 	
 	protected double returnPIDInput() 
@@ -81,6 +83,12 @@ public class Drivetrain extends PIDSubsystem
 	public void driveForward() 
 	{
 		robotBase.arcadeDrive(.63,.25);
+		//System.out.println("right code now");
+	}
+	
+	public void driveForwardHalf()
+	{
+		robotBase.arcadeDrive(.5, .25);
 	}
 	
 	public void driveBackward() 
@@ -121,7 +129,7 @@ public class Drivetrain extends PIDSubsystem
     	//scale down the values 
     	moveValue = moveValue * scale * -1; 
     	rotateValue = rotateValue * scale;	
-    	robotBase.arcadeDrive(moveValue, rotateValue, true);
+    	robotBase.arcadeDrive(moveValue, rotateValue + .25, true);
     }
     
     public void tankDrive(Joystick j1, Joystick j2)

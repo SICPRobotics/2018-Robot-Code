@@ -42,10 +42,10 @@ public class OI
 		buttonLB.whenReleased(new MoveIntake(0));		
 		buttonRB.whenPressed(new MoveIntake(-.8)); 
 		buttonRB.whenReleased(new MoveIntake(0));
-		buttonBack.whenPressed(new MoveIntake(-1));
-		buttonBack.whenReleased(new MoveIntake(0));
+		buttonStart.whenPressed(new MoveIntake(-1)); 
+		buttonStart.whenReleased(new MoveIntake(0));
 		
-		buttonStart.whenPressed(new MoveArmClimb());
+		buttonBack.whenPressed(new MoveArmClimb()); 
 		
 		rightThumb.whenPressed(new SolenoidForward());
 		leftThumb.whenPressed(new SolenoidReverse());
@@ -65,9 +65,7 @@ public class OI
 		j6.whenPressed(new SolenoidReverse());
 		//j7 open
 		j8.whenActive(new OpenClose());
-		j10.whenPressed(new FallDown(-.6));
-		j10.whenReleased(new FallDown(0));
-		j12.whenPressed(new FallDown(.6));
-		j12.whenReleased(new FallDown(0));
+		//j10 open
+		//j12 open
 	}
 }

@@ -23,7 +23,8 @@ public class MoveArmPID extends Command
     {
     	System.out.println("starting move arm PID");
     	Robot.arm.setSetpoint(setpoint);
-    	Robot.arm.enable();
+    	if (setpoint != 0)
+    		Robot.arm.enable();
     }
 
     protected void execute() {}

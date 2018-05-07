@@ -48,13 +48,13 @@ public class MoveArmClimb extends Command
     	}
     	else if (currentDegrees < RobotMap.fTop)
     	{
-    		speed = RobotMap.speedG;
-    		System.out.println("Zone H" + " pot: " + Robot.arm.getPot());
+    		speed = RobotMap.speedF;
+    		System.out.println("Zone F" + " pot: " + Robot.arm.getPot());
     	}
     	else if (currentDegrees < RobotMap.gTop)
     	{
     		speed = .4;
-    		System.out.println("Zone F" + " pot: " + Robot.arm.getPot()); 
+    		System.out.println("Zone G" + " pot: " + Robot.arm.getPot()); 
     	}
     	else 
     	{

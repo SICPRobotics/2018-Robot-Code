@@ -29,7 +29,6 @@ public class Robot extends TimedRobot
 	public static ArmPID arm;
 	
 	public static Compressor c;
-	UsbCamera cami = CameraServer.getInstance().startAutomaticCapture(0);
 	
 	public static Joystick j1 = new Joystick(RobotMap.k_joystick1);
 	public static Joystick j2 = new Joystick(RobotMap.k_joystick2);
@@ -51,18 +50,17 @@ public class Robot extends TimedRobot
 	@Override
 	public void robotInit() 
 	{		
-		locationChooser.addDefault("Left", 0);
-		locationChooser.addObject("Center", 1);
+		locationChooser.addDefault("Center", 1);
+		locationChooser.addObject("Left", 0);
 		locationChooser.addDefault("Right", 2);
-	
-		goalChooser.addDefault("Switch", 0);
+		
+		goalChooser.addDefault("Baseline", 2);
+		goalChooser.addObject("Switch", 0);
 		goalChooser.addObject("Scale", 1);
-		goalChooser.addObject("Baseline", 2);
 		
 		driveTrain = new Drivetrain();
 		sensors = new Sensors();
 		intake = new Intake();
-		antiFall = new AntiFallMech();
 		climber = new Climber();
 		arm = new ArmPID();
 		
@@ -74,10 +72,24 @@ public class Robot extends TimedRobot
 			c.setClosedLoopControl(true);
 		}
 		
-		SmartDashboard.putNumber("Gyro", sensors.getGyro()); 
-		SmartDashboard.putNumber("Potentiometer", arm.getPot());
+		//SmartDashboard.putNumber("Gyro", sensors.getGyro()); 
+		//SmartDashboard.putNumber("Potentiometer", arm.getPot());
 		SmartDashboard.putData("Location Selection", locationChooser);
 		SmartDashboard.putData("Goal Selection", goalChooser);
+		
+		try {
+			UsbCamera cami = CameraServer.getInstance().startAutomaticCapture(0);
+		}
+		catch (Exception e){
+			System.out.println("failed camera 0" + e);
+		}
+		
+		try {
+			UsbCamera cam2 = CameraServer.getInstance().startAutomaticCapture(1);
+		}
+		catch (Exception e){
+			System.out.println("failed camera 1" + e);
+		}
 	}
 
 	@Override
@@ -99,7 +111,7 @@ public class Robot extends TimedRobot
 	public void autonomousInit() 
 	{
 		Robot.sensors.resetGyro();
-	
+		Robot.driveTrain.resetEncoders();
 		position = locationChooser.getSelected();
 		goal = goalChooser.getSelected();
 		m_autonomousCommand = new getFieldData();
@@ -110,7 +122,7 @@ public class Robot extends TimedRobot
     public void autonomousPeriodic() 
     {
     	Scheduler.getInstance().run();
-    	//System.out.println("enc Distance: " + driveTrain.encDistance());
+    	//System.out.println("enc Distance (auto): " + driveTrain.encDistance());
 		//System.out.print("Position: " + position);
 		//SmartDashboard.putNumber("Gyro", sensors.getGyro()); 
 		//SmartDashboard.putData("Location Selection", locationChooser);
@@ -134,6 +146,7 @@ public class Robot extends TimedRobot
 	{
 		Scheduler.getInstance().run();
 		//System.out.println("pot: " + arm.getPot());
+	//	System.out.println("encoders: " + driveTrain.encDistance());
 		if (j7.get())
 			arcadeDriveStyle = !arcadeDriveStyle;
 		if (arcadeDriveStyle)
@@ -146,6 +159,7 @@ public class Robot extends TimedRobot
 			driveTrain.tankDrive(j1, j2);
 		//	System.out.println("tank drive");
 		}
+		
 		//SmartDashboard.putNumber("Gyro", sensors.getGyro());
 		//SmartDashboard.putNumber("Potentiometer", arm.getPot());
 //		if (count++ % 50 == 0) 

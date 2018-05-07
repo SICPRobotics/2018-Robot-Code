@@ -21,7 +21,11 @@ public class MoveArmScale extends Command
     	currentDegrees = Robot.arm.getPot();
     	double speed = 0;
   
-    	if (currentDegrees < RobotMap.aTop)
+    	if (currentDegrees == 0)
+    	{
+    		System.out.println("pot = 0");
+    	}
+    	else if (currentDegrees < RobotMap.aTop)
     	{
     		speed = RobotMap.speedA;
     		System.out.println("Zone A" + " pot: " + Robot.arm.getPot());
