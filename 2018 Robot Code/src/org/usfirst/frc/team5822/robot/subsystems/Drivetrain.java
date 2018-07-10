@@ -129,7 +129,7 @@ public class Drivetrain extends PIDSubsystem
     	//scale down the values 
     	moveValue = moveValue * scale * -1; 
     	rotateValue = rotateValue * scale;	
-    	robotBase.arcadeDrive(moveValue, rotateValue + .25, true);
+    	robotBase.arcadeDrive(moveValue, rotateValue, true);
     }
     
     public void tankDrive(Joystick j1, Joystick j2)
