@@ -25,23 +25,24 @@ public class DriveForward extends Command
     	startingPos = Robot.driveTrain.encDistance();
     	//System.out.println("starting pos: " + startingPos);
     	time.start();
+    	Robot.driveTrain.enable();
     }
 
     protected void execute() 
     {
-    	System.out.println("encoder distance in DriveForward: " + Robot.driveTrain.encDistance());
-    	if (time.get() > .18 && time.get()<1)
-    		Robot.driveTrain.driveForwardHalf();
-    	else if (time.get() > 1)
-    	{
-    		Robot.driveTrain.driveForward();
-    		System.out.println("full speed");
-    	}
+//    	System.out.println("encoder distance in DriveForward: " + Robot.driveTrain.encDistance());
+//    	if (time.get() > .18 && time.get()<1)
+//    		Robot.driveTrain.driveForwardHalf();
+//    	else if (time.get() > 1)
+//    	{
+//    		Robot.driveTrain.driveForward();
+//    		System.out.println("full speed");
+//    	}
     }
 
     protected boolean isFinished() 
     {
-    	if (Robot.driveTrain.encDistance() > distance && time.get() > .3)
+    	if (Robot.driveTrain.encDistance() > distance) // && time.get() > .3)
     	{
     		return true;
     	}
@@ -55,6 +56,7 @@ public class DriveForward extends Command
     protected void end() 
     {
     	System.out.println("End: Drive Forward");
+    	Robot.driveTrain.disable();
     }
 
     protected void interrupted() {}
