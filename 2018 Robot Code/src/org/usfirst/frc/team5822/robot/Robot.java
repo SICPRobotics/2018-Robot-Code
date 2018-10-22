@@ -113,6 +113,7 @@ public class Robot extends TimedRobot
 		Robot.sensors.resetGyro();
 		Robot.driveTrain.resetEncoders();
 		position = locationChooser.getSelected();
+		System.out.println("position: " + position);
 		goal = goalChooser.getSelected();
 		m_autonomousCommand = new getFieldData();
 		m_autonomousCommand.start();

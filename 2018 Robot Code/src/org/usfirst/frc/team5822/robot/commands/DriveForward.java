@@ -29,14 +29,16 @@ public class DriveForward extends Command
 
     protected void execute() 
     {
-    	System.out.println("encoder distance in DriveForward: " + Robot.driveTrain.encDistance());
-    	if (time.get() > .18 && time.get()<1)
+    	//System.out.println("encoder distance in DriveForward: " + Robot.driveTrain.encDistance());
+    	/*if (time.get() > .18 && time.get()<1)
     		Robot.driveTrain.driveForwardHalf();
     	else if (time.get() > 1)
     	{
     		Robot.driveTrain.driveForward();
-    		System.out.println("full speed");
-    	}
+    		/*System.out.println("full speed");
+    	}*/
+    	
+    	Robot.driveTrain.autoDrive(.4, .455);
     }
 
     protected boolean isFinished() 

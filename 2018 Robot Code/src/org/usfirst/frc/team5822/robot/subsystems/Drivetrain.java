@@ -16,7 +16,7 @@ public class Drivetrain extends PIDSubsystem
 {
 	WPI_TalonSRX frontL, frontR, rearL, rearR;
 	static DifferentialDrive robotBase;
-	SpeedControllerGroup left, right, autoDrive; 	
+	SpeedControllerGroup left, right;//, autoDrive; 	
 	
 	public Drivetrain()
 	{
@@ -34,7 +34,7 @@ public class Drivetrain extends PIDSubsystem
 	
 		left = new SpeedControllerGroup(frontL, rearL);
 		right = new SpeedControllerGroup(frontR, rearR);
-		autoDrive = new SpeedControllerGroup(left, right);
+		//autoDrive = new SpeedControllerGroup(left, right);
 
 		robotBase = new DifferentialDrive(left, right);
 	}
@@ -44,13 +44,13 @@ public class Drivetrain extends PIDSubsystem
 		double rightEnc, leftEnc;
 		int nativeUnits1 = rearL.getSelectedSensorPosition(0);
 		leftEnc = nativeUnits1 * .0046019424 * -1;
-		System.out.println("left enc: " + leftEnc);
+//		System.out.println("left enc: " + leftEnc);
 		int nativeUnits2 = rearR.getSelectedSensorPosition(0);
 		rightEnc = nativeUnits2 * .0046019424;
-		System.out.println("right enc: " + rightEnc);
+//		System.out.println("right enc: " + rightEnc);
 		
 		double dist = (leftEnc + rightEnc) /2;
-		System.out.println("dist: " + dist);
+//		System.out.println("dist: " + dist);
 		return dist;
 	}
 
@@ -66,13 +66,13 @@ public class Drivetrain extends PIDSubsystem
 	
 	public void resetEncoders()
 	{
-		System.out.println("reset encoders \n\n\n\n\n");
+//		System.out.println("reset encoders \n\n\n\n\n");
 		ErrorCode rL = rearL.setSelectedSensorPosition(0, 0, 10000);
 //		
-		System.out.println("error code for left: " + rL);
+//		System.out.println("error code for left: " + rL);
 		ErrorCode rR = rearR.setSelectedSensorPosition(0,0,10000);
-		System.out.println("error code for right: " + rR);
-		System.out.println("after reset encoders at " + encDistance());
+//		System.out.println("error code for right: " + rR);
+//		System.out.println("after reset encoders at " + encDistance());
 	}
 	
 	protected double returnPIDInput() 
@@ -82,13 +82,17 @@ public class Drivetrain extends PIDSubsystem
 
 	public void driveForward() 
 	{
-		robotBase.arcadeDrive(.63,.25);
+		left.set(.4);
+		right.set(.45);
+		//robotBase.arcadeDrive(.4, 0); //had .63,.25 for worlds
 		//System.out.println("right code now");
 	}
 	
 	public void driveForwardHalf()
 	{
-		robotBase.arcadeDrive(.5, .25);
+		left.set(.4);
+		right.set(.4);
+		//robotBase.arcadeDrive(.4, 0); //had .5.25 for worlds
 	}
 	
 	public void driveBackward() 

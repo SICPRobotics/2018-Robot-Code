@@ -27,7 +27,7 @@ public class Turn extends Command
     protected void execute() 
     {
     	Robot.driveTrain.autoDrive(-speedTurn, speedTurn);
-    	//System.out.println("turn: " + Robot.sensors.getGyro());
+    	System.out.println("turn: " + Robot.sensors.getGyro());
     	executedOnce = true;
     }
 
@@ -35,8 +35,11 @@ public class Turn extends Command
     {
         if (direction)
         {
+        	System.out.println("we're getting there");
        		if (angle > Robot.sensors.getGyro())
        		{
+       			System.out.println("we're here");
+       			Robot.driveTrain.autoDrive(0, 0);
            		return true;
             }
         }
@@ -44,6 +47,7 @@ public class Turn extends Command
         {
        		if (angle < Robot.sensors.getGyro())
        		{
+       			Robot.driveTrain.autoDrive(0, 0);
        			return true;
             }
         }

@@ -12,8 +12,9 @@ public class A_Right extends CommandGroup
     		// Right Side Switch
     		System.out.println("Right Position/Right Switch");
     		addSequential(new MoveArmPID(RobotMap.k_potSwitch));
-    		addSequential(new DriveForward(147));
-    		addSequential(new Turn(-85, .4, true));
+    		addSequential(new DriveForward(147)); //147
+    		addSequential(new Turn(-85, .3, true));
+    		//addSequential(new Turn(5, .25, false));
     		addSequential(new DriveForwardTime(2));
     		addSequential(new MoveIntakeAuto(-.78));
     		addSequential(new OpenClose());

@@ -27,7 +27,7 @@ public class DriveForwardTime extends Command
 
     protected void execute() 
     {
-    	Robot.driveTrain.driveForward();
+    	Robot.driveTrain.autoDrive(.4,.455);
     }
 
     protected boolean isFinished() 
