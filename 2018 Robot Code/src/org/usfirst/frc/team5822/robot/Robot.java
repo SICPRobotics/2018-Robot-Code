@@ -50,13 +50,13 @@ public class Robot extends TimedRobot
 	@Override
 	public void robotInit() 
 	{		
-		locationChooser.addDefault("Center", 1);
 		locationChooser.addObject("Left", 0);
+		locationChooser.addDefault("Center", 1);
 		locationChooser.addDefault("Right", 2);
 		
-		goalChooser.addDefault("Baseline", 2);
 		goalChooser.addObject("Switch", 0);
 		goalChooser.addObject("Scale", 1);
+		goalChooser.addDefault("Baseline", 2);
 		
 		driveTrain = new Drivetrain();
 		sensors = new Sensors();
@@ -72,10 +72,8 @@ public class Robot extends TimedRobot
 			c.setClosedLoopControl(true);
 		}
 		
-		//SmartDashboard.putNumber("Gyro", sensors.getGyro()); 
-		//SmartDashboard.putNumber("Potentiometer", arm.getPot());
-		SmartDashboard.putData("Location Selection", locationChooser);
-		SmartDashboard.putData("Goal Selection", goalChooser);
+		SmartDashboard.putData("Location", locationChooser);
+		SmartDashboard.putData("Goal", goalChooser);
 		
 		try {
 			UsbCamera cami = CameraServer.getInstance().startAutomaticCapture(0);
@@ -113,8 +111,9 @@ public class Robot extends TimedRobot
 		Robot.sensors.resetGyro();
 		Robot.driveTrain.resetEncoders();
 		position = locationChooser.getSelected();
-		System.out.println("position: " + position);
+		//System.out.println("position: " + position);
 		goal = goalChooser.getSelected();
+		//System.out.println("goal: " + goal);
 		m_autonomousCommand = new getFieldData();
 		m_autonomousCommand.start();
 	}
@@ -124,10 +123,7 @@ public class Robot extends TimedRobot
     {
     	Scheduler.getInstance().run();
     	//System.out.println("enc Distance (auto): " + driveTrain.encDistance());
-		//System.out.print("Position: " + position);
 		//SmartDashboard.putNumber("Gyro", sensors.getGyro()); 
-		//SmartDashboard.putData("Location Selection", locationChooser);
-		//SmartDashboard.putData("Goal Chooser", goalChooser);
     }
     
     @Override
@@ -138,33 +134,28 @@ public class Robot extends TimedRobot
 			m_autonomousCommand.cancel();
 		}
 		Scheduler.getInstance().removeAll();
-		Robot.driveTrain.resetEncoders();
 	}
 
-   // int count = 0;
+    //int count = 0;
 	@Override
 	public void teleopPeriodic() 
 	{
 		Scheduler.getInstance().run();
-		//System.out.println("pot: " + arm.getPot());
-	//	System.out.println("encoders: " + driveTrain.encDistance());
 		if (j7.get())
 			arcadeDriveStyle = !arcadeDriveStyle;
 		if (arcadeDriveStyle)
 		{
 			driveTrain.cheesyDrive(j1);
-			//System.out.println("cheesy drive");
+			//System.out.println("arcade drive");
 		}
 		else
 		{
 			driveTrain.tankDrive(j1, j2);
-		//	System.out.println("tank drive");
+			//System.out.println("tank drive");
 		}
-		
-		//SmartDashboard.putNumber("Gyro", sensors.getGyro());
-		//SmartDashboard.putNumber("Potentiometer", arm.getPot());
 //		if (count++ % 50 == 0) 
 //		{
+//			System.out.println("Gyro: " + sensors.getGyro());		
 //			System.out.println("Potentiometer: " + arm.getPot());
 //		}
 	}

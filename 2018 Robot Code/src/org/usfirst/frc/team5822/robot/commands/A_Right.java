@@ -13,8 +13,7 @@ public class A_Right extends CommandGroup
     		System.out.println("Right Position/Right Switch");
     		addSequential(new MoveArmPID(RobotMap.k_potSwitch));
     		addSequential(new DriveForward(147)); //147
-    		addSequential(new Turn(-85, .3, true));
-    		//addSequential(new Turn(5, .25, false));
+    		addSequential(new Turn(-65, .3, true));
     		addSequential(new DriveForwardTime(2));
     		addSequential(new MoveIntakeAuto(-.78));
     		addSequential(new OpenClose());
@@ -24,8 +23,8 @@ public class A_Right extends CommandGroup
     	{
     		// Right Side Scale
 			System.out.println("Right Position/Right Scale");
-			addSequential(new DriveForward(285)); 
-			addSequential(new Turn(82, -.45, false));
+			addSequential(new DriveForward(285)); //TODO: adjust this for scale auto
+			addSequential(new Turn(82, -.45, false)); //TODO: also adjust this for scale
 			addSequential(new DriveBackwardTime(2));
 			addParallel(new MoveArmScale(RobotMap.k_potScale));
 			//addSequential(new MoveIntakeAuto(-.7));
